@@ -50,6 +50,7 @@ Plugin 'vim-perl/vim-perl'
 Plugin 'paranoida/vim-airlineish'
 Plugin 'dansomething/vim-eclim'
 Plugin 'jaxbot/brolink.vim.git'
+"Plugin 'skammer/vim-css-color'
 "Plugin 'Valloric/YouCompleteMe'
 
 " Color Schemes
@@ -76,6 +77,7 @@ set showmatch		" Show matching brackets.
 set ignorecase		" Do case insensitive matching
 set smartcase           " But still be intelligent about matchin But still be intelligent about matching
 set mouse=a		" Enable mouse usage (all modes)
+set ttymouse=xterm2     " Resize splits inside tmux
 set sw=4		" space indentation wide 4
 set hlsearch		" Highlight search items
 set incsearch		" Incremental search, start searching as soon as I type
