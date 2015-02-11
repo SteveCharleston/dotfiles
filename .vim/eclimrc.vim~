@@ -1,0 +1,18 @@
+AcpEnable
+NeoComplCacheDisable
+"""acp for eclim
+let g:acp_behaviorJavaEclimLength = 0
+"function MeetsForJavaEclim(context)
+    "return 0
+    "return g:acp_behaviorJavaEclimLength >= 0 &&  a:context =~ '\k\.\k\{0,}$'
+"endfunction
+let g:acp_behavior = {
+    \ 'java': [{
+        \ 'command': "\<c-x>\<c-u>",
+        \ 'completefunc' : 'eclim#java#complete#CodeComplete',
+        \ 'meets' : 'MeetsForJavaEclim',
+    \ }]
+\ }
+nnoremap <leader>i :JavaImport<cr>
+let g:EclimProjectTreeAutoOpen=1
+
