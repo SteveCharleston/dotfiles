@@ -4,60 +4,68 @@ augroup AutoReloadVimRC
     au BufWritePost $MYVIMRC so $MYVIMRC
 augroup END
 
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall
+endif
+
 " let Vundle manage Vundle
 "set rtp=$VIMRUNTIME,~/.vim/bundle/vundle/ 
-set rtp+=~/.vim/bundle/Vundle.vim
+"set rtp+=~/.vim/bundle/Vundle.vim
 "call vundle#rc()
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+"call vundle#begin()
+"
+call plug#begin('~/.vim/bundle')
+"Plug 'gmarik/Vundle.vim'
 "Plugin 'gmarik/vundle'
 
 "Plugin 'code_complete'
-Plugin 'Indent-Guides'
-Plugin 'ref.vim'
-Plugin 'trinity.vim'
-Plugin 'Gundo'
-Plugin 'Finder-for-vim'
-Plugin 'Mark-Ring'
-Plugin 'rainbow_parentheses.vim'
-Plugin 'reorder-columns'
-Plugin 'visual-increment'
-Plugin 'Peasy'
-Plugin 'Python-2.x-Standard-Library-Reference'
-Plugin 'swap'
-Plugin 'htmlspecialchars'
-Plugin 'EasyGrep'
-Plugin 'Shougo/neocomplcache'
-Plugin 'Shougo/neocomplete'
-Plugin 'Shougo/neosnippet'
-Plugin 'Shougo/neosnippet-snippets'
-Plugin 'Shougo/vimshell.vim'
-Plugin 'Shougo/vimproc'
-Plugin 'javacomplete'
-Plugin 'ragtag.vim'
-Plugin 'Syntastic'
-Plugin 'closetag.vim'
-Plugin 'surround.vim'
-Plugin 'repeat.vim'
-Plugin 'xolox/vim-misc'
-"Plugin 'easytags.vim'
-"Plugin 'session.vim'
-Plugin 'vcscommand.vim'
-"Plugin 'ShowMarks'
-Plugin 'The-NERD-Commenter'
-Plugin 'vim-perl/vim-perl'
-"Plugin 'ctrlp.vim'
-Plugin 'paranoida/vim-airlineish'
-Plugin 'dansomething/vim-eclim'
-Plugin 'jaxbot/brolink.vim.git'
-"Plugin 'skammer/vim-css-color'
-"Plugin 'Valloric/YouCompleteMe'
+Plug 'Indent-Guides'
+Plug 'ref.vim'
+Plug 'trinity.vim'
+Plug 'Gundo'
+Plug 'Finder-for-vim'
+Plug 'Mark-Ring'
+Plug 'rainbow_parentheses.vim'
+Plug 'reorder-columns'
+Plug 'visual-increment'
+Plug 'Peasy'
+Plug 'Python-2.x-Standard-Library-Reference'
+Plug 'swap'
+Plug 'htmlspecialchars'
+Plug 'EasyGrep'
+Plug 'Shougo/neocomplcache'
+Plug 'Shougo/neocomplete'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'Shougo/vimshell.vim'
+Plug 'Shougo/vimproc'
+Plug 'javacomplete'
+Plug 'ragtag.vim'
+Plug 'Syntastic'
+Plug 'closetag.vim'
+Plug 'surround.vim'
+Plug 'repeat.vim'
+Plug 'xolox/vim-misc'
+"Plug 'easytags.vim'
+"Plug 'session.vim'
+Plug 'vcscommand.vim'
+"Plug 'ShowMarks'
+Plug 'The-NERD-Commenter'
+Plug 'vim-perl/vim-perl'
+"Plug 'ctrlp.vim'
+Plug 'paranoida/vim-airlineish'
+Plug 'dansomething/vim-eclim'
+Plug 'https://github.com/jaxbot/browserlink.vim'
+"Plug 'skammer/vim-css-color'
+"Plug 'Valloric/YouCompleteMe'
 
 " Color Schemes
-Plugin 'moria'
-Plugin 'Solarized'
-Plugin 'sonoma.vim'
-Plugin 'peaksea'
+Plug 'moria'
+Plug 'Solarized'
+Plug 'sonoma.vim'
+Plug 'peaksea'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 "
@@ -214,13 +222,13 @@ command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-session """"""""""""""""""""""""""""""""""""""""
-Plugin 'xolox/vim-session'
+Plug 'xolox/vim-session'
 let g:session_autosave='yes'
 let g:session_autoload='yes'
 let g:session_autoload_periodic=1
 
 " NERDtree
-Plugin 'The-NERD-tree'
+Plug 'The-NERD-tree'
 let NERDTreeChDirMode=2
 let NERDTreeShowBookmarks=2
 let NERDTreeMinimalUI=1
@@ -231,17 +239,17 @@ let g:NERDTreeDirArrows = 0
 " :Bsgrep - Searches for given Regex
 " :Bstoc - lists table of content for buffers
 " :Bsreplace - global search and replace
-Plugin 'Buffersaurus'
+Plug 'Buffersaurus'
 
 
 " Tag list """"""""""""""""""""""""""""""""""""""""
-Plugin 'taglist.vim'
+Plug 'taglist.vim'
 let Tlist_Auto_Open=0	" Automatically Open the Tag List
 let Tlist_Exist_OnlyWindow = 1 " if you are the last, kill yourself 
 
 
 " SrcExplorer """""""""""""""""""""""""""""""""""""
-Plugin 'Source-Explorer-srcexpl.vim'
+Plug 'Source-Explorer-srcexpl.vim'
 let g:SrcExpl_pluginList = [
         \ "__Tag_List__",
         \ "_NERD_tree_",
@@ -263,13 +271,13 @@ let g:SrcExpl_searchLocalDef = 1
 
 
 " Tagbar     """"""""""""""""""""""""""""""""""""""
-Plugin 'Tagbar'
+Plug 'Tagbar'
 let g:tagbar_left=0
 let g:tagbar_singleclick=1
 
 
 " Conque Term """""""""""""""""""""""""""""""""""""
-Plugin 'basepi/vim-conque'
+Plug 'basepi/vim-conque'
 let g:ConqueTerm_Color = 1
 let g:ConqueTerm_SessionSupport = 0
 let g:ConqueTerm_ReadUnfocused = 1
@@ -278,7 +286,7 @@ let g:ConqueTerm_Syntax = 'conque'
 
 
 " Unite  """""""""""""""""""""""""""""""""""
-Plugin 'unite.vim'
+Plug 'unite.vim'
 let g:unite_enable_start_insert = 1
 let g:unite_source_history_yank_enable = 1
 
@@ -375,7 +383,7 @@ let g:neocomplete#force_overwrite_completefunc=1
 " EasyMotion """"""""""""""""""""""""""""""""""
 "Plugin 'EasyMotion'
 "nnoremap <Space> H:call EasyMotion#F(0, 0)<CR>
-Plugin 'Lokaltog/vim-easymotion'
+Plug 'Lokaltog/vim-easymotion'
 nmap <Space> <Plug>(easymotion-bd-f)
 nmap <Space><Space> <Plug>(easymotion-jumptoanywhere)
 nmap <Leader>w <Plug>(easymotion-jumptoanywhere)
@@ -389,7 +397,7 @@ let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz'
 
 
 " Slimux """""""""""""""""""""""""""""""""""""
-Plugin 'epeli/slimux'
+Plug 'epeli/slimux'
 map <C-c><C-c> :SlimuxREPLSendLine<CR>
 vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
 
@@ -427,28 +435,28 @@ vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
 "inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " jedi-vim """""""""""""""""""""""""""""""""""""
-Plugin 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim'
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_select_first = 0
 let g:jedi#popup_on_dot = 0
 
 " perl.vim """""""""""""""""""""""""""""""""""""
-Plugin 'perl.vim'
+Plug 'perl.vim'
 let perl_include_pod = 1
 let perl_extended_vars = 1
 "Plugin 'perl-support.vim'
 "Plugin 'vim-perl'
 
 " Emmet """""""""""""""""""""""""""""""
-Plugin 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 let g:user_emmet_leader_key='<C-m>'
 
 " Quickfixsigns """""""""""""""""""""""""""""""""""""
-Plugin 'tomtom/quickfixsigns_vim'
+Plug 'tomtom/quickfixsigns_vim'
 let g:quickfixsigns_classes = ['loc', 'qfl', 'marks', 'breakpoints']
 
 " minibufexpl """""""""""""""""""""""""""""""""""""
-Plugin 'techlivezheng/vim-plugin-minibufexpl'
+Plug 'techlivezheng/vim-plugin-minibufexpl'
 " switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
 for buffer_no in range(1, 9)
   execute "nmap <A-" . buffer_no . "> :b" . buffer_no . "\<CR>"
@@ -459,11 +467,11 @@ for buffer_no in range(10, 100)
   execute "nmap <A-0" . buffer_no . "> :b" . buffer_no . "\<CR>"
 endfor
 
-Plugin 'delimitMate.vim'
+Plug 'Raimondi/delimitMate'
 let delimitMate_expand_cr = 1
 
 " Airline + Tabline """""""""""""""""""""""""""""
-Plugin 'bling/vim-airline'
+Plug 'bling/vim-airline'
 "Plugin 'mkitt/tabline.vim'
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -528,7 +536,8 @@ map <C-S-Tab> :MBEbp<CR>
 " Auto-Pairs  """""""""""""""""""""""""""""""""""""
 ""Plugin 'Auto-Pairs'
 ""let g:AutoPairsFlyMode = 1
-call vundle#end()            " required
+call plug#end()
+"call vundle#end()            " required
 
 color peaksea
 highlight ColorColumn guibg=gray86
