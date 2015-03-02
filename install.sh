@@ -1,6 +1,6 @@
 #!/bin/sh
 
-function link_if_missing() {
+link_if_missing() {
     SRC=$1
     DEST=$2
 

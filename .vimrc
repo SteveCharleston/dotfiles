@@ -222,10 +222,10 @@ command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-session """"""""""""""""""""""""""""""""""""""""
-Plug 'xolox/vim-session'
-let g:session_autosave='yes'
-let g:session_autoload='yes'
-let g:session_autoload_periodic=1
+"Plug 'xolox/vim-session'
+"let g:session_autosave='yes'
+"let g:session_autoload='yes'
+"let g:session_autoload_periodic=1
 
 " NERDtree
 Plug 'The-NERD-tree'
