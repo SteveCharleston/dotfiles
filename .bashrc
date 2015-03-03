@@ -41,6 +41,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+export PS1="\[\e[00;32m\]\u\[\e[0m\]\[\e[00;37m\]@\[\e[0m\]\[\e[00;32m\]\h\[\e[0m\]\[\e[00;37m\]:\[\e[0m\]\[\e[00;36m\]\w\[\e[0m\]\[\e[00;37m\]\\$ \[\e[0m\]"
 
 alias ls='ls --color=auto'
 alias grep='grep --colour=auto'
@@ -53,4 +54,4 @@ alias l='ls -CF'
 export PATH=$HOME/bin/vim/bin:$PATH
 
 command -v fortune > /dev/null 2>&1 && /usr/bin/env fortune
-
+echo ""
