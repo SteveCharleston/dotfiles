@@ -52,5 +52,5 @@ alias l='ls -CF'
 
 export PATH=$HOME/bin/vim/bin:$PATH
 
-command -v fortune && /usr/bin/env fortune
+command -v fortune > /dev/null 2>&1 && /usr/bin/env fortune
 
