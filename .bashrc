@@ -41,7 +41,8 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-export PS1="\[\e[00;37m\][\[\e[0m\]\[\e[01;31m\]\u@\h\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\e[01;34m\]\w\[\e[0m\]\[\e[00;37m\]]\\$ \[\e[0m\]"
+
+export PS1="\[\e[00;37m\][\[\e[0m\]\[\e[00;32m\]\u@\h\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\e[01;34m\]\w\[\e[0m\]\[\e[00;37m\]]\\$ \[\e[0m\]"
 
 alias ls='ls --color=auto'
 alias grep='grep --colour=auto'
