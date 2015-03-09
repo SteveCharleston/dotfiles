@@ -43,7 +43,8 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 #export PS1="\[\e[00;37m\][\[\e[0m\]\[\e[00;32m\]\u@\h\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\e[01;34m\]\w\[\e[0m\]\[\e[00;37m\]]\\$ \[\e[0m\]"
-export  PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h: \[\e[33m\]\w\[\e[0m\]\n\$ '
+#export  PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h: \[\e[33m\]\w\[\e[0m\]\n\$ '
+export PS1="\[\e[00;37m\]\n\[\e[0m\]\[\e[00;32m\]\u@\h:\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\e[00;34m\]\w\[\e[0m\]\[\e[00;37m\]\n\[\e[0m\]"
 
 alias ls='ls --color=auto'
 alias grep='grep --colour=auto'
