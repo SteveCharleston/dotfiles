@@ -1,0 +1,16 @@
+BoldAsFont=yes
+Transparency=off
+CursorType=block
+Font=Envy Code R
+FontHeight=10
+FontSmoothing=full
+Term=xterm-256color
+BellFlash=no
+BoldAsColour=yes
+Locale=de_DE
+Charset=UTF-8
+AllowBlinking=yes
+OpaqueWhenFocused=yes
+FontIsBold=no
+Blue=127,127,255
+BoldBlue=191,191,255
