@@ -15,3 +15,4 @@ link_if_missing $PWD/.vimrc $HOME/.vimrc
 link_if_missing $PWD/.vim $HOME/.vim
 link_if_missing $PWD/.bashrc $HOME/.bashrc
 link_if_missing $PWD/.tmux.conf $HOME/.tmux.conf
+link_if_missing $PWD/bin/tree $HOME/bin/tree

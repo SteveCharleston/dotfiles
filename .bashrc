@@ -54,7 +54,7 @@ alias ll='ls -lF'
 alias la='ls -A'
 alias l='ls -CF'
 
-export PATH=$HOME/bin/vim/bin:$PATH
+export PATH=$HOME/bin/vim/bin:$HOME/bin:$PATH
 
 command -v fortune > /dev/null 2>&1 && /usr/bin/env fortune
 echo ""
