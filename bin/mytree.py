@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import argparse
+import fnmatch
 import os
 import pprint
 from optparse import OptionParser
@@ -94,8 +94,14 @@ class Termcolor():
 
 
 def parseLSColors():
-    for code in os.environ('LS_COLORS').split(':'):
-        pass
+    fileTypes = dict()
+    for code in os.environ['LS_COLORS'].split(':'):
+        (fileType, colors) = code.split('=')
+        fileTypes[fileType] = colors.split(';')
+
+    return fileTypes
+
+
 def colorize(filename):
     ls_colors = {
             0 : {"color": None},
@@ -120,6 +126,8 @@ def colorize(filename):
             47 : {"on_color": "on_grey"},
             93 : {"color": "yellow"},
             }
+
+    print parseLSColors()
 
     return Termcolor.colored(filename, **ls_colors[1])
 
