@@ -145,7 +145,8 @@ def tree(path, indent):
         else:
             print indent + "├─" + colorize(direntry)
     else: # the last Element
-        fullPath = "%s/%s" % (path, dirEntries[-1])
+        direntry = dirEntries[-1]
+        fullPath = "%s/%s" % (path, direntry)
 
         if isdir(fullPath):
             print indent + "└─" + colorize(direntry + sep)
