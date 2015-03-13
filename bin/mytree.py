@@ -1,9 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import fnmatch
 import os
 import pprint
+from fnmatch import fnmatch
 from optparse import OptionParser
 from os import listdir, getcwd
 from os.path import isdir, sep
@@ -93,43 +93,63 @@ class Termcolor():
         return text
 
 
-def parseLSColors():
+def getLSColors():
     fileTypes = dict()
     for code in os.environ['LS_COLORS'].split(':'):
         (fileType, colors) = code.split('=')
         fileTypes[fileType] = colors.split(';')
 
+    fileTypes['fi'] = '0'
+
     return fileTypes
 
 
-def colorize(filename):
+def colorize(filename, fileType):
+    fileSettings = list()
     ls_colors = {
-            0 : {"color": None},
-            1 : {"attrs": ["bold"]},
-            4 : {"attrs": ["underline"]},
-            5 : {"attrs": ["blink"]},
-            7 : {"attrs": ["reverse"]},
-            31 : {"color": "red"},
-            32 : {"color": "green"},
-            33 : {"color": "yellow"},
-            34 : {"color": "blue"},
-            35 : {"color": "magenta"},
-            36 : {"color": "cyan"},
-            37 : {"color": "cyan"},
-            40 : {"on_color": "on_black"},
-            41 : {"on_color": "on_red"},
-            42 : {"on_color": "on_green"},
-            43 : {"on_color": "on_yellow"},
-            44 : {"on_color": "on_blue"},
-            45 : {"on_color": "on_magenta"},
-            46 : {"on_color": "on_cyan"},
-            47 : {"on_color": "on_grey"},
-            93 : {"color": "yellow"},
+            '0' : {"color": None},
+            '01' : {"attrs": ["bold"]},
+            '4' : {"attrs": ["underline"]},
+            '5' : {"attrs": ["blink"]},
+            '7' : {"attrs": ["reverse"]},
+            '31' : {"color": "red"},
+            '32' : {"color": "green"},
+            '33' : {"color": "yellow"},
+            '34' : {"color": "blue"},
+            '35' : {"color": "magenta"},
+            '36' : {"color": "cyan"},
+            '37' : {"color": "cyan"},
+            '39' : {"color": "white"},
+            '40' : {"on_color": "on_black"},
+            '41' : {"on_color": "on_red"},
+            '42' : {"on_color": "on_green"},
+            '43' : {"on_color": "on_yellow"},
+            '44' : {"on_color": "on_blue"},
+            '45' : {"on_color": "on_magenta"},
+            '46' : {"on_color": "on_cyan"},
+            '47' : {"on_color": "on_grey"},
+            '93' : {"color": "yellow"},
             }
 
-    print parseLSColors()
+    ls_env = getLSColors()
 
-    return Termcolor.colored(filename, **ls_colors[1])
+    colors = dict()
+    for fileSetting in ls_env:
+        if fnmatch(filename, fileSetting):
+            [colors.update(ls_colors[nr]) for nr in ls_env[fileSetting]]
+            break
+    else:
+        [colors.update(ls_colors[nr]) for nr in ls_env[fileType]]
+
+    return Termcolor.colored(filename, **colors)
+
+def getFileType(fullPath):
+    if os.path.islink(fullPath):
+        return "ln"
+    elif os.path.isdir(fullPath):
+        return "di"
+    else:
+        return "fi"
 
 def tree(path, indent):
     dirEntries = os.listdir(path)
@@ -138,21 +158,23 @@ def tree(path, indent):
 
     for direntry in dirEntries[:-1]:
         fullPath = "%s/%s" % (path, direntry)
+        fileType = getFileType(fullPath)
 
         if isdir(fullPath):
-            print indent + "├─" + colorize(direntry + sep)
+            print indent + "├─" + colorize(direntry + sep, fileType)
             tree(fullPath, indent + treeSign + indenSign)
         else:
-            print indent + "├─" + colorize(direntry)
+            print indent + "├─" + colorize(direntry, fileType)
     else: # the last Element
         direntry = dirEntries[-1]
         fullPath = "%s/%s" % (path, direntry)
+        fileType = getFileType(fullPath)
 
         if isdir(fullPath):
-            print indent + "└─" + colorize(direntry + sep)
+            print indent + "└─" + colorize(direntry + sep, fileType)
             tree(fullPath, indent +  indenSign)
         else:
-            print indent + "└─" + colorize(direntry)
+            print indent + "└─" + colorize(direntry, fileType)
 
 
 def getargs():
