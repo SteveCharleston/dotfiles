@@ -12,6 +12,8 @@ from os.path import isdir, sep
 
 indenSign = "  "
 treeSign = "│ "
+innerBranch = "├─"
+finalBranch = "└─"
 
 class Termcolor():
     ATTRIBUTES = dict(
@@ -178,7 +180,14 @@ def tree(path, indent, args):
 
     dirEntries.sort(cmp=lambda x,y: cmp(x.lower(), y.lower()))
 
-    for direntry in dirEntries[:-1]:
+    for i, direntry in enumerate(dirEntries):
+        if i == len(dirEntries)-1:
+            curBranch = finalBranch
+            recIndent = indent +  indenSign
+        else:
+            curBranch = innerBranch
+            recIndent = indent + treeSign + indenSign
+
         fullPath = "%s/%s" % (path, direntry)
         fileType = getFileType(fullPath)
 
@@ -189,9 +198,9 @@ def tree(path, indent, args):
             else:
                 fileString = colorize(direntry + sep, fileType)
 
-            print "%s%s%s" % (indent, "├─", fileString)
+            print "%s%s%s" % (indent, curBranch, fileString)
 
-            (retDirs, retFiles) = tree(fullPath, indent + treeSign + indenSign, args)
+            (retDirs, retFiles) = tree(fullPath, recIndent, args)
             dirsSeen += retDirs
             filesSeen += retFiles
         elif not args.nofiles:
@@ -201,29 +210,29 @@ def tree(path, indent, args):
             else:
                 fileString = colorize(direntry, fileType)
 
-            print indent + "├─" + fileString
-    else: # the last Element
-        direntry = dirEntries[-1]
-        fullPath = "%s/%s" % (path, direntry)
-        fileType = getFileType(fullPath)
+            print indent + curBranch+ fileString
+    #else: # the last Element
+    #    direntry = dirEntries[-1]
+    #    fullPath = "%s/%s" % (path, direntry)
+    #    fileType = getFileType(fullPath)
 
-        if isdir(fullPath):
-            dirsSeen += 1
-            if args.nocolors:
-                fileString = direntry + sep
-            else:
-                fileString = colorize(direntry + sep, fileType)
+    #    if isdir(fullPath):
+    #        dirsSeen += 1
+    #        if args.nocolors:
+    #            fileString = direntry + sep
+    #        else:
+    #            fileString = colorize(direntry + sep, fileType)
 
-            print indent + "└─" + fileString
-            (retDirs, retFiles) = tree(fullPath, indent +  indenSign, args)
-        elif not args.nofiles:
-            filesSeen += 1
-            if args.nocolors:
-                fileString = direntry
-            else:
-                fileString = colorize(direntry, fileType)
+    #        print indent + "└─" + fileString
+    #        (retDirs, retFiles) = tree(fullPath, recIndent, args)
+    #    elif not args.nofiles:
+    #        filesSeen += 1
+    #        if args.nocolors:
+    #            fileString = direntry
+    #        else:
+    #            fileString = colorize(direntry, fileType)
 
-            print indent + "└─" + fileString
+    #        print indent + "└─" + fileString
 
     return (dirsSeen, filesSeen)
 
