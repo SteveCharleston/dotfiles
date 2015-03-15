@@ -2,13 +2,15 @@
 # -*- coding: utf-8 -*-
 
 # TODO: handle cornercases with nofiles
+# TODO: handle possible wrong coloring
 
 import os
 import pprint
+import sys
 from fnmatch import fnmatch
 from optparse import OptionParser
 from os import listdir, getcwd
-from os.path import isdir, sep
+from os.path import isdir, join, sep
 
 indenSign = "  "
 treeSign = "│ "
@@ -170,11 +172,21 @@ def getFileType(fullPath):
     else:
         return "fi"
 
+def printTreeEntry(indent, curBranch, direntry, fileType, args):
+    if not args.nocolors:
+        direntry = colorize(direntry, fileType)
+
+    print "%s%s%s" % (indent, curBranch, direntry)
+
 def tree(path, indent, args):
     dirsSeen = 0
     filesSeen = 0
 
-    dirEntries = os.listdir(path)
+    if args.nofiles:
+        dirEntries = [d for d in os.listdir(path) if isdir(join(path, d))]
+    else:
+        dirEntries = os.listdir(path)
+
     if not dirEntries:
         return (0,0)
 
@@ -193,46 +205,16 @@ def tree(path, indent, args):
 
         if isdir(fullPath):
             dirsSeen += 1
-            if args.nocolors:
-                fileString = direntry + sep
-            else:
-                fileString = colorize(direntry + sep, fileType)
+            direntry += sep
 
-            print "%s%s%s" % (indent, curBranch, fileString)
-
+            printTreeEntry(indent, curBranch, direntry, fileType, args)
             (retDirs, retFiles) = tree(fullPath, recIndent, args)
+
             dirsSeen += retDirs
             filesSeen += retFiles
-        elif not args.nofiles:
+        else:
             filesSeen += 1
-            if args.nocolors:
-                fileString = direntry
-            else:
-                fileString = colorize(direntry, fileType)
-
-            print indent + curBranch+ fileString
-    #else: # the last Element
-    #    direntry = dirEntries[-1]
-    #    fullPath = "%s/%s" % (path, direntry)
-    #    fileType = getFileType(fullPath)
-
-    #    if isdir(fullPath):
-    #        dirsSeen += 1
-    #        if args.nocolors:
-    #            fileString = direntry + sep
-    #        else:
-    #            fileString = colorize(direntry + sep, fileType)
-
-    #        print indent + "└─" + fileString
-    #        (retDirs, retFiles) = tree(fullPath, recIndent, args)
-    #    elif not args.nofiles:
-    #        filesSeen += 1
-    #        if args.nocolors:
-    #            fileString = direntry
-    #        else:
-    #            fileString = colorize(direntry, fileType)
-
-    #        print indent + "└─" + fileString
+            printTreeEntry(indent, curBranch, direntry, fileType, args)
 
     return (dirsSeen, filesSeen)
 
@@ -240,9 +222,11 @@ def tree(path, indent, args):
 def getargs():
     parser = OptionParser()
     parser.add_option('-d', '--directories',
-            dest="nofiles", action="store_true")
+            dest="nofiles", action="store_true",
+            help="print only directories")
     parser.add_option('-n', '--nocolors',
-            dest="nocolors", action="store_true")
+            dest="nocolors", action="store_true",
+            help="dont't colorize the output")
 
     (options, args) = parser.parse_args()
 
@@ -251,6 +235,9 @@ def getargs():
     else:
         options.folder = args[0]
 
+    if not sys.stdout.isatty():
+        options.nocolors = True
+
     return options
 
 if __name__ == '__main__':
@@ -258,6 +245,10 @@ if __name__ == '__main__':
     dirsSeen = 0
     filesSeen = 0
     fileTypesAndColors = getLSColors()
+
+    if not isdir(args.folder):
+        sys.stderr.write("ERROR: '%s' is not a directory\n" % args.folder)
+        sys.exit(1)
 
     if args.nocolors:
         print args.folder
