@@ -1,9 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# TODO: handle cornercases with nofiles
-# TODO: handle possible wrong coloring
-
 import os
 import pprint
 import sys
@@ -248,6 +245,9 @@ def getargs():
     parser.add_option('-a', '--printall',
             dest="printall", action="store_true",
             help="All files are listed.")
+    parser.add_option('-i', '--noindentation',
+            dest="noindentation", action="store_true",
+            help="Don't print indentation lines.")
 
     (options, args) = parser.parse_args()
 
@@ -280,6 +280,12 @@ if __name__ == '__main__':
         print args.folder
     else:
         print colorize(args.folder, "di")
+
+    if args.noindentation:
+        indenSign = ""
+        treeSign = ""
+        innerBranch = ""
+        finalBranch = ""
 
     (dirsSeen, filesSeen) = tree(args.folder, "", args)
     print "\n%s directories, %s files" % (dirsSeen, filesSeen)
