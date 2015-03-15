@@ -14,7 +14,7 @@ indenSign = "  "
 treeSign = "│ "
 innerBranch = "├─"
 finalBranch = "└─"
-ls_colors = {
+colorCodes = {
         '0' : {"color": None},
         '01' : {"attrs": ["bold"]},
         '4' : {"attrs": ["underline"]},
@@ -150,14 +150,15 @@ def getLSColors():
 
 def colorize(filename, fileType):
     colors = dict()
-    for fileSetting in ls_env:
-        if fnmatch(filename, fileSetting):
-            for colorCode in ls_env[fileSetting]:
-                colors.update(ls_colors[colorCode])
-            break # filesetting found, break out
-    else: # no fitting filesetting found, use one corresponding to fileType
-        for colorCode in ls_env[fileType]:
-            colors.update(ls_colors[colorCode])
+
+    for fileGlob in fileTypesAndColors:
+        if fnmatch(filename, fileGlob):
+            for colorCode in fileTypesAndColors[fileGlob]:
+                colors.update(colorCodes[colorCode])
+            break # fileGlob found, break out
+    else: # no fitting fileGlob found, use one corresponding to fileType
+        for colorCode in fileTypesAndColors[fileType]:
+            colors.update(colorCodes[colorCode])
 
     return Termcolor.colored(filename, **colors)
 
@@ -256,7 +257,7 @@ if __name__ == '__main__':
     args = getargs()
     dirsSeen = 0
     filesSeen = 0
-    ls_env = getLSColors()
+    fileTypesAndColors = getLSColors()
 
     if args.nocolors:
         print args.folder
