@@ -219,7 +219,8 @@ def tree(path, indent, args):
 
         printTreeEntry(indent, curBranch, fullPath, fileType, args)
 
-        if isdir(fullPath):
+        if ((isdir(fullPath) and not fileType in 'ln')
+                or (args.followsymlinks and isdir(fullPath))):
             dirsSeen += 1
             (retDirs, retFiles) = tree(fullPath, recIndent, args)
 
@@ -247,6 +248,9 @@ def getargs():
             help="All files are listed.")
     parser.add_option('-i', '--noindentation',
             dest="noindentation", action="store_true",
+            help="Don't print indentation lines.")
+    parser.add_option('-l', '--followsymlinks',
+            dest="followsymlinks", action="store_true",
             help="Don't print indentation lines.")
 
     (options, args) = parser.parse_args()
