@@ -178,14 +178,17 @@ def followSymLink(fullPath):
 def printTreeEntry(indent, curBranch, fullPath, fileType, args):
     direntry = os.path.basename(fullPath)
 
+    if args.fullpath:
+        direntry = join(args.folder, os.path.relpath(fullPath, args.folder))
+
     if fileType == 'di':
         direntry += sep
 
     if not args.nocolors:
         direntry = colorize(direntry, fileType)
 
-        if fileType == 'ln':
-            direntry += " -> %s" % followSymLink(fullPath)
+    if fileType == 'ln':
+        direntry += " -> %s" % followSymLink(fullPath)
 
     print "%s%s%s" % (indent, curBranch, direntry)
 
@@ -252,6 +255,9 @@ def getargs():
     parser.add_option('-l', '--followsymlinks',
             dest="followsymlinks", action="store_true",
             help="Don't print indentation lines.")
+    parser.add_option('-f', '--fullpath',
+            dest="fullpath", action="store_true",
+            help="Print the full path prefix for each file.")
 
     (options, args) = parser.parse_args()
 
