@@ -14,6 +14,30 @@ indenSign = "  "
 treeSign = "│ "
 innerBranch = "├─"
 finalBranch = "└─"
+ls_colors = {
+        '0' : {"color": None},
+        '01' : {"attrs": ["bold"]},
+        '4' : {"attrs": ["underline"]},
+        '5' : {"attrs": ["blink"]},
+        '7' : {"attrs": ["reverse"]},
+        '31' : {"color": "red"},
+        '32' : {"color": "green"},
+        '33' : {"color": "yellow"},
+        '34' : {"color": "blue"},
+        '35' : {"color": "magenta"},
+        '36' : {"color": "cyan"},
+        '37' : {"color": "cyan"},
+        '39' : {"color": "white"},
+        '40' : {"on_color": "on_black"},
+        '41' : {"on_color": "on_red"},
+        '42' : {"on_color": "on_green"},
+        '43' : {"on_color": "on_yellow"},
+        '44' : {"on_color": "on_blue"},
+        '45' : {"on_color": "on_magenta"},
+        '46' : {"on_color": "on_cyan"},
+        '47' : {"on_color": "on_grey"},
+        '93' : {"color": "yellow"},
+        }
 
 class Termcolor():
     ATTRIBUTES = dict(
@@ -118,38 +142,13 @@ def getLSColors():
             fileTypes[fileType] = colors.split(';')
     except KeyError:
         pass # if LS_COLORS not definded use defaults
+    except ValueError:
+        pass # stupid distries have empty fields in LS_COLORS
 
     return fileTypes
 
 
 def colorize(filename, fileType):
-    ls_colors = {
-            '0' : {"color": None},
-            '01' : {"attrs": ["bold"]},
-            '4' : {"attrs": ["underline"]},
-            '5' : {"attrs": ["blink"]},
-            '7' : {"attrs": ["reverse"]},
-            '31' : {"color": "red"},
-            '32' : {"color": "green"},
-            '33' : {"color": "yellow"},
-            '34' : {"color": "blue"},
-            '35' : {"color": "magenta"},
-            '36' : {"color": "cyan"},
-            '37' : {"color": "cyan"},
-            '39' : {"color": "white"},
-            '40' : {"on_color": "on_black"},
-            '41' : {"on_color": "on_red"},
-            '42' : {"on_color": "on_green"},
-            '43' : {"on_color": "on_yellow"},
-            '44' : {"on_color": "on_blue"},
-            '45' : {"on_color": "on_magenta"},
-            '46' : {"on_color": "on_cyan"},
-            '47' : {"on_color": "on_grey"},
-            '93' : {"color": "yellow"},
-            }
-
-    ls_env = getLSColors()
-
     colors = dict()
     for fileSetting in ls_env:
         if fnmatch(filename, fileSetting):
@@ -257,6 +256,7 @@ if __name__ == '__main__':
     args = getargs()
     dirsSeen = 0
     filesSeen = 0
+    ls_env = getLSColors()
 
     if args.nocolors:
         print args.folder
