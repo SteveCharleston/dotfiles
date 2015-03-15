@@ -16,6 +16,7 @@ indenSign = "  "
 treeSign = "│ "
 innerBranch = "├─"
 finalBranch = "└─"
+
 colorCodes = {
         '0' : {"color": None},
         '01' : {"attrs": ["bold"]},
@@ -169,12 +170,25 @@ def getFileType(fullPath):
         return "ln"
     elif os.path.isdir(fullPath):
         return "di"
+    elif os.access(fullPath, os.X_OK):
+        return "ex"
     else:
         return "fi"
 
-def printTreeEntry(indent, curBranch, direntry, fileType, args):
+def followSymLink(fullPath):
+    return os.path.realpath(fullPath)
+
+def printTreeEntry(indent, curBranch, fullPath, fileType, args):
+    direntry = os.path.basename(fullPath)
+
+    if fileType == 'di':
+        direntry += sep
+
     if not args.nocolors:
         direntry = colorize(direntry, fileType)
+
+        if fileType == 'ln':
+            direntry += " -> %s" % followSymLink(fullPath)
 
     print "%s%s%s" % (indent, curBranch, direntry)
 
@@ -186,6 +200,9 @@ def tree(path, indent, args):
         dirEntries = [d for d in os.listdir(path) if isdir(join(path, d))]
     else:
         dirEntries = os.listdir(path)
+
+    if not args.printall:
+        dirEntries = [d for d in dirEntries if not d.startswith('.')]
 
     if not dirEntries:
         return (0,0)
@@ -200,21 +217,19 @@ def tree(path, indent, args):
             curBranch = innerBranch
             recIndent = indent + treeSign + indenSign
 
-        fullPath = "%s/%s" % (path, direntry)
+        fullPath = join(path, direntry)
         fileType = getFileType(fullPath)
+
+        printTreeEntry(indent, curBranch, fullPath, fileType, args)
 
         if isdir(fullPath):
             dirsSeen += 1
-            direntry += sep
-
-            printTreeEntry(indent, curBranch, direntry, fileType, args)
             (retDirs, retFiles) = tree(fullPath, recIndent, args)
 
             dirsSeen += retDirs
             filesSeen += retFiles
         else:
             filesSeen += 1
-            printTreeEntry(indent, curBranch, direntry, fileType, args)
 
     return (dirsSeen, filesSeen)
 
@@ -227,6 +242,12 @@ def getargs():
     parser.add_option('-n', '--nocolors',
             dest="nocolors", action="store_true",
             help="dont't colorize the output")
+    parser.add_option('-S', '--ascii',
+            dest="ASCII", action="store_true",
+            help="Print with ASCII graphics indentation lines.")
+    parser.add_option('-a', '--printall',
+            dest="printall", action="store_true",
+            help="All files are listed.")
 
     (options, args) = parser.parse_args()
 
@@ -250,10 +271,15 @@ if __name__ == '__main__':
         sys.stderr.write("ERROR: '%s' is not a directory\n" % args.folder)
         sys.exit(1)
 
+    if args.ASCII is True:
+        treeSign = "| "
+        innerBranch = "+-"
+        finalBranch = "`-"
+
     if args.nocolors:
         print args.folder
     else:
         print colorize(args.folder, "di")
 
-    (dirsSeen, filesSeen) = tree(args.folder, indenSign, args)
+    (dirsSeen, filesSeen) = tree(args.folder, "", args)
     print "\n%s directories, %s files" % (dirsSeen, filesSeen)
