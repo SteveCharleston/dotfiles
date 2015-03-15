@@ -96,18 +96,31 @@ class Termcolor():
 
 
 def getLSColors():
-    fileTypes = dict()
-    for code in os.environ['LS_COLORS'].split(':'):
-        (fileType, colors) = code.split('=')
-        fileTypes[fileType] = colors.split(';')
-
-    fileTypes['fi'] = '0'
+    # setting default LS_COLORS
+    fileTypes = {
+            'fi' : ['0'],
+            'di' : ['01', '34'],
+            'ln' : ['01', '36'],
+            'pi' : ['33'],
+            'so' : ['01', '35'],
+            'bd' : ['01', '33'],
+            'cd' : ['01', '33'],
+            'mi' : ['0'],
+            'or' : ['0'],
+            'ex' : ['01', '32'],
+            'do' : ['01', '35'],
+            }
+    try:
+        for code in os.environ['LS_COLORS'].split(':'):
+            (fileType, colors) = code.split('=')
+            fileTypes[fileType] = colors.split(';')
+    except KeyError:
+        pass # if LS_COLORS not definded use defaults
 
     return fileTypes
 
 
 def colorize(filename, fileType):
-    fileSettings = list()
     ls_colors = {
             '0' : {"color": None},
             '01' : {"attrs": ["bold"]},
@@ -138,12 +151,10 @@ def colorize(filename, fileType):
     colors = dict()
     for fileSetting in ls_env:
         if fnmatch(filename, fileSetting):
-            #[colors.update(ls_colors[nr]) for nr in ls_env[fileSetting]]
             for colorCode in ls_env[fileSetting]:
                 colors.update(ls_colors[colorCode])
             break # filesetting found, break out
-    else:
-        #[colors.update(ls_colors[nr]) for nr in ls_env[fileType]]
+    else: # no fitting filesetting found, use one corresponding to fileType
         for colorCode in ls_env[fileType]:
             colors.update(ls_colors[colorCode])
 
