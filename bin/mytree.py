@@ -29,7 +29,7 @@ colorCodes = {
         '36' : {"color": "cyan"},
         '37' : {"color": "cyan"},
         '39' : {"color": "white"},
-        '40' : {"on_color": "on_grey"},
+        '40' : {"attrs": ["dark"]},
         '41' : {"on_color": "on_red"},
         '42' : {"on_color": "on_green"},
         '43' : {"on_color": "on_yellow"},
