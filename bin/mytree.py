@@ -1,8 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+import grp
 import os
 import pprint
+import pwd
 import sys
 from fnmatch import fnmatch
 from optparse import OptionParser
@@ -122,12 +124,13 @@ class Termcolor():
         return text
 
 
-def getModeString(fullPath):
+def getModeString(fullPath, stats):
     """
     Receives a path and returns it's chmods as string.
     Example: [-rwxr-wr--]
     """
     bits = "rwx"
+    modes = ""
     permissions = (
             S_IRUSR,
             S_IWUSR,
@@ -140,14 +143,13 @@ def getModeString(fullPath):
             S_IXOTH,
             )
 
-    modes = "["
     fileType = getFileType(fullPath)
 
     if fileType is "ln" or fileType is "or":
-        filePermissions = os.lstat(fullPath)[ST_MODE]
+        filePermissions = stats[ST_MODE]
         modes += 'l'
     else:
-        filePermissions = os.stat(fullPath)[ST_MODE]
+        filePermissions = stats[ST_MODE]
         if fileType is 'di':
             modes += 'd'
         else:
@@ -159,9 +161,27 @@ def getModeString(fullPath):
         else:
             modes += "-"
 
-    modes += "]"
-
     return modes
+
+def getOwner(fullPath, stats):
+    return pwd.getpwuid(stats.st_uid)[0]
+
+def printFileAttributes(fullPath, args):
+    attributes = list()
+    fileType = getFileType(fullPath)
+
+    if fileType is "ln" or fileType is "or":
+        stats = os.lstat(fullPath)
+    else:
+        stats = os.stat(fullPath)
+
+    if args.protections:
+        attributes.append(getModeString(fullPath, stats))
+
+    if args.uid:
+        attributes.append(getOwner(fullPath, stats))
+
+    return "[%s]" % " ".join(attributes)
 
 def getLSColors():
     # setting default LS_COLORS
@@ -232,8 +252,8 @@ def printTreeEntry(indent, curBranch, fullPath, fileType, args):
     if not args.nocolors:
         direntry = colorize(direntry, fileType)
 
-    if args.protections:
-        direntry = " %s  %s" % (getModeString(fullPath), direntry)
+    if args.protections or args.uid or args.gid:
+        direntry = " %s  %s" % (printFileAttributes(fullPath, args), direntry)
 
     if fileType == 'ln':
         direntry += " -> %s" % followSymLink(fullPath)
@@ -312,6 +332,12 @@ def getargs():
     parser.add_option('-p', '--protections',
             dest="protections", action="store_true",
             help="Print the protections for each file.")
+    parser.add_option('-u', '--uid',
+            dest="uid", action="store_true",
+            help="Displays file owner or UID number.")
+    parser.add_option('-g', '--gid',
+            dest="gid", action="store_true",
+            help="Displays file group owner or GID number.")
 
     (options, args) = parser.parse_args()
 
