@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+# TODO: Show broken links in red and with shorter path
+
 import os
 import pprint
 import sys
@@ -143,14 +145,16 @@ def getModeString(fullPath):
     modes = "["
     fileType = getFileType(fullPath)
 
-    if fileType is "di":
-        modes += 'd'
-    elif fileType is 'ln':
+    if fileType is "ln":
+        filePermissions = os.lstat(fullPath)[ST_MODE]
         modes += 'l'
     else:
-        modes += '-'
+        filePermissions = os.stat(fullPath)[ST_MODE]
+        if fileType is 'di':
+            modes += 'd'
+        else:
+            modes += '-'
 
-    filePermissions = os.stat(fullPath)[ST_MODE]
     for i, perm in enumerate(permissions):
         if filePermissions & perm:
             modes += bits[i % 3]
@@ -217,7 +221,6 @@ def followSymLink(fullPath):
 
 def printTreeEntry(indent, curBranch, fullPath, fileType, args):
     direntry = os.path.basename(fullPath)
-    #print getModeString(fullPath)
 
     if args.fullpath:
         direntry = join(args.folder, os.path.relpath(fullPath, args.folder))
@@ -227,6 +230,9 @@ def printTreeEntry(indent, curBranch, fullPath, fileType, args):
 
     if not args.nocolors:
         direntry = colorize(direntry, fileType)
+
+    if args.protections:
+        direntry = " %s  %s" % (getModeString(fullPath), direntry)
 
     if fileType == 'ln':
         direntry += " -> %s" % followSymLink(fullPath)
@@ -299,6 +305,9 @@ def getargs():
     parser.add_option('-f', '--fullpath',
             dest="fullpath", action="store_true",
             help="Print the full path prefix for each file.")
+    parser.add_option('-p', '--protections',
+            dest="protections", action="store_true",
+            help="Print the protections for each file.")
 
     (options, args) = parser.parse_args()
 
