@@ -8,6 +8,7 @@ from fnmatch import fnmatch
 from optparse import OptionParser
 from os import listdir, getcwd
 from os.path import isdir, join, sep
+from stat import *
 
 indenSign = "  "
 treeSign = "│ "
@@ -121,6 +122,47 @@ class Termcolor():
         return text
 
 
+def getModeString(fullPath):
+    """
+    Receives a path and returns it's chmods as string.
+    Example: [-rwxr-wr--]
+    """
+    bits = "rwx"
+    permissions = (
+            S_IRUSR,
+            S_IWUSR,
+            S_IXUSR,
+            S_IRWXG,
+            S_IRGRP,
+            S_IWGRP,
+            S_IXGRP,
+            S_IRWXO,
+            S_IROTH,
+            S_IWOTH,
+            S_IXOTH,
+            )
+
+    modes = "["
+    fileType = getFileType(fullPath)
+
+    if fileType is "di":
+        modes += 'd'
+    elif fileType is 'ln':
+        modes += 'l'
+    else:
+        modes += '-'
+
+    filePermissions = os.stat(fullPath)[ST_MODE]
+    for i, perm in enumerate(permissions):
+        if filePermissions & perm:
+            modes += bits[i % 3]
+        else:
+            modes += "-"
+
+    modes += "]"
+
+    return modes
+
 def getLSColors():
     # setting default LS_COLORS
     fileTypes = {
@@ -177,6 +219,7 @@ def followSymLink(fullPath):
 
 def printTreeEntry(indent, curBranch, fullPath, fileType, args):
     direntry = os.path.basename(fullPath)
+    #print getModeString(fullPath)
 
     if args.fullpath:
         direntry = join(args.folder, os.path.relpath(fullPath, args.folder))
