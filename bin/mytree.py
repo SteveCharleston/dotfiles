@@ -1,8 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# TODO: Show broken links in red and with shorter path
-
 import os
 import pprint
 import sys
@@ -31,7 +29,7 @@ colorCodes = {
         '36' : {"color": "cyan"},
         '37' : {"color": "cyan"},
         '39' : {"color": "white"},
-        '40' : {"on_color": "on_black"},
+        '40' : {"on_color": "on_grey"},
         '41' : {"on_color": "on_red"},
         '42' : {"on_color": "on_green"},
         '43' : {"on_color": "on_yellow"},
@@ -145,7 +143,7 @@ def getModeString(fullPath):
     modes = "["
     fileType = getFileType(fullPath)
 
-    if fileType is "ln":
+    if fileType is "ln" or fileType is "or":
         filePermissions = os.lstat(fullPath)[ST_MODE]
         modes += 'l'
     else:
@@ -208,7 +206,10 @@ def colorize(filename, fileType):
 
 def getFileType(fullPath):
     if os.path.islink(fullPath):
-        return "ln"
+        if os.path.exists(os.readlink(fullPath)):
+            return "ln"
+        else:
+            return "or" # orphaned link
     elif os.path.isdir(fullPath):
         return "di"
     elif os.access(fullPath, os.X_OK):
@@ -236,6 +237,9 @@ def printTreeEntry(indent, curBranch, fullPath, fileType, args):
 
     if fileType == 'ln':
         direntry += " -> %s" % followSymLink(fullPath)
+
+    if fileType == 'or':
+        direntry += " -> %s" % os.readlink(fullPath)
 
     print "%s%s%s" % (indent, curBranch, direntry)
 
