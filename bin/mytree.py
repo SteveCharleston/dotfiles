@@ -338,6 +338,9 @@ def getargs():
     parser.add_option('-g', '--gid',
             dest="gid", action="store_true",
             help="Displays file group owner or GID number.")
+    parser.add_option('-m', '--md5',
+            dest="md5", action="store_true",
+            help="Displays MD5 sum of file.")
 
     (options, args) = parser.parse_args()
 
