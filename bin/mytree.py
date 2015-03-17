@@ -5,6 +5,7 @@ import grp
 import os
 import pprint
 import pwd
+import subprocess
 import sys
 from fnmatch import fnmatch
 from optparse import OptionParser
@@ -183,6 +184,15 @@ def getOwner(fullPath, stats):
 
     return user
 
+def getMD5Sum(fullPath, stats):
+    md5sum = subprocess.Popen(['md5sum', fullPath], stdout=subprocess.PIPE)\
+            .communicate()[0]\
+            .rstrip()\
+            .split(" ")[0]
+
+    return md5sum
+
+
 def printFileAttributes(fullPath, args):
     attributes = list()
     fileType = getFileType(fullPath)
@@ -200,6 +210,12 @@ def printFileAttributes(fullPath, args):
 
     if args.gid:
         attributes.append(getGroup(fullPath, stats))
+
+    if args.md5:
+        if fileType is 'di' or fileType is 'or':
+            attributes.append("-")
+        else:
+            attributes.append(getMD5Sum(fullPath, stats))
 
     return "[%s]" % " ".join(attributes)
 
@@ -272,7 +288,7 @@ def printTreeEntry(indent, curBranch, fullPath, fileType, args):
     if not args.nocolors:
         direntry = colorize(direntry, fileType)
 
-    if args.protections or args.uid or args.gid:
+    if args.protections or args.uid or args.gid or args.md5:
         direntry = " %s  %s" % (printFileAttributes(fullPath, args), direntry)
 
     if fileType == 'ln':
