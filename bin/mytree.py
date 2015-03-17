@@ -213,7 +213,7 @@ def printFileAttributes(fullPath, args):
 
     if args.md5:
         if fileType is 'di' or fileType is 'or':
-            attributes.append("-")
+            attributes.append("-" * 32)
         else:
             attributes.append(getMD5Sum(fullPath, stats))
 
