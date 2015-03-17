@@ -170,7 +170,7 @@ def getGroup(fullPath, stats):
     try:
         group = grp.getgrgid(gid).gr_name
     except KeyError:
-        group = gid
+        group = str(gid)
 
     return group
 
@@ -180,7 +180,7 @@ def getOwner(fullPath, stats):
     try:
         user = pwd.getpwuid(uid).pw_name
     except KeyError:
-        user = uid
+        user = str(uid)
 
     return user
 
