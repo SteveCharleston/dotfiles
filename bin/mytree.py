@@ -42,7 +42,7 @@ colorCodes = {
         '93' : {"color": "yellow"},
         }
 
-class Termcolor():
+class Termcolor(object):
     ATTRIBUTES = dict(
             list(zip([
                 'bold',
