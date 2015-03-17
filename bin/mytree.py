@@ -163,8 +163,25 @@ def getModeString(fullPath, stats):
 
     return modes
 
+def getGroup(fullPath, stats):
+    gid = stats.st_gid
+
+    try:
+        group = grp.getgrgid(gid).gr_name
+    except KeyError:
+        group = gid
+
+    return group
+
 def getOwner(fullPath, stats):
-    return pwd.getpwuid(stats.st_uid)[0]
+    uid = stats.st_uid
+
+    try:
+        user = pwd.getpwuid(uid).pw_name
+    except KeyError:
+        user = uid
+
+    return user
 
 def printFileAttributes(fullPath, args):
     attributes = list()
@@ -180,6 +197,9 @@ def printFileAttributes(fullPath, args):
 
     if args.uid:
         attributes.append(getOwner(fullPath, stats))
+
+    if args.gid:
+        attributes.append(getGroup(fullPath, stats))
 
     return "[%s]" % " ".join(attributes)
 
