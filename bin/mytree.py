@@ -184,6 +184,21 @@ def getOwner(fullPath, stats):
 
     return user
 
+def getFilesize(fullPath, stats):
+    return str(stats.st_size)
+
+def getHumanFilesize(fullPath, stats):
+    prefixes = ('', 'k', 'm', 'G', 'T')
+    size = stats.st_size
+
+    suffixCount = 0
+    while size > 1024:
+        suffixCount += 1
+        size /= 1024.0
+
+    return "%g" % float("%.1f" % size) + prefixes[suffixCount]
+
+
 def getMD5Sum(fullPath, stats):
     md5sum = subprocess.Popen(['md5sum', fullPath], stdout=subprocess.PIPE)\
             .communicate()[0]\
@@ -210,6 +225,11 @@ def printFileAttributes(fullPath, args):
 
     if args.gid:
         attributes.append(getGroup(fullPath, stats))
+
+    if args.humansize:
+        attributes.append(getHumanFilesize(fullPath, stats))
+    elif args.size:
+        attributes.append(getFilesize(fullPath, stats))
 
     if args.md5:
         if fileType is 'di' or fileType is 'or':
@@ -288,7 +308,7 @@ def printTreeEntry(indent, curBranch, fullPath, fileType, args):
     if not args.nocolors:
         direntry = colorize(direntry, fileType)
 
-    if args.protections or args.uid or args.gid or args.md5:
+    if args.protections or args.uid or args.gid or args.md5 or args.size or args.humansize:
         direntry = " %s  %s" % (printFileAttributes(fullPath, args), direntry)
 
     if fileType == 'ln':
@@ -343,7 +363,9 @@ def tree(path, indent, args):
 
 
 def getargs():
-    parser = OptionParser()
+    parser = OptionParser(add_help_option=False)
+    parser.add_option('--help',
+            dest="help", action="store_true")
     parser.add_option('-d', '--directories',
             dest="nofiles", action="store_true",
             help="print only directories")
@@ -377,8 +399,18 @@ def getargs():
     parser.add_option('-m', '--md5',
             dest="md5", action="store_true",
             help="Displays MD5 sum of file.")
+    parser.add_option('-s', '--size',
+            dest="size", action="store_true",
+            help="Print the size in bytes of each file.")
+    parser.add_option('-h', '--humansize',
+            dest="humansize", action="store_true",
+            help="Print the size in a more human readable way.")
 
     (options, args) = parser.parse_args()
+
+    if options.help:
+        parser.print_help()
+        sys.exit(0)
 
     if not args:
         options.folder = os.getcwd()
