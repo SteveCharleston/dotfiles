@@ -342,6 +342,10 @@ def tree(path, indent, args):
     if not dirEntries:
         return (0,0)
 
+    if args.invertfilter:
+        for invertfilter in (args.invertfilter).split("|"):
+            dirEntries = [d for d in dirEntries if not fnmatch(d, invertfilter)]
+
     dirEntries.sort(cmp=lambda x,y: cmp(x.lower(), y.lower()))
 
     for i, direntry in enumerate(dirEntries):
@@ -420,6 +424,9 @@ def getargs():
             dest="levels", action="store",
             type="int", default=-1,
             help="Descend only level directories deep.")
+    parser.add_option('-I', '--invertfilter',
+            dest="invertfilter", action="store",
+            help="Do not list files that match the given pattern. Separate Multiple Patterns with |")
 
     (options, args) = parser.parse_args()
 
