@@ -304,6 +304,8 @@ def printTreeEntry(indent, curBranch, fullPath, fileType, args):
 
     if fileType == 'di':
         direntry += sep
+        if not os.access(fullPath, os.R_OK):
+            direntry = "%s %s" % (direntry,  "[error opening dir]")
 
     if not args.nocolors:
         direntry = colorize(direntry, fileType)
@@ -323,10 +325,16 @@ def tree(path, indent, args):
     dirsSeen = 0
     filesSeen = 0
 
-    if args.nofiles:
-        dirEntries = [d for d in os.listdir(path) if isdir(join(path, d))]
-    else:
-        dirEntries = os.listdir(path)
+    if args.levels == 0:
+        return (0,0)
+
+    try:
+        if args.nofiles:
+            dirEntries = [d for d in os.listdir(path) if isdir(join(path, d))]
+        else:
+            dirEntries = os.listdir(path)
+    except OSError, e:
+        return (0,0)
 
     if not args.printall:
         dirEntries = [d for d in dirEntries if not d.startswith('.')]
@@ -352,7 +360,10 @@ def tree(path, indent, args):
         if ((isdir(fullPath) and not fileType in 'ln')
                 or (args.followsymlinks and isdir(fullPath))):
             dirsSeen += 1
+
+            args.levels -= 1
             (retDirs, retFiles) = tree(fullPath, recIndent, args)
+            args.levels += 1
 
             dirsSeen += retDirs
             filesSeen += retFiles
@@ -405,6 +416,10 @@ def getargs():
     parser.add_option('-h', '--humansize',
             dest="humansize", action="store_true",
             help="Print the size in a more human readable way.")
+    parser.add_option('-L', '--levels',
+            dest="levels", action="store",
+            type="int", default=-1,
+            help="Descend only level directories deep.")
 
     (options, args) = parser.parse_args()
 
@@ -440,7 +455,11 @@ if __name__ == '__main__':
     if args.nocolors:
         print args.folder
     else:
-        print colorize(args.folder, "di")
+        if not os.access(args.folder, os.R_OK):
+            print colorize(args.folder, "di") + " [error opening dir]"
+        else:
+            print colorize(args.folder, "di")
+
 
     if args.noindentation:
         indenSign = ""
