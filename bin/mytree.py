@@ -342,8 +342,12 @@ def handleDir(path, args):
     if not dirEntries:
         raise NoSuitableFiles
 
+    if args.pattern:
+        for pattern in args.pattern:
+            dirEntries = [d for d in dirEntries if (os.path.isdir(path + d) or fnmatch(d, pattern))]
+
     if args.invertfilter:
-        for invertfilter in (args.invertfilter):
+        for invertfilter in args.invertfilter:
             dirEntries = [d for d in dirEntries if not fnmatch(d, invertfilter)]
 
     dirEntries.sort(cmp=lambda x,y: cmp(x.lower(), y.lower()))
@@ -438,6 +442,9 @@ def getargs():
     parser.add_option('-I', '--invertfilter',
             dest="invertfilter", action="append",
             help="Do not list files that match the given pattern.")
+    parser.add_option('-P', '--pattern',
+            dest="pattern", action="append",
+            help="List only those files that match the pattern given.")
 
     (options, args) = parser.parse_args()
 
