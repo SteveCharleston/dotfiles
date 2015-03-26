@@ -43,6 +43,9 @@ colorCodes = {
         '93' : {"color": "yellow"},
         }
 
+class NoSuitableFiles(Exception):
+    pass
+
 class Termcolor(object):
     ATTRIBUTES = dict(
             list(zip([
@@ -321,12 +324,9 @@ def printTreeEntry(indent, curBranch, fullPath, fileType, args):
 
     print "%s%s%s" % (indent, curBranch, direntry)
 
-def tree(path, indent, args):
-    dirsSeen = 0
-    filesSeen = 0
-
+def handleDir(path, args):
     if args.levels == 0:
-        return (0,0)
+        raise NoSuitableFiles
 
     try:
         if args.nofiles:
@@ -334,19 +334,30 @@ def tree(path, indent, args):
         else:
             dirEntries = os.listdir(path)
     except OSError, e:
-        return (0,0)
+        raise
 
     if not args.printall:
         dirEntries = [d for d in dirEntries if not d.startswith('.')]
 
     if not dirEntries:
-        return (0,0)
+        raise NoSuitableFiles
 
     if args.invertfilter:
-        for invertfilter in (args.invertfilter).split("|"):
+        for invertfilter in (args.invertfilter):
             dirEntries = [d for d in dirEntries if not fnmatch(d, invertfilter)]
 
     dirEntries.sort(cmp=lambda x,y: cmp(x.lower(), y.lower()))
+
+    return dirEntries
+
+def tree(path, indent, args):
+    dirsSeen = 0
+    filesSeen = 0
+
+    try:
+        dirEntries = handleDir(path, args)
+    except (OSError, NoSuitableFiles), e:
+        return (0,0)
 
     for i, direntry in enumerate(dirEntries):
         if i == len(dirEntries)-1:
@@ -425,8 +436,8 @@ def getargs():
             type="int", default=-1,
             help="Descend only level directories deep.")
     parser.add_option('-I', '--invertfilter',
-            dest="invertfilter", action="store",
-            help="Do not list files that match the given pattern. Separate Multiple Patterns with |")
+            dest="invertfilter", action="append",
+            help="Do not list files that match the given pattern.")
 
     (options, args) = parser.parse_args()
 
