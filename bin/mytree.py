@@ -7,6 +7,7 @@ import pprint
 import pwd
 import subprocess
 import sys
+import time
 from fnmatch import fnmatch
 from optparse import OptionParser
 from os import listdir, getcwd
@@ -234,6 +235,12 @@ def printFileAttributes(fullPath, args):
     elif args.size:
         attributes.append(getFilesize(fullPath, stats))
 
+    if args.ctime:
+        attributes.append(time.ctime(stats.st_ctime))
+
+    if args.mtime:
+        attributes.append(time.ctime(stats.st_mtime))
+
     if args.md5:
         if fileType is 'di' or fileType is 'or':
             attributes.append("-" * 32)
@@ -313,7 +320,14 @@ def printTreeEntry(indent, curBranch, fullPath, fileType, args):
     if not args.nocolors:
         direntry = colorize(direntry, fileType)
 
-    if args.protections or args.uid or args.gid or args.md5 or args.size or args.humansize:
+    if (args.protections
+            or args.uid
+            or args.gid
+            or args.md5
+            or args.size
+            or args.humansize
+            or args.ctime
+            or args.mtime):
         direntry = " %s  %s" % (printFileAttributes(fullPath, args), direntry)
 
     if fileType == 'ln':
@@ -445,6 +459,12 @@ def getargs():
     parser.add_option('-P', '--pattern',
             dest="pattern", action="append",
             help="List only those files that match the pattern given.")
+    parser.add_option('--mtime',
+            dest="mtime", action="store_true",
+            help="Displays last modification time of file.")
+    parser.add_option('--ctime',
+            dest="ctime", action="store_true",
+            help="Displays creation time of file.")
 
     (options, args) = parser.parse_args()
 
