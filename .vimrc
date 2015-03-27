@@ -103,7 +103,7 @@ set shiftround          " indent to multiples of shiftwidth
 set wildmenu            " command completition using <Tab>
 set colorcolumn=80      "Higlights Characters after 80 characters
 set list
-set listchars=tab:>.,trail:.,extends:#,nbsp:. " make special chars visible
+set listchars=tab:'\ ,trail:.,extends:#,nbsp:. " make special chars visible
 set wildmode=list:longest,full  " command <Tab> completion, list matches, then longest common part, then all.
 set backspace=indent,eol,start " make backspace a more flexible
 set completeopt=menu,preview " display the completition menu and a preview window
