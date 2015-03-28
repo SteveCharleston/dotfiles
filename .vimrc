@@ -40,7 +40,7 @@ Plug 'Shougo/neocomplete'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/vimshell.vim'
-Plug 'Shougo/vimproc'
+Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'javacomplete'
 Plug 'ragtag.vim'
 Plug 'Syntastic'
@@ -56,7 +56,7 @@ Plug 'The-NERD-Commenter'
 Plug 'vim-perl/vim-perl'
 "Plug 'ctrlp.vim'
 Plug 'paranoida/vim-airlineish'
-"Plug 'dansomething/vim-eclim'
+Plug 'dansomething/vim-eclim'
 Plug 'https://github.com/jaxbot/browserlink.vim'
 "Plug 'skammer/vim-css-color'
 "Plug 'Valloric/YouCompleteMe'
@@ -228,7 +228,7 @@ command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
 "let g:session_autoload_periodic=1
 
 " NERDtree
-Plug 'The-NERD-tree'
+Plug 'The-NERD-tree', { 'on': 'NERDTreeToggle' }
 let NERDTreeChDirMode=2
 let NERDTreeShowBookmarks=2
 let NERDTreeMinimalUI=1
@@ -286,7 +286,7 @@ let g:ConqueTerm_Syntax = 'conque'
 
 
 " Unite  """""""""""""""""""""""""""""""""""
-Plug 'unite.vim'
+Plug 'unite.vim', { 'on': 'Unite' }
 let g:unite_enable_start_insert = 1
 let g:unite_source_history_yank_enable = 1
 
