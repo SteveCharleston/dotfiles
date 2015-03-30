@@ -299,6 +299,8 @@ if has("lua")
     let g:neocomplete#enable_at_startup = 1
     let g:neocomplete#enable_smart_case = 1
     let g:neocomplete#enable_auto_delimiter = 1
+    let g:EclimCompletionMethod = 'omnifunc'
+    let g:neocomplete#force_overwrite_completefunc=1
     "let g:neocomplete_min_syntax_length = 0
 
     " Plugin key-mappings.
@@ -330,9 +332,14 @@ if has("lua")
     inoremap <expr><c-e>     neocomplete#complete_common_string()
 
     " Enable heavy omni completion.
-    if !exists('g:neocomplete#sources#omni#input_patterns')
-        let g:neocomplete#sources#omni#input_patterns = {}
+    "if !exists('g:neocomplete#sources#omni#input_patterns')
+    "    let g:neocomplete#sources#omni#input_patterns = {}
+    "endif
+    if !exists('g:neocomplete#force_omni_input_patterns')
+        let g:neocomplete#force_omni_input_patterns = {}
     endif
+    let g:neocomplete#force_omni_input_patterns.java =
+        \ '\%(\h\w*\|)\)\.\w*' " make eclim happy
 else
     let g:neocomplcache_enable_at_startup = 1
     "let g:neocomplcache_min_syntax_length = 0
@@ -378,7 +385,7 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
-let g:neocomplete#force_overwrite_completefunc=1
+"let g:neocomplete#force_overwrite_completefunc=1
 
 " EasyMotion """"""""""""""""""""""""""""""""""
 "Plugin 'EasyMotion'
