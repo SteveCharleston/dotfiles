@@ -10,50 +10,29 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall
 endif
 
-" let Vundle manage Vundle
-"set rtp=$VIMRUNTIME,~/.vim/bundle/vundle/ 
-"set rtp+=~/.vim/bundle/Vundle.vim
-"call vundle#rc()
-"call vundle#begin()
-"
 call plug#begin('~/.vim/bundle')
-"Plug 'gmarik/Vundle.vim'
-"Plugin 'gmarik/vundle'
 
 "Plugin 'code_complete'
-Plug 'Indent-Guides'
 Plug 'ref.vim'
-Plug 'trinity.vim'
 Plug 'Gundo'
 Plug 'Finder-for-vim'
-Plug 'Mark-Ring'
 Plug 'rainbow_parentheses.vim'
-Plug 'reorder-columns'
-Plug 'visual-increment'
-Plug 'Peasy'
+"Plug 'visual-increment'
 Plug 'Python-2.x-Standard-Library-Reference'
-Plug 'swap'
 Plug 'htmlspecialchars'
-Plug 'EasyGrep'
-Plug 'Shougo/neocomplcache'
+"Plug 'Shougo/neocomplcache'
 Plug 'Shougo/neocomplete'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/vimshell.vim'
 Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'javacomplete'
-Plug 'ragtag.vim'
 Plug 'Syntastic'
-Plug 'closetag.vim'
 Plug 'surround.vim'
 Plug 'repeat.vim'
-Plug 'xolox/vim-misc'
-"Plug 'easytags.vim'
-"Plug 'session.vim'
 Plug 'vcscommand.vim'
 "Plug 'ShowMarks'
-Plug 'The-NERD-Commenter'
-Plug 'vim-perl/vim-perl'
+Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 "Plug 'ctrlp.vim'
 Plug 'paranoida/vim-airlineish'
 Plug 'dansomething/vim-eclim'
@@ -140,6 +119,7 @@ endif
 
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 
 " Enable extendet % matching
 runtime macros/matchit.vim
@@ -301,7 +281,7 @@ if has("lua")
     let g:neocomplete#enable_auto_delimiter = 1
     let g:EclimCompletionMethod = 'omnifunc'
     let g:neocomplete#force_overwrite_completefunc=1
-    "let g:neocomplete_min_syntax_length = 0
+    let g:neocomplete_min_syntax_length = 1
 
     " Plugin key-mappings.
     " <CR>: close popup
