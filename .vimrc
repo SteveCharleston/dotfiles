@@ -447,8 +447,8 @@ for buffer_no in range(10, 100)
   execute "nmap <A-0" . buffer_no . "> :b" . buffer_no . "\<CR>"
 endfor
 
-Plug 'Raimondi/delimitMate'
-let delimitMate_expand_cr = 1
+"Plug 'Raimondi/delimitMate'
+"let delimitMate_expand_cr = 1
 
 " Airline + Tabline """""""""""""""""""""""""""""
 Plug 'bling/vim-airline'
@@ -493,29 +493,9 @@ set laststatus=2 " always have a statusline
 map <C-Tab> :MBEbn<CR>
 map <C-S-Tab> :MBEbp<CR>
 
-"Uninstalled
-"Plugin 'snipmate-snippets'
-"Plugin 'HTML-AutoCloseTag'
-"Plugin 'AutoComplPop'
-"Plugin 'snipMate'
-"Plugin 'AutoClose'
-"Plugin 'autosess'
-"Plugin 'Valloric/YouCompleteMe'
-"Plugin 'PyScratch'
-"Plugin 'PyInteractive''
-"Plugin 'shell.vim'
-"Plugin 'backup.vim'
-"Plugin 'session.vim'
-"Plugin 'eclim'
-"apachelogs.vim
-"Plugin 'Align'
-""Plugin 'Lokaltog/vim-powerline'
-""Plugin 'neocomplcache-snippets_complete'
-""Plugin 'pydoc.vim'
-
 " Auto-Pairs  """""""""""""""""""""""""""""""""""""
-""Plugin 'Auto-Pairs'
-""let g:AutoPairsFlyMode = 1
+Plug 'jiangmiao/auto-pairs'
+let g:AutoPairsFlyMode = 1
 call plug#end()
 "call vundle#end()            " required
 
