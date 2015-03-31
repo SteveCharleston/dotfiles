@@ -65,9 +65,9 @@ set sw=4		" space indentation wide 4
 set hlsearch		" Highlight search items
 set incsearch		" Incremental search, start searching as soon as I type
 set number		" Show Line Numbers
-set noautochdir           " always switch to the current file directory 
+set noautochdir         " never switch to the current file directory 
 set hidden              " change buffers without saving
-""set title               " Let vim set the xterm title
+set title               " Let vim set the xterm title
 set nostartofline       " leave the cursor where it is
 set expandtab           " no real tabs
 set nowrap              " don't wrap long lines
@@ -87,6 +87,7 @@ set omnifunc=syntaxcomplete#Complete
 set completeopt=menuone,preview
 set guioptions=ci
 set tags=./tags;
+set undofile            " Maintain  history between sessions
 
 
 " Arbeit
@@ -113,8 +114,13 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
+" Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType python setlocal omnifunc=jedi#completions
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 "autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 
 " Enable extendet % matching
@@ -156,8 +162,8 @@ nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
 " visual shifting (does not exit Visual mode)
-vnoremap < <gv
-vnoremap > >gv 
+"vnoremap < <gv
+"vnoremap > >gv 
 
 " Easy Window Handling
 nmap <silent> <M-h> :wincmd h<CR>
@@ -197,12 +203,6 @@ command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
 " Plugins
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-session """"""""""""""""""""""""""""""""""""""""
-"Plug 'xolox/vim-session'
-"let g:session_autosave='yes'
-"let g:session_autoload='yes'
-"let g:session_autoload_periodic=1
-
 " NERDtree
 Plug 'The-NERD-tree', { 'on': 'NERDTreeToggle' }
 let NERDTreeChDirMode=2
@@ -225,7 +225,7 @@ let Tlist_Exist_OnlyWindow = 1 " if you are the last, kill yourself
 
 
 " SrcExplorer """""""""""""""""""""""""""""""""""""
-Plug 'Source-Explorer-srcexpl.vim'
+Plug 'wesleyche/SrcExpl'
 let g:SrcExpl_pluginList = [
         \ "__Tag_List__",
         \ "_NERD_tree_",
@@ -253,7 +253,7 @@ let g:tagbar_singleclick=1
 
 
 " Conque Term """""""""""""""""""""""""""""""""""""
-Plug 'basepi/vim-conque'
+Plug 'oplatek/Conque-Shell'
 let g:ConqueTerm_Color = 1
 let g:ConqueTerm_SessionSupport = 0
 let g:ConqueTerm_ReadUnfocused = 1
@@ -316,6 +316,8 @@ if has("lua")
     endif
     let g:neocomplete#force_omni_input_patterns.java =
         \ '\%(\h\w*\|)\)\.\w*' " make eclim happy
+    let g:neocomplete#force_omni_input_patterns.python =
+        \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 else
     let g:neocomplcache_enable_at_startup = 1
     "let g:neocomplcache_min_syntax_length = 0
@@ -348,13 +350,6 @@ else
     smap  <tab>  <right><plug>(neocomplcache_snippets_jump) 
     inoremap <expr><c-e>     neocomplcache#complete_common_string()
 endif
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " For snippet_complete marker.
 if has('conceal')
@@ -422,6 +417,8 @@ Plug 'davidhalter/jedi-vim'
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_select_first = 0
 let g:jedi#popup_on_dot = 0
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
 
 " perl.vim """""""""""""""""""""""""""""""""""""
 Plug 'perl.vim'
