@@ -12,7 +12,6 @@ endif
 
 call plug#begin('~/.vim/bundle')
 
-"Plugin 'code_complete'
 Plug 'ref.vim'
 Plug 'Gundo'
 Plug 'Finder-for-vim'
@@ -33,12 +32,9 @@ Plug 'repeat.vim'
 Plug 'vcscommand.vim'
 "Plug 'ShowMarks'
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
-"Plug 'ctrlp.vim'
 Plug 'paranoida/vim-airlineish'
 Plug 'dansomething/vim-eclim'
 Plug 'https://github.com/jaxbot/browserlink.vim'
-"Plug 'skammer/vim-css-color'
-"Plug 'Valloric/YouCompleteMe'
 
 " Color Schemes
 Plug 'moria'
