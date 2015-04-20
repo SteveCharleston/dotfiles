@@ -448,8 +448,10 @@ for buffer_no in range(10, 100)
   execute "nmap <A-0" . buffer_no . "> :b" . buffer_no . "\<CR>"
 endfor
 
-Plug 'Raimondi/delimitMate'
-let delimitMate_expand_cr = 1
+"Plug 'Raimondi/delimitMate'
+"let delimitMate_expand_cr = 1
+
+Plug 'cohama/lexima.vim'
 
 " Airline + Tabline """""""""""""""""""""""""""""
 Plug 'bling/vim-airline'
