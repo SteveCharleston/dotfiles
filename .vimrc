@@ -35,6 +35,7 @@ Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlig
 Plug 'paranoida/vim-airlineish'
 Plug 'dansomething/vim-eclim'
 Plug 'https://github.com/jaxbot/browserlink.vim'
+Plug 'hsanson/vim-android'
 
 " Color Schemes
 Plug 'moria'
@@ -266,7 +267,7 @@ Plug 'unite.vim', { 'on': 'Unite' }
 let g:unite_enable_start_insert = 1
 let g:unite_source_history_yank_enable = 1
 
-nnoremap <C-P> :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:!<cr>
+nnoremap <C-P> :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async<cr>
 "nnoremap <C-O> :<C-u>Unite -buffer-name=files -start-insert buffer<cr>
 nnoremap yr :Unite history/yank<cr>
 
@@ -428,7 +429,7 @@ let perl_extended_vars = 1
 "Plugin 'vim-perl'
 
 " Emmet """""""""""""""""""""""""""""""
-Plug 'mattn/emmet-vim'
+"Plug 'mattn/emmet-vim'
 let g:user_emmet_leader_key='<C-m>'
 
 " Quickfixsigns """""""""""""""""""""""""""""""""""""
@@ -447,12 +448,14 @@ for buffer_no in range(10, 100)
   execute "nmap <A-0" . buffer_no . "> :b" . buffer_no . "\<CR>"
 endfor
 
-"Plug 'Raimondi/delimitMate'
-"let delimitMate_expand_cr = 1
+Plug 'Raimondi/delimitMate'
+let delimitMate_expand_cr = 1
 
 " Airline + Tabline """""""""""""""""""""""""""""
 Plug 'bling/vim-airline'
-"Plugin 'mkitt/tabline.vim'
+"let g:airline#extensions#tabline#enabled = 1
+"Plug 'mkitt/tabline.vim'
+"Plug 'bling/vim-bufferline'
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
@@ -468,6 +471,7 @@ let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
+let g:airline#extensions#eclim#enabled = 1
 
 set laststatus=2 " always have a statusline
 
@@ -476,7 +480,7 @@ set laststatus=2 " always have a statusline
 "let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 "let g:airline#extensions#tabline#buffer_nr_show = 1
 "
-"let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#syntastic#enabled = 1
 "let g:airline#extensions#tagbar#enabled = 1
 "map <M-1> :b1<CR>
 "map <M-2> :b2<CR>
@@ -494,8 +498,8 @@ map <C-Tab> :MBEbn<CR>
 map <C-S-Tab> :MBEbp<CR>
 
 " Auto-Pairs  """""""""""""""""""""""""""""""""""""
-Plug 'jiangmiao/auto-pairs'
-let g:AutoPairsFlyMode = 1
+"Plug 'jiangmiao/auto-pairs'
+"let g:AutoPairsFlyMode = 1
 call plug#end()
 "call vundle#end()            " required
 
