@@ -33,7 +33,7 @@ Plug 'vcscommand.vim'
 "Plug 'ShowMarks'
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 Plug 'paranoida/vim-airlineish'
-Plug 'dansomething/vim-eclim'
+"Plug 'dansomething/vim-eclim'
 Plug 'https://github.com/jaxbot/browserlink.vim'
 Plug 'hsanson/vim-android'
 
