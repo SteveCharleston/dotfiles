@@ -266,6 +266,7 @@ let g:ConqueTerm_Syntax = 'conque'
 Plug 'unite.vim', { 'on': 'Unite' }
 let g:unite_enable_start_insert = 1
 let g:unite_source_history_yank_enable = 1
+let g:unite_source_file_rec_max_cache_files = 99999
 
 nnoremap <C-P> :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async<cr>
 "nnoremap <C-O> :<C-u>Unite -buffer-name=files -start-insert buffer<cr>
@@ -420,6 +421,7 @@ let g:jedi#popup_select_first = 0
 let g:jedi#popup_on_dot = 0
 let g:jedi#completions_enabled = 0
 let g:jedi#auto_vim_configuration = 0
+let g:jedi#show_call_signatures = "0"
 
 " perl.vim """""""""""""""""""""""""""""""""""""
 Plug 'perl.vim'
