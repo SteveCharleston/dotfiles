@@ -33,9 +33,10 @@ Plug 'vcscommand.vim'
 "Plug 'ShowMarks'
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 Plug 'paranoida/vim-airlineish'
-Plug 'dansomething/vim-eclim', { 'on': 'PingEclim' }
+"Plug 'dansomething/vim-eclim'
 Plug 'https://github.com/jaxbot/browserlink.vim'
 Plug 'hsanson/vim-android'
+Plug 'tpope/vim-fugitive'
 
 " Color Schemes
 Plug 'moria'
@@ -119,10 +120,10 @@ endif
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType python setlocal omnifunc=jedi#completions
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType python setlocal omnifunc=jedi#completions
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-"autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 
 " Enable extendet % matching
 runtime macros/matchit.vim
