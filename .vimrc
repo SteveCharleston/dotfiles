@@ -107,6 +107,8 @@ set selection=inclusive
 set updatetime=5000
 set whichwrap=b,s,<,>,[,]
 
+let mapleader = "\<tab>"
+
 " load indentation rules and plugins according to the detected filetype.
 if has("autocmd")
   filetype plugin indent on
@@ -270,7 +272,8 @@ let g:unite_enable_start_insert = 1
 let g:unite_source_history_yank_enable = 1
 let g:unite_source_file_rec_max_cache_files = 99999
 
-nnoremap <C-P> :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async<cr>
+nnoremap <C-P> :<C-u>Unite -start-insert buffer file_rec/async<cr>
+nnoremap <Leader>b :<C-u>Unite buffer<cr>
 "nnoremap <C-O> :<C-u>Unite -buffer-name=files -start-insert buffer<cr>
 nnoremap yr :Unite history/yank<cr>
 
