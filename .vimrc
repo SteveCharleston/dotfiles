@@ -90,6 +90,7 @@ set completeopt=menuone,preview
 set guioptions=ci
 set tags=./tags;
 set undofile            " Maintain  history between sessions
+set iskeyword=@,48-57,_,192-255
 
 
 " Arbeit
