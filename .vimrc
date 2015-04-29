@@ -89,6 +89,7 @@ set completeopt=menuone,preview
 set guioptions=ci
 set tags=./tags;
 set undofile            " Maintain  history between sessions
+set iskeyword=@,48-57,_,192-255
 
 
 " Arbeit
@@ -119,8 +120,8 @@ endif
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType python setlocal omnifunc=jedi#completions
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType python setlocal omnifunc=jedi#completions
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 "autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 
