@@ -274,6 +274,7 @@ let g:unite_source_file_rec_max_cache_files = 99999
 
 nnoremap <C-P> :<C-u>Unite -start-insert buffer file_rec/async<cr>
 nnoremap <Leader>b :<C-u>Unite buffer<cr>
+nnoremap <Leader>m :<C-u>Unite file_mru<cr>
 "nnoremap <C-O> :<C-u>Unite -buffer-name=files -start-insert buffer<cr>
 nnoremap yr :Unite history/yank<cr>
 
