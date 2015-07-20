@@ -37,6 +37,8 @@ Plug 'paranoida/vim-airlineish'
 Plug 'https://github.com/jaxbot/browserlink.vim'
 Plug 'hsanson/vim-android'
 Plug 'tpope/vim-fugitive'
+Plug 'tmatilai/vim-monit'
+Plug 'tpope/vim-dispatch'
 
 " Color Schemes
 Plug 'moria'
@@ -220,7 +222,7 @@ let g:NERDTreeDirArrows = 0
 " :Bsgrep - Searches for given Regex
 " :Bstoc - lists table of content for buffers
 " :Bsreplace - global search and replace
-Plug 'Buffersaurus'
+"Plug 'Buffersaurus'
 
 
 " Tag list """"""""""""""""""""""""""""""""""""""""
@@ -272,7 +274,7 @@ let g:unite_enable_start_insert = 1
 let g:unite_source_history_yank_enable = 1
 let g:unite_source_file_rec_max_cache_files = 99999
 
-nnoremap <C-P> :<C-u>Unite -start-insert buffer file_rec/async<cr>
+nnoremap <C-P> :<C-u>Unite -start-insert buffer -resume file_rec/async<cr>
 nnoremap <Leader>b :<C-u>Unite buffer<cr>
 nnoremap <Leader>m :<C-u>Unite file_mru<cr>
 "nnoremap <C-O> :<C-u>Unite -buffer-name=files -start-insert buffer<cr>
@@ -444,6 +446,13 @@ let g:user_emmet_leader_key='<C-m>'
 Plug 'tomtom/quickfixsigns_vim'
 let g:quickfixsigns_classes = ['loc', 'qfl', 'marks', 'breakpoints']
 
+" Ack  """""""""""""""""""""""""""""""""""""
+Plug 'mileszs/ack.vim'
+if executable('ag')
+    let g:ackprg = 'ag --nogroup --nocolor --column'
+endif
+let g:ack_use_dispatch = 1
+
 " minibufexpl """""""""""""""""""""""""""""""""""""
 Plug 'techlivezheng/vim-plugin-minibufexpl'
 " switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
@@ -472,15 +481,22 @@ endif
 let g:airline_theme = 'airlineish'
 
 " unicode symbols
-let g:airline_left_sep = '▶'
-let g:airline#extensions#tabline#left_sep = '▶'
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
+"let g:airline_left_sep = '▶'
+"let g:airline#extensions#tabline#left_sep = '▶'
+"let g:airline#extensions#tabline#left_alt_sep = '|'
+"let g:airline_right_sep = '◀'
+"let g:airline_symbols.linenr = '¶'
+"let g:airline_symbols.branch = '⎇'
+"let g:airline_symbols.paste = 'ρ'
+"let g:airline_symbols.paste = 'Þ'
+"let g:airline_symbols.paste = '∥'
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_right_sep = '«'
+let g:airline_symbols.linenr = '#'
 let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
 let g:airline#extensions#eclim#enabled = 1
 
 set laststatus=2 " always have a statusline
