@@ -40,6 +40,7 @@ Plug 'hsanson/vim-android'
 Plug 'tpope/vim-fugitive'
 Plug 'tmatilai/vim-monit'
 Plug 'tpope/vim-dispatch'
+Plug 'justinmk/vim-gtfo'
 
 " Color Schemes
 Plug 'moria'
