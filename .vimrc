@@ -47,6 +47,13 @@ Plug 'moria'
 Plug 'Solarized'
 Plug 'sonoma.vim'
 Plug 'peaksea'
+Plug 'gosukiwi/vim-atom-dark'
+Plug 'vim-scripts/desertEx'
+Plug 'toupeira/vim-desertink'
+Plug 'hewo/vim-colorscheme-deepsea'
+Plug 'hachy/eva01.vim'
+Plug 'whatyouhide/vim-gotham'
+Plug 'morhetz/gruvbox'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 "
@@ -546,6 +553,7 @@ map <C-S-Tab> :MBEbp<CR>
 call plug#end()
 "call vundle#end()            " required
 
-color peaksea
+set bg=dark
+color gruvbox
 highlight ColorColumn guibg=gray86
 highlight ColorColumn ctermbg=253
