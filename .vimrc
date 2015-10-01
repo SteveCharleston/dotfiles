@@ -54,6 +54,8 @@ Plug 'hewo/vim-colorscheme-deepsea'
 Plug 'hachy/eva01.vim'
 Plug 'whatyouhide/vim-gotham'
 Plug 'morhetz/gruvbox'
+Plug 'gregsexton/Muon'
+Plug 'jnurmine/Zenburn'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 "
@@ -553,7 +555,6 @@ map <C-S-Tab> :MBEbp<CR>
 call plug#end()
 "call vundle#end()            " required
 
-set bg=dark
-color gruvbox
+color peaksea
 highlight ColorColumn guibg=gray86
 highlight ColorColumn ctermbg=253
