@@ -41,6 +41,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tmatilai/vim-monit'
 Plug 'tpope/vim-dispatch'
 Plug 'justinmk/vim-gtfo'
+Plug 'godlygeek/csapprox'
 
 " Color Schemes
 Plug 'moria'
@@ -56,6 +57,7 @@ Plug 'whatyouhide/vim-gotham'
 Plug 'morhetz/gruvbox'
 Plug 'gregsexton/Muon'
 Plug 'jnurmine/Zenburn'
+Plug 'Wutzara/vim-materialtheme'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 "
@@ -555,6 +557,7 @@ map <C-S-Tab> :MBEbp<CR>
 call plug#end()
 "call vundle#end()            " required
 
-color peaksea
+set background=dark
+color gruvbox
 highlight ColorColumn guibg=gray86
 highlight ColorColumn ctermbg=253
