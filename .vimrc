@@ -557,6 +557,7 @@ map <C-S-Tab> :MBEbp<CR>
 call plug#end()
 "call vundle#end()            " required
 
+set t_Co=256
 set background=dark
 color gruvbox
 highlight ColorColumn guibg=gray86
