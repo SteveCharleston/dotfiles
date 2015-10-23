@@ -5,8 +5,8 @@ augroup AutoReloadVimRC
 augroup END
 
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall
 endif
 
@@ -42,6 +42,8 @@ Plug 'tmatilai/vim-monit'
 Plug 'tpope/vim-dispatch'
 Plug 'justinmk/vim-gtfo'
 Plug 'godlygeek/csapprox'
+Plug 'justmao945/vim-clang'
+"Plug 'Rip-Rip/clang_complete'
 
 " Color Schemes
 Plug 'moria'
