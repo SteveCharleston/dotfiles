@@ -284,7 +284,11 @@ let g:ConqueTerm_Syntax = 'conque'
 
 
 " Unite  """""""""""""""""""""""""""""""""""
-Plug 'unite.vim', { 'on': 'Unite' }
+Plug 'kien/ctrlp.vim'
+let g:ctrlp_max_files = 0
+
+" Unite  """""""""""""""""""""""""""""""""""
+"Plug 'unite.vim', { 'on': 'Unite' }
 let g:unite_enable_start_insert = 1
 let g:unite_source_history_yank_enable = 1
 let g:unite_source_file_rec_max_cache_files = 99999
