@@ -285,10 +285,15 @@ let g:ConqueTerm_Syntax = 'conque'
 
 " Unite  """""""""""""""""""""""""""""""""""
 Plug 'kien/ctrlp.vim'
+Plug 'tacahiroy/ctrlp-funky'
 let g:ctrlp_max_files = 0
 let g:ctrlp_use_caching = 1
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:25,results:25'
+nnoremap <Leader>b :CtrlPBuffer<cr>
+nnoremap <Leader>m :CtrlPMRUFiles<cr>
+nnoremap <Leader>t :CtrlPTag<cr>
+nnoremap <Leader>f :CtrlPFunky<cr>
 
 " Unite  """""""""""""""""""""""""""""""""""
 "Plug 'unite.vim', { 'on': 'Unite' }
@@ -312,8 +317,8 @@ elseif executable('ack')
 endif
 
 "nnoremap <C-P> :<C-u>Unite -start-insert buffer -resume file_rec/async<cr><End><C-U>
-nnoremap <Leader>b :<C-u>Unite buffer<cr>
-nnoremap <Leader>m :<C-u>Unite file_mru<cr>
+"nnoremap <Leader>b :<C-u>Unite buffer<cr>
+"nnoremap <Leader>m :<C-u>Unite file_mru<cr>
 "nnoremap <C-O> :<C-u>Unite -buffer-name=files -start-insert buffer<cr>
 nnoremap yr :Unite history/yank<cr>
 
