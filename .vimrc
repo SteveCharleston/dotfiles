@@ -286,10 +286,13 @@ let g:ConqueTerm_Syntax = 'conque'
 " Unite  """""""""""""""""""""""""""""""""""
 Plug 'kien/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
+Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'liquidz/ctrlp-gonosen.vim'
 let g:ctrlp_max_files = 0
 let g:ctrlp_use_caching = 1
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:25,results:25'
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 nnoremap <Leader>b :CtrlPBuffer<cr>
 nnoremap <Leader>m :CtrlPMRUFiles<cr>
 nnoremap <Leader>t :CtrlPTag<cr>
