@@ -42,7 +42,6 @@ Plug 'tmatilai/vim-monit'
 Plug 'tpope/vim-dispatch'
 Plug 'justinmk/vim-gtfo'
 Plug 'godlygeek/csapprox'
-Plug 'justmao945/vim-clang'
 "Plug 'Rip-Rip/clang_complete'
 
 " Color Schemes
@@ -282,6 +281,10 @@ let g:ConqueTerm_ReadUnfocused = 1
 let g:ConqueTerm_PromptRegex = '^\w\+@[0-9A-Za-z_.-]\+:[0-9A-Za-z_./\~,:-]\+\$'
 let g:ConqueTerm_Syntax = 'conque'
 
+" fswitch  """""""""""""""""""""""""""""""""""
+Plug 'derekwyatt/vim-fswitch'
+nnoremap <C-7> :FSHere<cr>
+nnoremap  :FSHere<cr>
 
 " Unite  """""""""""""""""""""""""""""""""""
 Plug 'kien/ctrlp.vim'
@@ -321,6 +324,12 @@ endif
 "nnoremap <Leader>m :<C-u>Unite file_mru<cr>
 "nnoremap <C-O> :<C-u>Unite -buffer-name=files -start-insert buffer<cr>
 nnoremap yr :Unite history/yank<cr>
+
+" Neocomplcache """""""""""""""""""""""""""""""""""
+Plug 'justmao945/vim-clang'
+let g:clang_auto = 0
+let g:clang_c_completeopt = 'menuone,preview'
+let g:clang_cpp_completeopt = 'menuone,preview'
 
 " Neocomplcache """""""""""""""""""""""""""""""""""
 if has("lua")
@@ -366,10 +375,20 @@ if has("lua")
     if !exists('g:neocomplete#force_omni_input_patterns')
         let g:neocomplete#force_omni_input_patterns = {}
     endif
+
+    " Java
     let g:neocomplete#force_omni_input_patterns.java =
         \ '\%(\h\w*\|)\)\.\w*' " make eclim happy
+
+    " Python
     let g:neocomplete#force_omni_input_patterns.python =
         \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+
+    " for c and c++
+    let g:neocomplete#force_omni_input_patterns.c =
+                \ '[^.[:digit:] *\t]\%(\.\|->\)\w*'
+    let g:neocomplete#force_omni_input_patterns.cpp =
+                \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
 else
     let g:neocomplcache_enable_at_startup = 1
     "let g:neocomplcache_min_syntax_length = 0
