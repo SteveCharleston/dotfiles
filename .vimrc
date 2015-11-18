@@ -42,6 +42,7 @@ Plug 'tmatilai/vim-monit'
 Plug 'tpope/vim-dispatch'
 Plug 'justinmk/vim-gtfo'
 Plug 'godlygeek/csapprox'
+Plug 'xieyu/pyclewn'
 "Plug 'Rip-Rip/clang_complete'
 
 " Color Schemes
@@ -112,6 +113,8 @@ set iskeyword=@,48-57,_,192-255
 " Arbeit
 
 set backup
+set backupdir=/tmp,.
+set directory=/tmp,.
 set diffexpr=
 ""set guifont=Courier_New:h10:cANSI
 set guifont=Liberation\ Mono\ 10
@@ -177,6 +180,7 @@ imap syso System.out.println();<LEFT><LEFT>
 "inoremap ;; <end>;
 inoremap ;<cr> <C-o>A;<C-o>A<cr>
 inoremap ;; <C-o>A;
+nnoremap <F9> :make<cr>
 
 " Faster Scrolling
 nnoremap <C-e> 3<C-e>
@@ -597,4 +601,4 @@ set t_Co=256
 set background=dark
 color gruvbox
 highlight ColorColumn guibg=gray86
-highlight ColorColumn ctermbg=253
+highlight ColorColumn ctermbg=236
