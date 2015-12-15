@@ -35,14 +35,15 @@ Plug 'vcscommand.vim'
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 Plug 'paranoida/vim-airlineish'
 "Plug 'dansomething/vim-eclim'
-Plug 'https://github.com/jaxbot/browserlink.vim'
+"Plug 'https://github.com/jaxbot/browserlink.vim'
 Plug 'hsanson/vim-android'
 Plug 'tpope/vim-fugitive'
 Plug 'tmatilai/vim-monit'
 Plug 'tpope/vim-dispatch'
 Plug 'justinmk/vim-gtfo'
 Plug 'godlygeek/csapprox'
-Plug 'xieyu/pyclewn'
+"Plug 'xieyu/pyclewn'
+Plug 'justinmk/vim-syntax-extra'
 "Plug 'Rip-Rip/clang_complete'
 
 " Color Schemes
