@@ -20,7 +20,7 @@ Plug 'rainbow_parentheses.vim'
 Plug 'Python-2.x-Standard-Library-Reference'
 Plug 'htmlspecialchars'
 "Plug 'Shougo/neocomplcache'
-"Plug 'Shougo/neocomplete'
+Plug 'Shougo/neocomplete'
 "Plug 'Shougo/neosnippet'
 "Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/vimshell.vim'
@@ -143,8 +143,8 @@ endif
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-"autocmd FileType python setlocal omnifunc=jedi#completions
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType python setlocal omnifunc=jedi#completions
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 
@@ -350,95 +350,95 @@ let g:clang_c_completeopt = 'menuone,preview'
 let g:clang_cpp_completeopt = 'menuone,preview'
 
 " Neocomplcache """""""""""""""""""""""""""""""""""
-"""if has("lua")
-"""    let g:neocomplete#enable_at_startup = 1
-"""    let g:neocomplete#enable_smart_case = 1
-"""    let g:neocomplete#enable_auto_delimiter = 1
-"""    let g:EclimCompletionMethod = 'omnifunc'
-"""    let g:neocomplete#force_overwrite_completefunc=1
-"""    let g:neocomplete_min_syntax_length = 1
-"""
-"""    " Plugin key-mappings.
-"""    " <CR>: close popup
-"""    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-"""    function! s:my_cr_function()
-"""    return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-"""    endfunction
-"""
-"""    imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"""    smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"""    xmap <C-k>     <Plug>(neosnippet_expand_target)
-"""
-"""    "imap <expr><TAB> neocomplete#sources#snippets_complete#expandable() ? "\<Plug>(neocomplete_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-"""    "
-"""
-"""    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-"""    inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
-"""    " SuperTab like snippets behavior.
-"""    "imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-"""    "\ "\<Plug>(neosnippet_expand_or_jump)"
-"""    "\: pumvisible() ? "\<C-n>" : "\<TAB>"
-"""    "smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-"""    "\ "\<Plug>(neosnippet_expand_or_jump)"
-"""    "\: "\<TAB>"
-"""
-"""    "imap  <silent><expr><tab>  neocomplete#sources#snippets_complete#expandable() ? "\<plug>(neocomplete_snippets_expand)" : (pumvisible() ? "\<c-e>" : "\<tab>")
-"""    smap  <tab>  <right><plug>(neocomplete_snippets_jump) 
-"""    inoremap <expr><c-e>     neocomplete#complete_common_string()
-"""
-"""    " Enable heavy omni completion.
-"""    "if !exists('g:neocomplete#sources#omni#input_patterns')
-"""    "    let g:neocomplete#sources#omni#input_patterns = {}
-"""    "endif
-"""    if !exists('g:neocomplete#force_omni_input_patterns')
-"""        let g:neocomplete#force_omni_input_patterns = {}
-"""    endif
-"""
-"""    " Java
-"""    let g:neocomplete#force_omni_input_patterns.java =
-"""        \ '\%(\h\w*\|)\)\.\w*' " make eclim happy
-"""
-"""    " Python
-"""    let g:neocomplete#force_omni_input_patterns.python =
-"""        \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-"""
-"""    " for c and c++
-"""    let g:neocomplete#force_omni_input_patterns.c =
-"""                \ '[^.[:digit:] *\t]\%(\.\|->\)\w*'
-"""    let g:neocomplete#force_omni_input_patterns.cpp =
-"""                \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
-"""else
-"""    let g:neocomplcache_enable_at_startup = 1
-"""    "let g:neocomplcache_min_syntax_length = 0
-"""
-"""    " Plugin key-mappings.
-"""    " <CR>: close popup
-"""    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-"""    function! s:my_cr_function()
-"""    return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-"""    endfunction
-"""
-"""    imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"""    smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"""    xmap <C-k>     <Plug>(neosnippet_expand_target)
-"""
-"""    "imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-"""    "
-"""
-"""    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-"""    inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
-"""    " SuperTab like snippets behavior.
-"""    "imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-"""    "\ "\<Plug>(neosnippet_expand_or_jump)"
-"""    "\: pumvisible() ? "\<C-n>" : "\<TAB>"
-"""    "smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-"""    "\ "\<Plug>(neosnippet_expand_or_jump)"
-"""    "\: "\<TAB>"
-"""
-"""    "imap  <silent><expr><tab>  neocomplcache#sources#snippets_complete#expandable() ? "\<plug>(neocomplcache_snippets_expand)" : (pumvisible() ? "\<c-e>" : "\<tab>")
-"""    smap  <tab>  <right><plug>(neocomplcache_snippets_jump) 
-"""    inoremap <expr><c-e>     neocomplcache#complete_common_string()
-"""endif
+"if has("lua")
+"    let g:neocomplete#enable_at_startup = 1
+"    let g:neocomplete#enable_smart_case = 1
+"    let g:neocomplete#enable_auto_delimiter = 1
+"    let g:EclimCompletionMethod = 'omnifunc'
+"    let g:neocomplete#force_overwrite_completefunc=1
+"    let g:neocomplete_min_syntax_length = 1
+"
+"    " Plugin key-mappings.
+"    " <CR>: close popup
+"    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+"    function! s:my_cr_function()
+"    return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+"    endfunction
+"
+"    "imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"    "smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"    "xmap <C-k>     <Plug>(neosnippet_expand_target)
+"
+"    "imap <expr><TAB> neocomplete#sources#snippets_complete#expandable() ? "\<Plug>(neocomplete_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+"    "
+"
+"    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"    inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
+"    " SuperTab like snippets behavior.
+"    "imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"    "\ "\<Plug>(neosnippet_expand_or_jump)"
+"    "\: pumvisible() ? "\<C-n>" : "\<TAB>"
+"    "smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"    "\ "\<Plug>(neosnippet_expand_or_jump)"
+"    "\: "\<TAB>"
+"
+"    "imap  <silent><expr><tab>  neocomplete#sources#snippets_complete#expandable() ? "\<plug>(neocomplete_snippets_expand)" : (pumvisible() ? "\<c-e>" : "\<tab>")
+"    smap  <tab>  <right><plug>(neocomplete_snippets_jump) 
+"    inoremap <expr><c-e>     neocomplete#complete_common_string()
+"
+"    " Enable heavy omni completion.
+"    "if !exists('g:neocomplete#sources#omni#input_patterns')
+"    "    let g:neocomplete#sources#omni#input_patterns = {}
+"    "endif
+"    if !exists('g:neocomplete#force_omni_input_patterns')
+"        let g:neocomplete#force_omni_input_patterns = {}
+"    endif
+"
+"    " Java
+"    let g:neocomplete#force_omni_input_patterns.java =
+"        \ '\%(\h\w*\|)\)\.\w*' " make eclim happy
+"
+"    " Python
+"    let g:neocomplete#force_omni_input_patterns.python =
+"        \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+"
+"    " for c and c++
+"    let g:neocomplete#force_omni_input_patterns.c =
+"                \ '[^.[:digit:] *\t]\%(\.\|->\)\w*'
+"    let g:neocomplete#force_omni_input_patterns.cpp =
+"                \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+"else
+"    let g:neocomplcache_enable_at_startup = 1
+"    "let g:neocomplcache_min_syntax_length = 0
+"
+"    " Plugin key-mappings.
+"    " <CR>: close popup
+"    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+"    function! s:my_cr_function()
+"    return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+"    endfunction
+"
+"    "imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"    "smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"    "xmap <C-k>     <Plug>(neosnippet_expand_target)
+"
+"    "imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+"    "
+"
+"    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"    inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
+"    " SuperTab like snippets behavior.
+"    "imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"    "\ "\<Plug>(neosnippet_expand_or_jump)"
+"    "\: pumvisible() ? "\<C-n>" : "\<TAB>"
+"    "smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"    "\ "\<Plug>(neosnippet_expand_or_jump)"
+"    "\: "\<TAB>"
+"
+"    "imap  <silent><expr><tab>  neocomplcache#sources#snippets_complete#expandable() ? "\<plug>(neocomplcache_snippets_expand)" : (pumvisible() ? "\<c-e>" : "\<tab>")
+"    smap  <tab>  <right><plug>(neocomplcache_snippets_jump) 
+"    inoremap <expr><c-e>     neocomplcache#complete_common_string()
+"endif
 
 " For snippet_complete marker.
 if has('conceal')
@@ -509,9 +509,11 @@ let g:jedi#popup_on_dot = 0
 let g:jedi#completions_enabled = 0
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#show_call_signatures = "0"
+let g:jedi#show_call_signatures = 2
 
 " perl.vim """""""""""""""""""""""""""""""""""""
 Plug 'perl.vim'
+"Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 let perl_include_pod = 1
 let perl_extended_vars = 1
 "Plugin 'perl-support.vim'
