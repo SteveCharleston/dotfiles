@@ -10,6 +10,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall
 endif
 
+let g:python_host_prog = '/usr/bin/python'
+
 call plug#begin('~/.vim/bundle')
 
 Plug 'ref.vim'
@@ -34,7 +36,7 @@ Plug 'vcscommand.vim'
 "Plug 'ShowMarks'
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 Plug 'paranoida/vim-airlineish'
-"Plug 'dansomething/vim-eclim'
+Plug 'dansomething/vim-eclim'
 "Plug 'https://github.com/jaxbot/browserlink.vim'
 Plug 'hsanson/vim-android'
 Plug 'tpope/vim-fugitive'
@@ -291,6 +293,9 @@ Plug 'derekwyatt/vim-fswitch'
 nnoremap <C-7> :FSHere<cr>
 nnoremap  :FSHere<cr>
 
+" PlantUML """""""""""""""""""""""""""""""""""""
+Plug 'aklt/plantuml-syntax'
+
 " Unite  """""""""""""""""""""""""""""""""""
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
@@ -309,12 +314,14 @@ nnoremap <Leader>f :CtrlPFunky<cr>
 
 " Youcompleteme """""""""""""""""""""""""""
 Plug 'Valloric/YouCompleteMe'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 let g:UltiSnipsExpandTrigger="<c-k>"
 let g:UltiSnipsJumpForwardTrigger="<c-k>"
 let g:UltiSnipsJumpBackwardTrigger="<c-j>"
+let g:EclimCompletionMethod = 'omnifunc'
 
 " Unite  """""""""""""""""""""""""""""""""""
 "Plug 'unite.vim', { 'on': 'Unite' }

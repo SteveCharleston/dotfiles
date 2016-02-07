@@ -58,3 +58,7 @@ export PATH=$HOME/bin/vim/bin:$HOME/bin:$PATH
 
 command -v fortune > /dev/null 2>&1 && /usr/bin/env fortune
 echo ""
+
+export QSYS_ROOTDIR="/home/steven/bin/altera/15.0web/quartus/sopc_builder/bin"
+
+export ALTERAOCLSDKROOT="/home/steven/bin/altera/15.0web/hld"
