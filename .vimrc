@@ -47,6 +47,9 @@ Plug 'godlygeek/csapprox'
 "Plug 'xieyu/pyclewn'
 Plug 'justinmk/vim-syntax-extra'
 "Plug 'Rip-Rip/clang_complete'
+Plug '4Evergreen4/vim-hardy'
+"Plug 'stevearc/vim-arduino'
+Plug 'joshdick/onedark.vim'
 
 " Color Schemes
 Plug 'moria'
@@ -316,7 +319,7 @@ nnoremap <Leader>f :CtrlPFunky<cr>
 Plug 'Valloric/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+Plug 'SteveCharleston/vim-snippets'
 
 let g:UltiSnipsExpandTrigger="<c-k>"
 let g:UltiSnipsJumpForwardTrigger="<c-k>"
