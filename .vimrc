@@ -50,6 +50,7 @@ Plug 'justinmk/vim-syntax-extra'
 Plug '4Evergreen4/vim-hardy'
 "Plug 'stevearc/vim-arduino'
 Plug 'joshdick/onedark.vim'
+Plug 'tmatilai/vim-monit'
 
 " Color Schemes
 Plug 'moria'
@@ -240,6 +241,22 @@ let NERDTreeChDirMode=2
 let NERDTreeShowBookmarks=2
 let NERDTreeMinimalUI=1
 let g:NERDTreeDirArrows = 0
+"
+" NERDTree Colors
+function! NThl(mtch, cs)
+  exec "autocmd filetype nerdtree syn match " . a:mtch . " #^\\s\\+.*" . a:mtch . "\\*\\?$#"
+  exec "autocmd filetype nerdtree highlight " . a:mtch . " " . a:cs
+endfunction
+augroup MyNerdTree
+  autocmd!
+  call NThl('php', 'ctermfg=077 guifg=#5FD75F gui=BOLD cterm=BOLD')
+  call NThl('css', 'ctermfg=57 guifg=#5F00FF gui=BOLD cterm=BOLD')
+  autocmd filetype nerdtree highlight Directory ctermfg=166 guifg=#D75F00 gui=BOLD cterm=BOLD
+augroup END " MyNerdTree
+highlight NERDTreeDirSlash guifg=#005F87 ctermfg=24 gui=BOLD cterm=BOLD
+highlight NERDTreeCWD guifg=#444444 ctermfg=238 gui=BOLD cterm=BOLD
+highlight NERDTreeOpenable guifg=#005F87 ctermfg=24 gui=BOLD cterm=BOLD
+highlight NERDTreeClosable guifg=#00AFFF ctermfg=39 gui=BOLD cterm=BOLD
 
 " Buffersaurus """"""""""""""""""""""""""""""""""""""""
 " Searches in open Buffers
