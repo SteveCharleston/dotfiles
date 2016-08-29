@@ -161,6 +161,12 @@ runtime! ftplugin/man.vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
+" Styling
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
 " File reading
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -642,3 +648,6 @@ set background=dark
 color gruvbox
 highlight ColorColumn guibg=gray86
 highlight ColorColumn ctermbg=236
+hi VertSplit ctermbg=bg cterm=none
+hi SignColumn ctermbg=none
+set fillchars=vert:\│,fold:-
