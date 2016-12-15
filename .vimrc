@@ -10,19 +10,24 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall
 endif
 
-let g:python_host_prog = '/usr/bin/python'
+" neovim stuff
+if has('nvim')
+    let g:python2_host_prog = '/usr/bin/python'
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1 
+    set termguicolors
+endif
 
 call plug#begin('~/.vim/bundle')
 
 Plug 'ref.vim'
-Plug 'Gundo'
-Plug 'Finder-for-vim'
+Plug 'Gundo', { 'on': 'GundoToggle' }
+"Plug 'Finder-for-vim'
 Plug 'rainbow_parentheses.vim'
 "Plug 'visual-increment'
 Plug 'Python-2.x-Standard-Library-Reference'
 Plug 'htmlspecialchars'
 "Plug 'Shougo/neocomplcache'
-Plug 'Shougo/neocomplete'
+"Plug 'Shougo/neocomplete'
 "Plug 'Shougo/neosnippet'
 "Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/vimshell.vim'
@@ -50,23 +55,23 @@ Plug 'justinmk/vim-syntax-extra'
 Plug '4Evergreen4/vim-hardy'
 "Plug 'stevearc/vim-arduino'
 Plug 'joshdick/onedark.vim'
-Plug 'tmatilai/vim-monit'
+Plug 'tpope/vim-speeddating'
 
 " Color Schemes
-Plug 'moria'
-Plug 'Solarized'
-Plug 'sonoma.vim'
+"Plug 'moria'
+"Plug 'Solarized'
+"Plug 'sonoma.vim'
 Plug 'peaksea'
-Plug 'gosukiwi/vim-atom-dark'
-Plug 'vim-scripts/desertEx'
-Plug 'toupeira/vim-desertink'
-Plug 'hewo/vim-colorscheme-deepsea'
-Plug 'hachy/eva01.vim'
-Plug 'whatyouhide/vim-gotham'
+"Plug 'gosukiwi/vim-atom-dark'
+"Plug 'vim-scripts/desertEx'
+"Plug 'toupeira/vim-desertink'
+"Plug 'hewo/vim-colorscheme-deepsea'
+"Plug 'hachy/eva01.vim'
+"Plug 'whatyouhide/vim-gotham'
 Plug 'morhetz/gruvbox'
-Plug 'gregsexton/Muon'
-Plug 'jnurmine/Zenburn'
-Plug 'Wutzara/vim-materialtheme'
+"Plug 'gregsexton/Muon'
+"Plug 'jnurmine/Zenburn'
+"Plug 'Wutzara/vim-materialtheme'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 "
@@ -86,7 +91,7 @@ set showmatch		" Show matching brackets.
 set ignorecase		" Do case insensitive matching
 set smartcase           " But still be intelligent about matchin But still be intelligent about matching
 set mouse=a		" Enable mouse usage (all modes)
-set ttymouse=xterm2     " Resize splits inside tmux
+"set ttymouse=xterm2     " Resize splits inside tmux
 set sw=4		" space indentation wide 4
 set hlsearch		" Highlight search items
 set incsearch		" Incremental search, start searching as soon as I type
@@ -273,13 +278,13 @@ highlight NERDTreeClosable guifg=#00AFFF ctermfg=39 gui=BOLD cterm=BOLD
 
 
 " Tag list """"""""""""""""""""""""""""""""""""""""
-Plug 'taglist.vim'
+Plug 'taglist.vim', { 'on': 'TlistToggle' }
 let Tlist_Auto_Open=0	" Automatically Open the Tag List
 let Tlist_Exist_OnlyWindow = 1 " if you are the last, kill yourself 
 
 
 " SrcExplorer """""""""""""""""""""""""""""""""""""
-Plug 'wesleyche/SrcExpl'
+"Plug 'wesleyche/SrcExpl'
 let g:SrcExpl_pluginList = [
         \ "__Tag_List__",
         \ "_NERD_tree_",
@@ -327,6 +332,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'liquidz/ctrlp-gonosen.vim'
+Plug 'sgur/ctrlp-extensions.vim'
 let g:ctrlp_max_files = 0
 let g:ctrlp_use_caching = 1
 let g:ctrlp_clear_cache_on_exit = 0
@@ -497,7 +503,7 @@ let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz'
 
 
 " Slimux """""""""""""""""""""""""""""""""""""
-Plug 'epeli/slimux'
+Plug 'epeli/slimux', { 'on': [ 'SlimuxREPLSendLine', 'SlimuxREPLSendSelection' ]}
 map <C-c><C-c> :SlimuxREPLSendLine<CR>
 vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
 
