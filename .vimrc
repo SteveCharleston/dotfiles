@@ -251,6 +251,7 @@ Plug 'The-NERD-tree', { 'on': 'NERDTreeToggle' }
 let NERDTreeChDirMode=2
 let NERDTreeShowBookmarks=2
 let NERDTreeMinimalUI=1
+let NERDTreeHijackNetrw=0
 let g:NERDTreeDirArrows = 0
 "
 " NERDTree Colors
