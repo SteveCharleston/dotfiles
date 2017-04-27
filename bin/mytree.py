@@ -75,6 +75,7 @@ if not hasattr(os, 'relpath'):
 colorCodes = {
         '0' : {"color": None},
         '01' : {"attrs": ["bold"]},
+        '038' : {"attrs": ["bold"]},
         '4' : {"attrs": ["underline"]},
         '5' : {"attrs": ["blink"]},
         '7' : {"attrs": ["reverse"]},
@@ -335,7 +336,7 @@ def colorize(filename, fileType):
     for fileGlob in fileTypesAndColors:
         if fnmatch(filename, fileGlob):
             for colorCode in fileTypesAndColors[fileGlob]:
-                colors.update(colorCodes[colorCode])
+                colors.update(colorCodes[str(colorCode)])
             break # fileGlob found, break out
     else: # no fitting fileGlob found, use one corresponding to fileType
         for colorCode in fileTypesAndColors[fileType]:
