@@ -34,7 +34,6 @@ Plug 'Shougo/vimshell.vim'
 Plug 'Shougo/vimproc', { 'do': 'make' }
 "Plug 'javacomplete'
 Plug 'artur-shaik/vim-javacomplete2'
-Plug 'Syntastic'
 Plug 'surround.vim'
 Plug 'repeat.vim'
 Plug 'vcscommand.vim'
@@ -344,6 +343,13 @@ nnoremap <Leader>b :CtrlPBuffer<cr>
 nnoremap <Leader>m :CtrlPMRUFiles<cr>
 nnoremap <Leader>t :CtrlPTag<cr>
 nnoremap <Leader>f :CtrlPFunky<cr>
+
+" Syntastic """""""""""""""""""""""""""""""
+Plug 'Syntastic'
+let g:syntastic_quiet_messages = { "regex": [
+        \ '\mpossible unwanted space at "{"',
+        \ 'SOME OTHER SYNTASTIC MESSAGE',
+        \ ] }
 
 " Youcompleteme """""""""""""""""""""""""""
 Plug 'Valloric/YouCompleteMe'
