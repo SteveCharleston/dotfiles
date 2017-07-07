@@ -55,6 +55,7 @@ Plug '4Evergreen4/vim-hardy'
 "Plug 'stevearc/vim-arduino'
 Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-speeddating'
+Plug 'cosminadrianpopescu/filesync'
 
 " Color Schemes
 "Plug 'moria'
