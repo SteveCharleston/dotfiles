@@ -353,11 +353,32 @@ let g:syntastic_quiet_messages = { "regex": [
         \ ] }
 
 " Youcompleteme """""""""""""""""""""""""""
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+
+" nvim-completition-manager """""""""""""""
+Plug 'roxma/nvim-completion-manager'
+Plug 'roxma/vim-hug-neovim-rpc'
+
+let g:cm_matcher = get(g:,'cm_matcher',{'module': 'cm_matchers.fuzzy_matcher', 'case': 'smartcase'})
+let g:cm_refresh_default_min_word_len=2 " Trigger the popup after typing 2 characters
+
+au User CmSetup call cm#register_source({'name' : 'cm-java',
+		\ 'priority': 9, 
+		\ 'scoping': 0,
+		\ 'scopes': ['java'],
+		\ 'abbreviation': 'java',
+		\ 'cm_refresh_patterns': ['\w\+\.$'],
+		\ 'cm_refresh': {'omnifunc': 'javacomplete#Complete'},
+		\ })
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+
+" Ultisnips """""""""""""""""""""""""""""""
 Plug 'SirVer/ultisnips'
 Plug 'SteveCharleston/vim-snippets'
-
 let g:UltiSnipsExpandTrigger="<c-k>"
 let g:UltiSnipsJumpForwardTrigger="<c-k>"
 let g:UltiSnipsJumpBackwardTrigger="<c-j>"
