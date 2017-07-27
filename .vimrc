@@ -19,13 +19,13 @@ endif
 
 call plug#begin('~/.vim/bundle')
 
-Plug 'ref.vim'
-Plug 'Gundo', { 'on': 'GundoToggle' }
+Plug 'vim-scripts/ref.vim'
+Plug 'vim-scripts/Gundo', { 'on': 'GundoToggle' }
 "Plug 'Finder-for-vim'
-Plug 'rainbow_parentheses.vim'
+Plug 'vim-scripts/rainbow_parentheses.vim'
 "Plug 'visual-increment'
-Plug 'Python-2.x-Standard-Library-Reference'
-Plug 'htmlspecialchars'
+Plug 'vim-scripts/Python-2.x-Standard-Library-Reference'
+Plug 'vim-scripts/htmlspecialchars'
 "Plug 'Shougo/neocomplcache'
 "Plug 'Shougo/neocomplete'
 "Plug 'Shougo/neosnippet'
@@ -34,9 +34,9 @@ Plug 'Shougo/vimshell.vim'
 Plug 'Shougo/vimproc', { 'do': 'make' }
 "Plug 'javacomplete'
 Plug 'artur-shaik/vim-javacomplete2'
-Plug 'surround.vim'
-Plug 'repeat.vim'
-Plug 'vcscommand.vim'
+Plug 'vim-scripts/surround.vim'
+Plug 'vim-scripts/repeat.vim'
+Plug 'vim-scripts/vcscommand.vim'
 "Plug 'ShowMarks'
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 Plug 'paranoida/vim-airlineish'
@@ -61,7 +61,7 @@ Plug 'cosminadrianpopescu/filesync'
 "Plug 'moria'
 "Plug 'Solarized'
 "Plug 'sonoma.vim'
-Plug 'peaksea'
+Plug 'vim-scripts/peaksea'
 "Plug 'gosukiwi/vim-atom-dark'
 "Plug 'vim-scripts/desertEx'
 "Plug 'toupeira/vim-desertink'
@@ -247,7 +247,7 @@ command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDtree
-Plug 'The-NERD-tree', { 'on': 'NERDTreeToggle' }
+Plug 'vim-scripts/The-NERD-tree', { 'on': 'NERDTreeToggle' }
 let NERDTreeChDirMode=2
 let NERDTreeShowBookmarks=2
 let NERDTreeMinimalUI=1
@@ -279,7 +279,7 @@ highlight NERDTreeClosable guifg=#00AFFF ctermfg=39 gui=BOLD cterm=BOLD
 
 
 " Tag list """"""""""""""""""""""""""""""""""""""""
-Plug 'taglist.vim', { 'on': 'TlistToggle' }
+Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
 let Tlist_Auto_Open=0	" Automatically Open the Tag List
 let Tlist_Exist_OnlyWindow = 1 " if you are the last, kill yourself 
 
@@ -307,7 +307,7 @@ let g:SrcExpl_searchLocalDef = 1
 
 
 " Tagbar     """"""""""""""""""""""""""""""""""""""
-Plug 'Tagbar'
+Plug 'vim-scripts/Tagbar'
 let g:tagbar_left=0
 let g:tagbar_singleclick=1
 
@@ -346,34 +346,34 @@ nnoremap <Leader>t :CtrlPTag<cr>
 nnoremap <Leader>f :CtrlPFunky<cr>
 
 " Syntastic """""""""""""""""""""""""""""""
-Plug 'Syntastic'
+Plug 'vim-scripts/Syntastic'
 let g:syntastic_quiet_messages = { "regex": [
         \ '\mpossible unwanted space at "{"',
         \ 'SOME OTHER SYNTASTIC MESSAGE',
         \ ] }
 
 " Youcompleteme """""""""""""""""""""""""""
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 
 " nvim-completition-manager """""""""""""""
-"Plug 'roxma/nvim-completion-manager'
-"Plug 'roxma/vim-hug-neovim-rpc'
-"
-"let g:cm_matcher = get(g:,'cm_matcher',{'module': 'cm_matchers.fuzzy_matcher', 'case': 'smartcase'})
-"let g:cm_refresh_default_min_word_len=2 " Trigger the popup after typing 2 characters
-"
-"au User CmSetup call cm#register_source({'name' : 'cm-java',
-"		\ 'priority': 9, 
-"		\ 'scoping': 0,
-"		\ 'scopes': ['java'],
-"		\ 'abbreviation': 'java',
-"		\ 'cm_refresh_patterns': ['\w\+\.$'],
-"		\ 'cm_refresh': {'omnifunc': 'javacomplete#Complete'},
-"		\ })
-"
-"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+Plug 'roxma/nvim-completion-manager'
+Plug 'roxma/vim-hug-neovim-rpc'
+
+let g:cm_matcher = get(g:,'cm_matcher',{'module': 'cm_matchers.fuzzy_matcher', 'case': 'smartcase'})
+let g:cm_refresh_default_min_word_len=2 " Trigger the popup after typing 2 characters
+
+au User CmSetup call cm#register_source({'name' : 'cm-java',
+		\ 'priority': 9, 
+		\ 'scoping': 0,
+		\ 'scopes': ['java'],
+		\ 'abbreviation': 'java',
+		\ 'cm_refresh_patterns': ['\w\+\.$'],
+		\ 'cm_refresh': {'omnifunc': 'javacomplete#Complete'},
+		\ })
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 
 " Ultisnips """""""""""""""""""""""""""""""
@@ -600,7 +600,7 @@ let g:jedi#show_call_signatures = "0"
 let g:jedi#show_call_signatures = 2
 
 " perl.vim """""""""""""""""""""""""""""""""""""
-Plug 'perl.vim'
+Plug 'vim-scripts/perl.vim'
 "Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 let perl_include_pod = 1
 let perl_extended_vars = 1
