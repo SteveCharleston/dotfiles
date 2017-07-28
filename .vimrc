@@ -432,7 +432,8 @@ let g:tex_flavor='latex'
         \ ]
 
 " Clang """""""""""""""""""""""""""""""""""
-Plug 'justmao945/vim-clang'
+"Plug 'justmao945/vim-clang'
+Plug 'roxma/clang_complete'
 let g:clang_auto = 0
 let g:clang_c_completeopt = 'menuone,preview'
 let g:clang_cpp_completeopt = 'menuone,preview'
