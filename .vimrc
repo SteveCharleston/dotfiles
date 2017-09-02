@@ -56,6 +56,7 @@ Plug '4Evergreen4/vim-hardy'
 Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-speeddating'
 Plug 'cosminadrianpopescu/filesync'
+Plug 'johngrib/vim-game-code-break'
 
 " Color Schemes
 "Plug 'moria'
@@ -138,7 +139,8 @@ set selection=inclusive
 set updatetime=5000
 set whichwrap=b,s,<,>,[,]
 
-let mapleader = "\<tab>"
+"let mapleader = "\<tab>"
+let mapleader = " "
 
 " load indentation rules and plugins according to the detected filetype.
 if has("autocmd")
@@ -198,6 +200,7 @@ imap syso System.out.println();<LEFT><LEFT>
 "inoremap ;; <end>;
 inoremap ;<cr> <C-o>A;<C-o>A<cr>
 inoremap ;; <C-o>A;
+inoremap <C-l> <C-k>
 nnoremap <F9> :make<cr>
 
 " Faster Scrolling
@@ -540,9 +543,10 @@ endif
 "Plugin 'EasyMotion'
 "nnoremap <Space> H:call EasyMotion#F(0, 0)<CR>
 Plug 'Lokaltog/vim-easymotion'
-nmap <Space> <Plug>(easymotion-bd-f)
-nmap <Space><Space> <Plug>(easymotion-jumptoanywhere)
-nmap <Leader>w <Plug>(easymotion-jumptoanywhere)
+"nmap <Space> <Plug>(easymotion-bd-f)
+"nmap <Space><Space> <Plug>(easymotion-jumptoanywhere)
+"nmap <Leader>w <Plug>(easymotion-jumptoanywhere)
+nmap <Leader>w <Plug>(easymotion-bd-f)
 let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz'
 
 
