@@ -344,6 +344,7 @@ let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:25,results:25'
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_open_multiple_files = '2i'
 nnoremap <Leader>b :CtrlPBuffer<cr>
+nnoremap <Leader>j :CtrlPBuffer<cr>
 nnoremap <Leader>m :CtrlPMRUFiles<cr>
 nnoremap <Leader>t :CtrlPTag<cr>
 nnoremap <Leader>f :CtrlPFunky<cr>
