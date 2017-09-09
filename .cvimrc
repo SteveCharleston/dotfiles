@@ -1,0 +1,13 @@
+set smartcase
+set incsearch
+set numerichints
+set typelinkhints
+set autohidecursor
+set autofocus
+set barposition "bottom"
+map <C-n> nextTab
+map <C-p> previousTab
+map <C-u> scrollPageUp
+map <C-d> scrollPageDown
+map d closeTab
+map u lastClosedTab
