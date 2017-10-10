@@ -367,6 +367,19 @@ Plug 'roxma/vim-hug-neovim-rpc'
 let g:cm_matcher = get(g:,'cm_matcher',{'module': 'cm_matchers.fuzzy_matcher', 'case': 'smartcase'})
 let g:cm_refresh_default_min_word_len=2 " Trigger the popup after typing 2 characters
 
+augroup my_cm_setup
+    autocmd!
+    autocmd User CmSetup call cm#register_source({
+                \ 'name' : 'vimtex',
+                \ 'priority': 8,
+                \ 'scoping': 1,
+                \ 'scopes': ['tex'],
+                \ 'abbreviation': 'tex',
+                \ 'cm_refresh_patterns': g:vimtex#re#ncm,
+                \ 'cm_refresh': {'omnifunc': 'vimtex#complete#omnifunc'},
+                \ })
+augroup END
+
 au User CmSetup call cm#register_source({'name' : 'cm-java',
 		\ 'priority': 9, 
 		\ 'scoping': 0,
