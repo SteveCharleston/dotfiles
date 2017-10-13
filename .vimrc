@@ -57,6 +57,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-speeddating'
 Plug 'cosminadrianpopescu/filesync'
 Plug 'johngrib/vim-game-code-break'
+Plug 'jceb/vim-orgmode'
 
 " Color Schemes
 "Plug 'moria'
