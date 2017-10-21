@@ -57,7 +57,6 @@ Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-speeddating'
 Plug 'cosminadrianpopescu/filesync'
 Plug 'johngrib/vim-game-code-break'
-Plug 'jceb/vim-orgmode'
 
 " Color Schemes
 "Plug 'moria'
@@ -563,6 +562,13 @@ Plug 'Lokaltog/vim-easymotion'
 "nmap <Leader>w <Plug>(easymotion-jumptoanywhere)
 nmap <Leader>w <Plug>(easymotion-bd-f)
 let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz'
+
+" Orgmode """"""""""""""""""""""""""""""""""
+Plug 'jceb/vim-orgmode'
+Plug 'vim-scripts/utl.vim'
+Plug 'tpope/vim-repeat'
+Plug 'mattn/calendar-vim'
+Plug 'inkarkat/vim-SyntaxRange'
 
 
 " TabBar """"""""""""""""""""""""""""""""""
