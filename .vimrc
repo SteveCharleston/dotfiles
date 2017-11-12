@@ -13,7 +13,7 @@ endif
 " neovim stuff
 if has('nvim')
     let g:python2_host_prog = '/usr/bin/python'
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1 
+    set guicursor=
     set termguicolors
 endif
 
@@ -92,7 +92,6 @@ set showmatch		" Show matching brackets.
 set ignorecase		" Do case insensitive matching
 set smartcase           " But still be intelligent about matchin But still be intelligent about matching
 set mouse=a		" Enable mouse usage (all modes)
-set ttymouse=sgr        " Resize splits inside tmux
 set sw=4		" space indentation wide 4
 set hlsearch		" Highlight search items
 set incsearch		" Incremental search, start searching as soon as I type
@@ -121,6 +120,10 @@ set guioptions=ci
 set tags=./tags;
 set undofile            " Maintain  history between sessions
 set iskeyword=@,48-57,_,192-255
+
+if !has('nvim')
+    set ttymouse=sgr        " Resize splits inside tmux
+endif
 
 
 " Arbeit
@@ -385,7 +388,7 @@ au User CmSetup call cm#register_source({'name' : 'cm-java',
 		\ 'scoping': 0,
 		\ 'scopes': ['java'],
 		\ 'abbreviation': 'java',
-		\ 'cm_refresh_patterns': ['\w\+\.$'],
+		\ 'cm_refresh_patterns': ['\w\+\.'],
 		\ 'cm_refresh': {'omnifunc': 'javacomplete#Complete'},
 		\ })
 
@@ -548,7 +551,7 @@ let g:clang_cpp_completeopt = 'menuone,preview'
 
 " For snippet_complete marker.
 if has('conceal')
-  set conceallevel=2 concealcursor=i
+  set conceallevel=0 concealcursor=i
 endif
 
 "let g:neocomplete#force_overwrite_completefunc=1
@@ -727,7 +730,7 @@ call plug#end()
 set t_Co=256
 set background=dark
 color gruvbox
-highlight ColorColumn guibg=gray86
+highlight ColorColumn guibg=gray20
 highlight ColorColumn ctermbg=236
 hi VertSplit ctermbg=bg cterm=none
 hi SignColumn ctermbg=none
