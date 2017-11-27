@@ -357,11 +357,11 @@ nnoremap <Leader>t :CtrlPTag<cr>
 nnoremap <Leader>f :CtrlPFunky<cr>
 
 " Ale """""""""""""""""""""""""""""""""""""
-"Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 
 " Syntastic """""""""""""""""""""""""""""""
 "Plug 'vim-scripts/Syntastic'
-Plug 'vim-syntastic/syntastic'
+"Plug 'vim-syntastic/syntastic'
 let g:syntastic_quiet_messages = { "regex": [
         \ '\mpossible unwanted space at "{"',
         \ 'SOME OTHER SYNTASTIC MESSAGE',
@@ -660,20 +660,19 @@ endif
 let g:ack_use_dispatch = 1
 
 " minibufexpl """""""""""""""""""""""""""""""""""""
-Plug 'techlivezheng/vim-plugin-minibufexpl'
+"Plug 'techlivezheng/vim-plugin-minibufexpl'
 " switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
-for buffer_no in range(1, 9)
-  execute "nmap <A-" . buffer_no . "> :b" . buffer_no . "\<CR>"
-endfor
+"for buffer_no in range(1, 9)
+"  execute "nmap <A-" . buffer_no . "> :b" . buffer_no . "\<CR>"
+"endfor
 
 " switching to buffer 10 - 100 is mapped to ,0[nOfBuffer]
-for buffer_no in range(10, 100)
-  execute "nmap <A-0" . buffer_no . "> :b" . buffer_no . "\<CR>"
-endfor
+"for buffer_no in range(10, 100)
+"  execute "nmap <A-0" . buffer_no . "> :b" . buffer_no . "\<CR>"
+"endfor
 
 "Plug 'Raimondi/delimitMate'
 "let delimitMate_expand_cr = 1
-
 Plug 'cohama/lexima.vim'
 
 " Airline + Tabline """""""""""""""""""""""""""""
@@ -684,7 +683,8 @@ Plug 'bling/vim-airline'
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-let g:airline_theme = 'airlineish'
+"let g:airline_theme = 'airlineish'
+let g:airline_theme = 'dark'
 
 " unicode symbols
 "let g:airline_left_sep = '▶'
