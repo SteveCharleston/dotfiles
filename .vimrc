@@ -41,7 +41,7 @@ Plug 'juneedahamed/vc.vim'
 "Plug 'ShowMarks'
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 Plug 'paranoida/vim-airlineish'
-Plug 'dansomething/vim-eclim'
+"Plug 'dansomething/vim-eclim'
 "Plug 'https://github.com/jaxbot/browserlink.vim'
 Plug 'hsanson/vim-android'
 Plug 'tpope/vim-fugitive'
@@ -58,6 +58,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-speeddating'
 Plug 'cosminadrianpopescu/filesync'
 Plug 'johngrib/vim-game-code-break'
+Plug 'vim-scripts/tcd.vim'
 
 " Color Schemes
 "Plug 'moria'
@@ -254,12 +255,14 @@ command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDtree
-Plug 'vim-scripts/The-NERD-tree', { 'on': 'NERDTreeToggle' }
+"Plug 'vim-scripts/The-NERD-tree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 let NERDTreeChDirMode=2
 let NERDTreeShowBookmarks=2
 let NERDTreeMinimalUI=1
 let NERDTreeHijackNetrw=0
 let g:NERDTreeDirArrows = 0
+let NERDTreeCascadeSingleChildDir=0
 "
 " NERDTree Colors
 function! NThl(mtch, cs)
@@ -347,14 +350,19 @@ let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:25,results:25'
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_open_multiple_files = '2i'
+let g:ctrlp_custom_ignore = '\v.+\.(aux|fls|fdb_latexmk|gls|glo|glg|out|log|ind|gz|toc|pdf|ilg|idx|dvi|xdy|ist|alg|acr|acn)'
 nnoremap <Leader>b :CtrlPBuffer<cr>
 nnoremap <Leader>g :CtrlPBuffer<cr>
 nnoremap <Leader>m :CtrlPMRUFiles<cr>
 nnoremap <Leader>t :CtrlPTag<cr>
 nnoremap <Leader>f :CtrlPFunky<cr>
 
+" Ale """""""""""""""""""""""""""""""""""""
+Plug 'w0rp/ale'
+
 " Syntastic """""""""""""""""""""""""""""""
-Plug 'vim-scripts/Syntastic'
+"Plug 'vim-scripts/Syntastic'
+"Plug 'vim-syntastic/syntastic'
 let g:syntastic_quiet_messages = { "regex": [
         \ '\mpossible unwanted space at "{"',
         \ 'SOME OTHER SYNTASTIC MESSAGE',
@@ -626,7 +634,7 @@ let g:jedi#popup_select_first = 0
 let g:jedi#popup_on_dot = 0
 let g:jedi#completions_enabled = 0
 let g:jedi#auto_vim_configuration = 0
-let g:jedi#show_call_signatures = "0"
+"let g:jedi#show_call_signatures = "0"
 let g:jedi#show_call_signatures = 2
 let g:jedi#goto_assignments_command = "<leader>a"
 
@@ -654,20 +662,19 @@ endif
 let g:ack_use_dispatch = 1
 
 " minibufexpl """""""""""""""""""""""""""""""""""""
-Plug 'techlivezheng/vim-plugin-minibufexpl'
+"Plug 'techlivezheng/vim-plugin-minibufexpl'
 " switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
-for buffer_no in range(1, 9)
-  execute "nmap <A-" . buffer_no . "> :b" . buffer_no . "\<CR>"
-endfor
+"for buffer_no in range(1, 9)
+"  execute "nmap <A-" . buffer_no . "> :b" . buffer_no . "\<CR>"
+"endfor
 
 " switching to buffer 10 - 100 is mapped to ,0[nOfBuffer]
-for buffer_no in range(10, 100)
-  execute "nmap <A-0" . buffer_no . "> :b" . buffer_no . "\<CR>"
-endfor
+"for buffer_no in range(10, 100)
+"  execute "nmap <A-0" . buffer_no . "> :b" . buffer_no . "\<CR>"
+"endfor
 
 "Plug 'Raimondi/delimitMate'
 "let delimitMate_expand_cr = 1
-
 Plug 'cohama/lexima.vim'
 
 " Airline + Tabline """""""""""""""""""""""""""""
@@ -678,7 +685,8 @@ Plug 'bling/vim-airline'
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-let g:airline_theme = 'airlineish'
+"let g:airline_theme = 'airlineish'
+let g:airline_theme = 'dark'
 
 " unicode symbols
 "let g:airline_left_sep = '▶'
