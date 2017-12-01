@@ -37,6 +37,7 @@ Plug 'artur-shaik/vim-javacomplete2'
 Plug 'vim-scripts/surround.vim'
 Plug 'vim-scripts/repeat.vim'
 Plug 'vim-scripts/vcscommand.vim'
+Plug 'juneedahamed/vc.vim'
 "Plug 'ShowMarks'
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 Plug 'paranoida/vim-airlineish'
@@ -627,6 +628,7 @@ let g:jedi#completions_enabled = 0
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#show_call_signatures = "0"
 let g:jedi#show_call_signatures = 2
+let g:jedi#goto_assignments_command = "<leader>a"
 
 " perl.vim """""""""""""""""""""""""""""""""""""
 Plug 'vim-scripts/perl.vim'
