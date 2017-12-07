@@ -263,6 +263,8 @@ let NERDTreeMinimalUI=1
 let NERDTreeHijackNetrw=0
 let g:NERDTreeDirArrows = 0
 let NERDTreeCascadeSingleChildDir=0
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
 "
 " NERDTree Colors
 function! NThl(mtch, cs)
