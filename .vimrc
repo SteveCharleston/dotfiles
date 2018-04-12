@@ -146,6 +146,7 @@ set whichwrap=b,s,<,>,[,]
 
 "let mapleader = "\<tab>"
 let mapleader = " "
+let maplocalleader="\<space>"
 
 " load indentation rules and plugins according to the detected filetype.
 if has("autocmd")
@@ -263,8 +264,12 @@ let NERDTreeMinimalUI=1
 let NERDTreeHijackNetrw=0
 let g:NERDTreeDirArrows = 0
 let NERDTreeCascadeSingleChildDir=0
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
+"let g:NERDTreeDirArrowExpandable = '▸'
+"let g:NERDTreeDirArrowCollapsible = '▾'
+let g:NERDTreeDirArrowExpandable = '▷'
+let g:NERDTreeDirArrowCollapsible = '▽'
+"let g:NERDTreeDirArrowExpandable = '⟩'
+"let g:NERDTreeDirArrowCollapsible = '∨'
 "
 " NERDTree Colors
 function! NThl(mtch, cs)
@@ -358,6 +363,7 @@ nnoremap <Leader>g :CtrlPBuffer<cr>
 nnoremap <Leader>m :CtrlPMRUFiles<cr>
 nnoremap <Leader>t :CtrlPTag<cr>
 nnoremap <Leader>f :CtrlPFunky<cr>
+nnoremap <Leader>l :CtrlPLine<cr>
 
 " Ale """""""""""""""""""""""""""""""""""""
 Plug 'w0rp/ale'
