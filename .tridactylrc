@@ -1,0 +1,6 @@
+bind j scrollline 3
+bind k scrollline -3
+bind J tabprev
+bind K tabnext
+set hintfiltermode vimperator-reflow
+set hintchars 1234567890
