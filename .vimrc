@@ -37,7 +37,7 @@ Plug 'artur-shaik/vim-javacomplete2'
 Plug 'vim-scripts/surround.vim'
 Plug 'vim-scripts/repeat.vim'
 Plug 'vim-scripts/vcscommand.vim'
-Plug 'juneedahamed/vc.vim'
+"Plug 'juneedahamed/vc.vim'
 "Plug 'ShowMarks'
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 Plug 'paranoida/vim-airlineish'
@@ -59,6 +59,8 @@ Plug 'tpope/vim-speeddating'
 Plug 'cosminadrianpopescu/filesync'
 Plug 'johngrib/vim-game-code-break'
 Plug 'vim-scripts/tcd.vim'
+Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'editorconfig/editorconfig-vim'
 
 " Color Schemes
 "Plug 'moria'
@@ -264,10 +266,10 @@ let NERDTreeMinimalUI=1
 let NERDTreeHijackNetrw=0
 let g:NERDTreeDirArrows = 0
 let NERDTreeCascadeSingleChildDir=0
-"let g:NERDTreeDirArrowExpandable = '▸'
-"let g:NERDTreeDirArrowCollapsible = '▾'
-let g:NERDTreeDirArrowExpandable = '▷'
-let g:NERDTreeDirArrowCollapsible = '▽'
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+"let g:NERDTreeDirArrowExpandable = '▷'
+"let g:NERDTreeDirArrowCollapsible = '▽'
 "let g:NERDTreeDirArrowExpandable = '⟩'
 "let g:NERDTreeDirArrowCollapsible = '∨'
 "
@@ -379,6 +381,16 @@ let g:syntastic_quiet_messages = { "regex": [
 " Youcompleteme """""""""""""""""""""""""""
 "Plug 'Valloric/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+
+" Deoplete """""""""""""""""""
+"if has('nvim')
+"  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"else
+"  Plug 'Shougo/deoplete.nvim'
+"  Plug 'roxma/nvim-yarp'
+"  Plug 'roxma/vim-hug-neovim-rpc'
+"endif
+"let g:deoplete#enable_at_startup = 1
 
 " nvim-completition-manager """""""""""""""
 Plug 'roxma/nvim-completion-manager'
@@ -654,9 +666,14 @@ let perl_extended_vars = 1
 "Plugin 'perl-support.vim'
 "Plugin 'vim-perl'
 
+" TypeScript """""""""""""""""""""""""""""""
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
+let g:tsuquyomi_disable_default_mappings = 1
+
 " Emmet """""""""""""""""""""""""""""""
-"Plug 'mattn/emmet-vim'
-let g:user_emmet_leader_key='<C-m>'
+Plug 'mattn/emmet-vim'
+"let g:user_emmet_leader_key='<C-m>'
 
 " Quickfixsigns """""""""""""""""""""""""""""""""""""
 Plug 'tomtom/quickfixsigns_vim'

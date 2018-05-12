@@ -62,3 +62,10 @@ echo ""
 export QSYS_ROOTDIR="/home/steven/bin/altera/15.0web/quartus/sopc_builder/bin"
 
 export ALTERAOCLSDKROOT="/home/steven/bin/altera/15.0web/hld"
+export ANDROID_HOME=/opt/android/sdk/
+
+###-tns-completion-start-###
+if [ -f /home/steven/.tnsrc ]; then 
+    source /home/steven/.tnsrc 
+fi
+###-tns-completion-end-###
