@@ -1,0 +1,9 @@
+# Insert your preferred key mappings here.
+unmap <C-n>
+map d removeTab
+map <C-n> nextTab
+map <C-p> previousTab
+map <C-d> scrollPageDown
+map <C-u> scrollPageUp
+map b Vomnibar.activateTabSelection
+map u restoreTab
