@@ -121,7 +121,6 @@ set backspace=indent,eol,start " make backspace a more flexible
 set completeopt=menu,preview " display the completition menu and a preview window
 set softtabstop=4 shiftwidth=4 expandtab 
 set omnifunc=syntaxcomplete#Complete
-set completeopt=menuone,preview
 set guioptions=ci
 set tags=./tags;
 set undofile            " Maintain  history between sessions
@@ -384,47 +383,69 @@ let g:syntastic_quiet_messages = { "regex": [
 "Plug 'Valloric/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 
+" Echodoc """""""""""""""""""
+Plug 'Shougo/echodoc.vim'
+set noshowmode
+let g:echodoc_enable_at_startup = 1
+
 " Deoplete """""""""""""""""""
-"if has('nvim')
-"  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"else
-"  Plug 'Shougo/deoplete.nvim'
-"  Plug 'roxma/nvim-yarp'
-"  Plug 'roxma/vim-hug-neovim-rpc'
-"endif
-"let g:deoplete#enable_at_startup = 1
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'zchee/deoplete-jedi'
+Plug 'zchee/deoplete-clang'
+Plug 'Shougo/neco-syntax'
+Plug 'wellle/tmux-complete.vim'
+let g:deoplete#enable_at_startup = 1
+"
+" Use smartcase.
+"call deoplete#custom#option('smart_case', v:true)
+set completeopt-=preview
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
+
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function() abort
+    return deoplete#close_popup() . "\<CR>"
+endfunction
 
 " nvim-completition-manager """""""""""""""
-Plug 'roxma/nvim-completion-manager'
-Plug 'roxma/vim-hug-neovim-rpc'
+"Plug 'roxma/nvim-completion-manager'
+"Plug 'roxma/vim-hug-neovim-rpc'
+"
+"let g:cm_matcher = get(g:,'cm_matcher',{'module': 'cm_matchers.fuzzy_matcher', 'case': 'smartcase'})
+"let g:cm_refresh_default_min_word_len=2 " Trigger the popup after typing 2 characters
+"
+"augroup my_cm_setup
+"    autocmd!
+"    autocmd User CmSetup call cm#register_source({
+"                \ 'name' : 'vimtex',
+"                \ 'priority': 8,
+"                \ 'scoping': 1,
+"                \ 'scopes': ['tex'],
+"                \ 'abbreviation': 'tex',
+"                \ 'cm_refresh_patterns': g:vimtex#re#ncm,
+"                \ 'cm_refresh': {'omnifunc': 'vimtex#complete#omnifunc'},
+"                \ })
+"augroup END
+"
+"au User CmSetup call cm#register_source({'name' : 'cm-java',
+"		\ 'priority': 9, 
+"		\ 'scoping': 0,
+"		\ 'scopes': ['java'],
+"		\ 'abbreviation': 'java',
+"		\ 'cm_refresh_patterns': ['\w\+\.'],
+"		\ 'cm_refresh': {'omnifunc': 'javacomplete#Complete'},
+"		\ })
 
-let g:cm_matcher = get(g:,'cm_matcher',{'module': 'cm_matchers.fuzzy_matcher', 'case': 'smartcase'})
-let g:cm_refresh_default_min_word_len=2 " Trigger the popup after typing 2 characters
-
-augroup my_cm_setup
-    autocmd!
-    autocmd User CmSetup call cm#register_source({
-                \ 'name' : 'vimtex',
-                \ 'priority': 8,
-                \ 'scoping': 1,
-                \ 'scopes': ['tex'],
-                \ 'abbreviation': 'tex',
-                \ 'cm_refresh_patterns': g:vimtex#re#ncm,
-                \ 'cm_refresh': {'omnifunc': 'vimtex#complete#omnifunc'},
-                \ })
-augroup END
-
-au User CmSetup call cm#register_source({'name' : 'cm-java',
-		\ 'priority': 9, 
-		\ 'scoping': 0,
-		\ 'scopes': ['java'],
-		\ 'abbreviation': 'java',
-		\ 'cm_refresh_patterns': ['\w\+\.'],
-		\ 'cm_refresh': {'omnifunc': 'javacomplete#Complete'},
-		\ })
-
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 
 " Ultisnips """""""""""""""""""""""""""""""
@@ -650,7 +671,7 @@ vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
 "inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " jedi-vim """""""""""""""""""""""""""""""""""""
-Plug 'davidhalter/jedi-vim'
+"Plug 'davidhalter/jedi-vim' " comment out with deoplete
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_select_first = 0
 let g:jedi#popup_on_dot = 0
