@@ -13,8 +13,10 @@ endif
 " neovim stuff
 if has('nvim')
     let g:python2_host_prog = '/usr/bin/python'
-    set guicursor=
     set termguicolors
+    set guicursor=
+    autocmd OptionSet guicursor noautocmd set guicursor=
+    let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
 endif
 
 call plug#begin('~/.vim/bundle')
@@ -60,7 +62,7 @@ Plug 'cosminadrianpopescu/filesync'
 Plug 'johngrib/vim-game-code-break'
 Plug 'vim-scripts/tcd.vim'
 Plug 'JamshedVesuna/vim-markdown-preview'
-Plug 'editorconfig/editorconfig-vim'
+"Plug 'editorconfig/editorconfig-vim'
 
 " Color Schemes
 "Plug 'moria'
@@ -667,9 +669,15 @@ let perl_extended_vars = 1
 "Plugin 'vim-perl'
 
 " TypeScript """""""""""""""""""""""""""""""
-Plug 'leafgarland/typescript-vim'
-Plug 'Quramy/tsuquyomi'
-let g:tsuquyomi_disable_default_mappings = 1
+if has('nvim')
+    Plug 'mhartington/nvim-typescript'
+    Plug 'HerringtonDarkholme/yats.vim'
+else
+    "Plug 'leafgarland/typescript-vim'
+    Plug 'HerringtonDarkholme/yats.vim'
+    Plug 'Quramy/tsuquyomi'
+    let g:tsuquyomi_disable_default_mappings = 1
+endif
 
 " Emmet """""""""""""""""""""""""""""""
 Plug 'mattn/emmet-vim'
