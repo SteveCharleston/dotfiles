@@ -348,6 +348,13 @@ nnoremap  :FSHere<cr>
 " PlantUML """""""""""""""""""""""""""""""""""""
 Plug 'aklt/plantuml-syntax'
 
+" Denite  """""""""""""""""""""""""""""""""""
+"Plug 'Shougo/denite.nvim'
+"map <C-p> :Denite file/rec<cr>
+"nnoremap <Leader>b :Denite buffer<cr>
+"nnoremap <Leader>g :Denite buffer<cr>
+
+
 " Unite  """""""""""""""""""""""""""""""""""
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
@@ -401,7 +408,7 @@ Plug 'zchee/deoplete-clang'
 Plug 'Shougo/neco-syntax'
 Plug 'wellle/tmux-complete.vim'
 let g:deoplete#enable_at_startup = 1
-"
+
 " Use smartcase.
 "call deoplete#custom#option('smart_case', v:true)
 set completeopt-=preview
@@ -690,12 +697,12 @@ let perl_extended_vars = 1
 "Plugin 'vim-perl'
 
 " TypeScript """""""""""""""""""""""""""""""
+Plug 'HerringtonDarkholme/yats.vim'
+
 if has('nvim')
-    Plug 'mhartington/nvim-typescript'
-    Plug 'HerringtonDarkholme/yats.vim'
+    "Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
+    Plug 'runoshun/tscompletejob'
 else
-    "Plug 'leafgarland/typescript-vim'
-    Plug 'HerringtonDarkholme/yats.vim'
     Plug 'Quramy/tsuquyomi'
     let g:tsuquyomi_disable_default_mappings = 1
 endif
@@ -799,3 +806,153 @@ highlight ColorColumn ctermbg=236
 hi VertSplit ctermbg=bg cterm=none
 hi SignColumn ctermbg=none
 set fillchars=vert:\│,fold:-
+
+" denite extra options
+"call denite#custom#option('default', 'prompt', '> ')
+"call denite#custom#option('default', 'empty', 0)
+"call denite#custom#option('default', 'auto_resize', 1)
+"call denite#custom#option('default', 'auto_resume', 1)
+"
+"" Change file_rec matcher
+"call denite#custom#source('line', 'matchers', ['matcher_regexp'])
+"call denite#custom#source('file_rec, redis_mru', 'sorters', ['sorter/sublime'])
+"
+"call denite#custom#map(
+"      \ 'insert',
+"      \ '<C-a>',
+"      \ '<denite:move_caret_to_head>',
+"      \ 'noremap'
+"      \)
+"
+"call denite#custom#map(
+"      \ 'insert',
+"      \ '<C-j>',
+"      \ '<denite:move_to_next_line>',
+"      \ 'noremap'
+"      \)
+"
+"call denite#custom#map(
+"      \ 'insert',
+"      \ '<C-k>',
+"      \ '<denite:move_to_previous_line>',
+"      \ 'noremap'
+"      \)
+"
+"call denite#custom#map(
+"      \ 'insert',
+"      \ '<C-s>',
+"      \ '<denite:do_action:vsplit>',
+"      \ 'noremap'
+"      \)
+"
+"call denite#custom#map(
+"      \ 'insert',
+"      \ '<C-t>',
+"      \ '<denite:do_action:tabopen>',
+"      \ 'noremap'
+"      \)
+"
+"call denite#custom#map(
+"      \ 'insert',
+"      \ '<C-d>',
+"      \ '<denite:do_action:delete>',
+"      \ 'noremap'
+"      \)
+"
+"call denite#custom#map(
+"      \ 'insert',
+"      \ '<C-b>',
+"      \ '<denite:scroll_page_backwards>',
+"      \ 'noremap'
+"      \)
+"
+"call denite#custom#map(
+"      \ 'insert',
+"      \ '<C-f>',
+"      \ '<denite:scroll_page_forwards>',
+"      \ 'noremap'
+"      \)
+"
+"call denite#custom#map(
+"      \ 'insert',
+"      \ '<C-p>',
+"      \ '<denite:print_messages>',
+"      \ 'noremap'
+"      \)
+"
+"call denite#custom#map(
+"      \ 'normal',
+"      \ '<C-j>',
+"      \ '<denite:wincmd:j>',
+"      \ 'noremap'
+"      \)
+"
+"call denite#custom#map(
+"      \ 'normal',
+"      \ '<C-k>',
+"      \ '<denite:wincmd:k>',
+"      \ 'noremap'
+"      \)
+"
+"call denite#custom#map(
+"      \ 'normal',
+"      \ '<esc>',
+"      \ '<denite:quit>',
+"      \ 'noremap'
+"      \)
+"
+"call denite#custom#map(
+"      \ 'normal',
+"      \ 'a',
+"      \ '<denite:do_action:add>',
+"      \ 'noremap'
+"      \)
+"
+"call denite#custom#map(
+"      \ 'normal',
+"      \ 'd',
+"      \ '<denite:do_action:delete>',
+"      \ 'noremap'
+"      \)
+"
+"call denite#custom#map(
+"      \ 'normal',
+"      \ 'r',
+"      \ '<denite:do_action:reset>',
+"      \ 'noremap'
+"      \)
+"
+"call denite#custom#map(
+"      \ 'normal',
+"      \ 's',
+"      \ '<denite:do_action:vsplit>',
+"      \ 'noremap'
+"      \)
+"
+"call denite#custom#map(
+"      \ 'normal',
+"      \ 'e',
+"      \ '<denite:do_action:edit>',
+"      \ 'noremap'
+"      \)
+"
+"call denite#custom#map(
+"      \ 'normal',
+"      \ 'h',
+"      \ '<denite:do_action:help>',
+"      \ 'noremap'
+"      \)
+"
+"call denite#custom#map(
+"      \ 'normal',
+"      \ 'u',
+"      \ '<denite:do_action:update>',
+"      \ 'noremap'
+"      \)
+"
+"call denite#custom#map(
+"      \ 'normal',
+"      \ 'f',
+"      \ '<denite:do_action:find>',
+"      \ 'noremap'
+"\)
