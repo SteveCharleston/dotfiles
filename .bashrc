@@ -54,7 +54,7 @@ alias ll='ls -lF'
 alias la='ls -A'
 alias l='ls -CF'
 
-export PATH=$HOME/bin/vim/bin:$HOME/bin:$PATH
+export PATH=$HOME/bin/vim/bin:$HOME/bin:/opt/android/sdk/tools:/opt/android/sdk/tools/bin:$PATH
 
 command -v fortune > /dev/null 2>&1 && /usr/bin/env fortune
 echo ""
@@ -62,7 +62,11 @@ echo ""
 export QSYS_ROOTDIR="/home/steven/bin/altera/15.0web/quartus/sopc_builder/bin"
 
 export ALTERAOCLSDKROOT="/home/steven/bin/altera/15.0web/hld"
+
+# Nativescript Dev
 export ANDROID_HOME=/opt/android/sdk/
+export JAVA_HOME=$(update-alternatives --query javac | sed -n -e 's/Value: *\(.*\)\/bin\/javac/\1/p')
+function emulator { cd "$(dirname "$(which emulator)")" && ./emulator "$@"; }
 
 ###-tns-completion-start-###
 if [ -f /home/steven/.tnsrc ]; then 
