@@ -62,6 +62,8 @@ Plug 'cosminadrianpopescu/filesync'
 Plug 'johngrib/vim-game-code-break'
 Plug 'vim-scripts/tcd.vim'
 Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'dyng/ctrlsf.vim'
+Plug 'vim-vdebug/vdebug'
 "Plug 'editorconfig/editorconfig-vim'
 
 " Color Schemes
@@ -380,6 +382,8 @@ Plug 'ncm2/ncm2'
 " ncm2 requires nvim-yarp
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-pyclang'
+let g:ncm2_pyclang#library_path = '/usr/lib/llvm-6.0/lib/libclang.so.1'
 
 " enable ncm2 for all buffer
 autocmd BufEnter * call ncm2#enable_for_buffer()
@@ -535,7 +539,7 @@ let g:tex_flavor='latex'
 
 " Clang """""""""""""""""""""""""""""""""""
 "Plug 'justmao945/vim-clang'
-Plug 'roxma/clang_complete'
+"Plug 'roxma/clang_complete'
 let g:clang_auto = 0
 let g:clang_c_completeopt = 'menuone,preview'
 let g:clang_cpp_completeopt = 'menuone,preview'
