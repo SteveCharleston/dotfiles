@@ -53,6 +53,8 @@ alias egrep='egrep --colour=auto'
 alias ll='ls -lF'
 alias la='ls -A'
 alias l='ls -CF'
+alias apt='sudo apt'
+alias apt-get='sudo apt-get'
 
 export PATH=$HOME/bin/vim/bin:$HOME/bin:/opt/android/sdk/tools:/opt/android/sdk/tools/bin:$PATH
 
