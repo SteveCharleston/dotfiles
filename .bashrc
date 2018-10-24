@@ -65,7 +65,7 @@ export ALTERAOCLSDKROOT="/home/steven/bin/altera/15.0web/hld"
 
 # Nativescript Dev
 export ANDROID_HOME=/opt/android/sdk/
-export JAVA_HOME=$(update-alternatives --query javac | sed -n -e 's/Value: *\(.*\)\/bin\/javac/\1/p')
+#export JAVA_HOME=$(update-alternatives --query javac | sed -n -e 's/Value: *\(.*\)\/bin\/javac/\1/p')
 function emulator { cd "$(dirname "$(which emulator)")" && ./emulator "$@"; }
 
 ###-tns-completion-start-###
@@ -73,3 +73,6 @@ if [ -f /home/steven/.tnsrc ]; then
     source /home/steven/.tnsrc 
 fi
 ###-tns-completion-end-###
+if command -v ct; then
+    ssh() { /usr/bin/ssh $* | ct; }
+fi
