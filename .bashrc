@@ -75,6 +75,6 @@ if [ -f /home/steven/.tnsrc ]; then
     source /home/steven/.tnsrc 
 fi
 ###-tns-completion-end-###
-if command -v ct; then
+if command -v ct &> /dev/null; then
     ssh() { /usr/bin/ssh $* | ct; }
 fi
