@@ -46,7 +46,6 @@ Plug 'paranoida/vim-airlineish'
 "Plug 'dansomething/vim-eclim'
 "Plug 'https://github.com/jaxbot/browserlink.vim'
 Plug 'hsanson/vim-android'
-Plug 'tpope/vim-fugitive'
 Plug 'tmatilai/vim-monit'
 Plug 'tpope/vim-dispatch'
 Plug 'justinmk/vim-gtfo'
@@ -336,6 +335,10 @@ Plug 'aklt/plantuml-syntax'
 "nnoremap <Leader>b :Denite buffer<cr>
 "nnoremap <Leader>g :Denite buffer<cr>
 
+" Git  """""""""""""""""""""""""""""""""""
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
+Plug 'gregsexton/gitv', {'on': ['Gitv']}
 
 " Unite  """""""""""""""""""""""""""""""""""
 Plug 'ctrlpvim/ctrlp.vim'
