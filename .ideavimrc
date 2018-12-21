@@ -1,0 +1,21 @@
+imap jk <esc>l
+imap jj <esc>l
+map <C-p> :action SearchEverywhere<cr>
+map <Space>g :action GotoFile<cr>
+map <Space>f :action FileStructurePopup<cr>
+
+nmap <A-h> <c-w>h
+nmap <A-l> <c-w>l
+nmap <A-k> <c-w>k
+nmap <A-j> <c-w>j
+
+
+let mapleader = " "
+
+"imap syso System.out.println();<LEFT><LEFT>
+set nu
+set incsearch
+set hlsearch
+set ignorecase		" Do case insensitive matching
+set smartcase           " But still be intelligent about matchin But still be intelligent about matching
+set surround

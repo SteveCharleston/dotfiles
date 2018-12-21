@@ -19,6 +19,7 @@ link_if_missing $PWD/.vim $HOME/.vim
 link_if_missing $PWD/.bashrc $HOME/.bashrc
 link_if_missing $PWD/.tmux.conf $HOME/.tmux.conf
 link_if_missing $PWD/.minttyrc $HOME/.minttyrc
+link_if_missing $PWD/.ideavimrc $HOME/.ideavimrc
 
 link_if_missing $PWD/bin/mytree.py $HOME/bin/tree
 chmod 0755 $HOME/bin/tree
