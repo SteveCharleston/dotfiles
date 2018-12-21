@@ -1,8 +1,8 @@
 imap jk <esc>l
 imap jj <esc>l
-map <C-p> :action SearchEverywhere<cr>
-map <Space>g :action GotoFile<cr>
-map <Space>f :action FileStructurePopup<cr>
+nmap <C-p> :action SearchEverywhere<cr>
+nmap <Space>g :action GotoFile<cr>
+nmap <Space>f :action FileStructurePopup<cr>
 
 nmap <A-h> <c-w>h
 nmap <A-l> <c-w>l

@@ -411,6 +411,7 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " some completion sources
+Plug 'ObserverOfTime/ncm2-jc2', {'for': ['java', 'jsp']}
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-tmux'
 Plug 'ncm2/ncm2-path'
@@ -539,6 +540,9 @@ let g:tex_flavor='latex'
         \ 're!\\documentclass(\s*\[[^]]*\])?\s*\{[^}]*',
         \ 're!\\[A-Za-z]*',
         \ ]
+
+" Languagetool  """""""""""""""""""""""""""""""""""
+Plug 'rhysd/vim-grammarous'
 
 " Clang """""""""""""""""""""""""""""""""""
 "Plug 'justmao945/vim-clang'
