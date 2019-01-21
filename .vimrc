@@ -238,6 +238,11 @@ nmap <silent> l :wincmd l<CR>
 nmap <silent> < :wincmd <<CR>
 nmap <silent> > :wincmd ><CR>
 
+" terminal mappings
+tnoremap jk <C-\><C-n>
+set termwinkey=<C-j>
+hi Terminal ctermbg=black ctermfg=lightgray guibg=black guifg=lightgrey
+
 " Commands
 function! s:ExecuteInShell(command)
   let command = join(map(split(a:command), 'expand(v:val)'))
@@ -362,6 +367,16 @@ nnoremap <Leader>l :CtrlPLine<cr>
 
 " Ale """""""""""""""""""""""""""""""""""""
 Plug 'w0rp/ale'
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_set_highlights = 0
+let g:ale_sign_error = '•'
+let g:ale_sign_warning = '•'
+let g:ale_java_javac_classpath = '/home/steven/bin/android/sdk/platforms/android-28/android.jar'
+let b:ale_fixers = ['autopep8', 'yapf']
+
+" neomake """""""""""""""""""""""""""""""""""""
+"Plug 'neomake/neomake'
 
 " Syntastic """""""""""""""""""""""""""""""
 "Plug 'vim-scripts/Syntastic'
@@ -755,7 +770,8 @@ Plug 'mattn/emmet-vim'
 
 " Quickfixsigns """""""""""""""""""""""""""""""""""""
 Plug 'tomtom/quickfixsigns_vim'
-let g:quickfixsigns_classes = ['loc', 'qfl', 'marks', 'breakpoints']
+"let g:quickfixsigns_classes = ['loc', 'qfl', 'marks', 'breakpoints']
+let g:quickfixsigns_classes = ['loc', 'marks', 'breakpoints']
 
 " Ack  """""""""""""""""""""""""""""""""""""
 Plug 'mileszs/ack.vim'
@@ -843,6 +859,8 @@ call plug#end()
 set t_Co=256
 set background=dark
 color gruvbox
+hi link ALEErrorSign    Error
+hi link ALEWarningSign  Keyword
 highlight ColorColumn guibg=gray20
 highlight ColorColumn ctermbg=236
 hi VertSplit ctermbg=bg cterm=none
@@ -866,6 +884,10 @@ if !exists('g:deoplete#omni#input_patterns')
     let g:deoplete#omni#input_patterns = {}
 endif
 let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
+
+" Full config: when writing or reading a buffer, and on changes in insert and
+" normal mode (after 1s; no delay when writing).
+"call neomake#configure#automake('nrwi', 500)
 
 " denite extra options
 "call denite#custom#option('default', 'prompt', '> ')
