@@ -1,5 +1,7 @@
 imap jk <esc>l
 imap jj <esc>l
+nmap <C-^> :e #<cr>
+nmap <C-6> :e #<cr>
 nmap <C-p> :action SearchEverywhere<cr>
 nmap <Space>g :action GotoFile<cr>
 nmap <Space>f :action FileStructurePopup<cr>
@@ -9,6 +11,8 @@ nmap <A-l> <c-w>l
 nmap <A-k> <c-w>k
 nmap <A-j> <c-w>j
 
+#inoremap ;; <C-o>A;
+inoremap ;; <esc>A;
 
 let mapleader = " "
 
