@@ -440,6 +440,13 @@ let g:ncm2#sorter = 'abbrfuzzy'
 
 let g:ncm2#complete_length = [[1,2],[7,2]]
 
+" CoC """""""""""""""""""
+"Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+"autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" completor """""""""""""""""""
+"Plug 'maralla/completor.vim'
+"let g:completor_complete_options = 'menuone,noselect'
 
 " Deoplete """""""""""""""""""
 "if has('nvim')
@@ -504,6 +511,8 @@ let g:ncm2#complete_length = [[1,2],[7,2]]
 " Ultisnips """""""""""""""""""""""""""""""
 Plug 'SirVer/ultisnips'
 Plug 'SteveCharleston/vim-snippets'
+inoremap <silent> <buffer> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+"let g:UltiSnipsRemoveSelectModeMappings = 0
 let g:UltiSnipsExpandTrigger="<c-k>"
 let g:UltiSnipsJumpForwardTrigger="<c-k>"
 let g:UltiSnipsJumpBackwardTrigger="<c-j>"
