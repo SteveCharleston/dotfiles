@@ -39,7 +39,7 @@ Plug 'artur-shaik/vim-javacomplete2'
 Plug 'vim-scripts/surround.vim'
 Plug 'vim-scripts/repeat.vim'
 Plug 'vim-scripts/vcscommand.vim'
-"Plug 'juneedahamed/vc.vim'
+Plug 'juneedahamed/vc.vim'
 "Plug 'ShowMarks'
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 Plug 'paranoida/vim-airlineish'
@@ -239,9 +239,11 @@ nmap <silent> < :wincmd <<CR>
 nmap <silent> > :wincmd ><CR>
 
 " terminal mappings
-tnoremap jk <C-\><C-n>
-set termwinkey=<C-j>
 hi Terminal ctermbg=black ctermfg=lightgray guibg=black guifg=lightgrey
+tnoremap jk <C-\><C-n>
+if !has('nvim')
+    set termwinkey=<C-j>
+endif
 
 " Commands
 function! s:ExecuteInShell(command)
@@ -367,8 +369,8 @@ nnoremap <Leader>l :CtrlPLine<cr>
 
 " Ale """""""""""""""""""""""""""""""""""""
 Plug 'w0rp/ale'
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
+let g:ale_set_loclist = 1
+let g:ale_set_quickfix = 0
 let g:ale_set_highlights = 0
 let g:ale_sign_error = '•'
 let g:ale_sign_warning = '•'
