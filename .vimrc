@@ -39,7 +39,6 @@ Plug 'artur-shaik/vim-javacomplete2'
 Plug 'vim-scripts/surround.vim'
 Plug 'vim-scripts/repeat.vim'
 Plug 'vim-scripts/vcscommand.vim'
-Plug 'juneedahamed/vc.vim'
 "Plug 'ShowMarks'
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 Plug 'paranoida/vim-airlineish'
@@ -341,6 +340,10 @@ Plug 'aklt/plantuml-syntax'
 "map <C-p> :Denite file/rec<cr>
 "nnoremap <Leader>b :Denite buffer<cr>
 "nnoremap <Leader>g :Denite buffer<cr>
+
+" svn  """""""""""""""""""""""""""""""""""
+Plug 'juneedahamed/vc.vim'
+let g:no_vc_maps = 1
 
 " Git  """""""""""""""""""""""""""""""""""
 Plug 'tpope/vim-fugitive'
@@ -782,7 +785,7 @@ Plug 'mattn/emmet-vim'
 " Quickfixsigns """""""""""""""""""""""""""""""""""""
 Plug 'tomtom/quickfixsigns_vim'
 "let g:quickfixsigns_classes = ['loc', 'qfl', 'marks', 'breakpoints']
-let g:quickfixsigns_classes = ['loc', 'marks', 'breakpoints']
+let g:quickfixsigns_classes = ['qfl', 'marks', 'breakpoints']
 
 " Ack  """""""""""""""""""""""""""""""""""""
 Plug 'mileszs/ack.vim'
