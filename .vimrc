@@ -22,9 +22,11 @@ endif
 call plug#begin('~/.vim/bundle')
 
 Plug 'vim-scripts/ref.vim'
-Plug 'vim-scripts/Gundo', { 'on': 'GundoToggle' }
+Plug 'sjl/gundo.vim', { 'on': 'GundoToggle' }
+Plug 'mbbill/undotree'
 "Plug 'Finder-for-vim'
-Plug 'vim-scripts/rainbow_parentheses.vim'
+"Plug 'vim-scripts/rainbow_parentheses.vim'
+Plug 'luochen1990/rainbow'
 "Plug 'visual-increment'
 Plug 'vim-scripts/Python-2.x-Standard-Library-Reference'
 Plug 'vim-scripts/htmlspecialchars'
@@ -48,7 +50,7 @@ Plug 'hsanson/vim-android'
 Plug 'tmatilai/vim-monit'
 Plug 'tpope/vim-dispatch'
 Plug 'justinmk/vim-gtfo'
-Plug 'godlygeek/csapprox'
+"Plug 'godlygeek/csapprox'
 "Plug 'xieyu/pyclewn'
 Plug 'justinmk/vim-syntax-extra'
 "Plug 'Rip-Rip/clang_complete'
@@ -65,9 +67,9 @@ Plug 'vim-vdebug/vdebug'
 "Plug 'editorconfig/editorconfig-vim'
 
 " Color Schemes
-"Plug 'moria'
-"Plug 'Solarized'
-"Plug 'sonoma.vim'
+"Plug 'vim-scripts/moria'
+"Plug 'vim-scripts/Solarized'
+"Plug 'vim-scripts/sonoma.vim'
 Plug 'vim-scripts/peaksea'
 "Plug 'gosukiwi/vim-atom-dark'
 "Plug 'vim-scripts/desertEx'
@@ -79,6 +81,12 @@ Plug 'morhetz/gruvbox'
 "Plug 'gregsexton/Muon'
 "Plug 'jnurmine/Zenburn'
 "Plug 'Wutzara/vim-materialtheme'
+"Plug 'junegunn/seoul256.vim'
+"Plug 'romainl/Apprentice'
+Plug 'benburrill/potato-colors'
+Plug 'liuchengxu/space-vim-theme'
+Plug 'rakr/vim-one'
+Plug 'kabbamine/yowish.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 "
@@ -572,6 +580,14 @@ let g:tex_flavor='latex'
 
 " Languagetool  """""""""""""""""""""""""""""""""""
 Plug 'rhysd/vim-grammarous'
+
+" Thesaurus  """""""""""""""""""""""""""""""""""
+Plug 'ron89/thesaurus_query.vim'
+let g:tq_map_keys = 0
+let g:tq_language='de'
+" this plugin can also be invoked with ctrl-x ctrl-u in insert mode
+vnoremap <Leader>ts y:ThesaurusQueryReplace <C-r>"<CR>
+nnoremap <Leader>ts :ThesaurusQueryReplaceCurrentWord<CR>
 
 " Clang """""""""""""""""""""""""""""""""""
 "Plug 'justmao945/vim-clang'
