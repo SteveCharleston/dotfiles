@@ -39,6 +39,7 @@ Plug 'Shougo/vimproc', { 'do': 'make' }
 "Plug 'javacomplete'
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'vim-scripts/surround.vim'
+Plug 'wellle/targets.vim'
 Plug 'vim-scripts/repeat.vim'
 Plug 'vim-scripts/vcscommand.vim'
 "Plug 'ShowMarks'
@@ -51,6 +52,7 @@ Plug 'tmatilai/vim-monit'
 Plug 'tpope/vim-dispatch'
 Plug 'justinmk/vim-gtfo'
 "Plug 'godlygeek/csapprox'
+"Plug 'KevinGoodsell/vim-csexact'
 "Plug 'xieyu/pyclewn'
 Plug 'justinmk/vim-syntax-extra'
 "Plug 'Rip-Rip/clang_complete'
@@ -580,6 +582,12 @@ let g:tex_flavor='latex'
 
 " Languagetool  """""""""""""""""""""""""""""""""""
 Plug 'rhysd/vim-grammarous'
+Plug 'dpelle/vim-LanguageTool'
+let g:languagetool_jar = '/home/steven/bin/languagetool/languagetool-commandline.jar'
+let g:languagetool_lang = 'de-DE'
+let g:languagetool_disable_rules = 'LEERZEICHEN_HINTER_DOPPELPUNKT,GERMAN_SPELLER_RULE'
+
+Plug 'dbmrq/vim-ditto'
 
 " Thesaurus  """""""""""""""""""""""""""""""""""
 Plug 'ron89/thesaurus_query.vim'
@@ -886,7 +894,7 @@ map <C-S-Tab> :MBEbp<CR>
 call plug#end()
 "call vundle#end()            " required
 
-set t_Co=256
+"set t_Co=256
 set background=dark
 color gruvbox
 hi link ALEErrorSign    Error
