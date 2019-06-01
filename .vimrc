@@ -65,7 +65,7 @@ Plug 'johngrib/vim-game-code-break'
 Plug 'vim-scripts/tcd.vim'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'dyng/ctrlsf.vim'
-Plug 'vim-vdebug/vdebug'
+"Plug 'vim-vdebug/vdebug'
 "Plug 'editorconfig/editorconfig-vim'
 
 " Color Schemes
@@ -891,6 +891,7 @@ map <C-S-Tab> :MBEbp<CR>
 " Auto-Pairs  """""""""""""""""""""""""""""""""""""
 "Plug 'jiangmiao/auto-pairs'
 "let g:AutoPairsFlyMode = 1
+"Plug 'ajmwagar/vim-emoticons'
 call plug#end()
 "call vundle#end()            " required
 
