@@ -411,49 +411,49 @@ set noshowmode
 let g:echodoc_enable_at_startup = 1
 
 " NCM2 """""""""""""""""""
-Plug 'ncm2/ncm2'
-" ncm2 requires nvim-yarp
-Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-pyclang'
-let g:ncm2_pyclang#library_path = '/usr/lib/llvm-6.0/lib/libclang.so.1'
-
-" enable ncm2 for all buffer
-autocmd BufEnter * call ncm2#enable_for_buffer()
-
-" note that must keep noinsert in completeopt, the others is optional
-set completeopt=noinsert,menuone,noselect
-
-" supress the annoying 'match x of y', 'The only match' and 'Pattern not
-" found' messages
-set shortmess+=c
-
-" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
-inoremap <c-c> <ESC>
-
-" When the <Enter> key is pressed while the popup menu is visible, it only
-" hides the menu. Use this mapping to close the menu and also start a new
-" line.
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-
-" Use <TAB> to select the popup menu:
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" some completion sources
-Plug 'ObserverOfTime/ncm2-jc2', {'for': ['java', 'jsp']}
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-tmux'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-ultisnips'
-
-Plug 'ncm2/ncm2-abbrfuzzy'
-
-let g:ncm2#matcher = 'abbrfuzzy'
-" use a sorter that's more friendly for fuzzy match
-let g:ncm2#sorter = 'abbrfuzzy'
-
-let g:ncm2#complete_length = [[1,2],[7,2]]
+"Plug 'ncm2/ncm2'
+"" ncm2 requires nvim-yarp
+"Plug 'roxma/vim-hug-neovim-rpc'
+"Plug 'roxma/nvim-yarp'
+"Plug 'ncm2/ncm2-pyclang'
+"let g:ncm2_pyclang#library_path = '/usr/lib/llvm-6.0/lib/libclang.so.1'
+"
+"" enable ncm2 for all buffer
+"autocmd BufEnter * call ncm2#enable_for_buffer()
+"
+"" note that must keep noinsert in completeopt, the others is optional
+"set completeopt=noinsert,menuone,noselect
+"
+"" supress the annoying 'match x of y', 'The only match' and 'Pattern not
+"" found' messages
+"set shortmess+=c
+"
+"" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+"inoremap <c-c> <ESC>
+"
+"" When the <Enter> key is pressed while the popup menu is visible, it only
+"" hides the menu. Use this mapping to close the menu and also start a new
+"" line.
+"inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+"
+"" Use <TAB> to select the popup menu:
+"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"
+"" some completion sources
+"Plug 'ObserverOfTime/ncm2-jc2', {'for': ['java', 'jsp']}
+"Plug 'ncm2/ncm2-bufword'
+"Plug 'ncm2/ncm2-tmux'
+"Plug 'ncm2/ncm2-path'
+"Plug 'ncm2/ncm2-ultisnips'
+"
+"Plug 'ncm2/ncm2-abbrfuzzy'
+"
+"let g:ncm2#matcher = 'abbrfuzzy'
+"" use a sorter that's more friendly for fuzzy match
+"let g:ncm2#sorter = 'abbrfuzzy'
+"
+"let g:ncm2#complete_length = [[1,2],[7,2]]
 
 " CoC """""""""""""""""""
 "Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
@@ -464,31 +464,32 @@ let g:ncm2#complete_length = [[1,2],[7,2]]
 "let g:completor_complete_options = 'menuone,noselect'
 
 " Deoplete """""""""""""""""""
-"if has('nvim')
-"  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"else
-"  Plug 'Shougo/deoplete.nvim'
-"  Plug 'roxma/nvim-yarp'
-"  Plug 'roxma/vim-hug-neovim-rpc'
-"endif
-"Plug 'zchee/deoplete-jedi'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'zchee/deoplete-jedi'
 "Plug 'zchee/deoplete-clang'
-"Plug 'Shougo/neco-syntax'
-"Plug 'wellle/tmux-complete.vim'
-"let g:deoplete#enable_at_startup = 1
-"
-"" Use smartcase.
-""call deoplete#custom#option('smart_case', v:true)
-"set completeopt-=preview
-"" <C-h>, <BS>: close popup and delete backword char.
-"inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
-"inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
-"
-"" <CR>: close popup and save indent.
-"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-"function! s:my_cr_function() abort
-"    return deoplete#close_popup() . "\<CR>"
-"endfunction
+Plug 'Shougo/deoplete-clangx'
+Plug 'Shougo/neco-syntax'
+Plug 'wellle/tmux-complete.vim'
+let g:deoplete#enable_at_startup = 1
+
+" Use smartcase.
+"call deoplete#custom#option('smart_case', v:true)
+set completeopt-=preview
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
+
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function() abort
+    return deoplete#close_popup() . "\<CR>"
+endfunction
 
 " nvim-completition-manager """""""""""""""
 "Plug 'roxma/nvim-completion-manager'
@@ -526,7 +527,7 @@ let g:ncm2#complete_length = [[1,2],[7,2]]
 " Ultisnips """""""""""""""""""""""""""""""
 Plug 'SirVer/ultisnips'
 Plug 'SteveCharleston/vim-snippets'
-inoremap <silent> <buffer> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+"inoremap <silent> <buffer> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 "let g:UltiSnipsRemoveSelectModeMappings = 0
 let g:UltiSnipsExpandTrigger="<c-k>"
 let g:UltiSnipsJumpForwardTrigger="<c-k>"
@@ -765,8 +766,8 @@ vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
 "inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " jedi-vim """""""""""""""""""""""""""""""""""""
-Plug 'davidhalter/jedi-vim' " comment out with deoplete
-Plug 'ncm2/ncm2-jedi'
+"Plug 'davidhalter/jedi-vim' " comment out with deoplete
+"Plug 'ncm2/ncm2-jedi'
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_select_first = 0
 let g:jedi#popup_on_dot = 0
