@@ -719,6 +719,7 @@ Plug 'vim-scripts/utl.vim'
 Plug 'tpope/vim-repeat'
 Plug 'mattn/calendar-vim'
 Plug 'inkarkat/vim-SyntaxRange'
+let g:calendar_weeknm = 4
 
 
 " TabBar """"""""""""""""""""""""""""""""""
