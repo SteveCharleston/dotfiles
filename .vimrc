@@ -471,11 +471,14 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-Plug 'zchee/deoplete-jedi'
+"Plug 'zchee/deoplete-jedi'
+Plug 'deoplete-plugins/deoplete-jedi'
+
 "Plug 'zchee/deoplete-clang'
 Plug 'Shougo/deoplete-clangx'
 Plug 'Shougo/neco-syntax'
 Plug 'wellle/tmux-complete.vim'
+Plug 'ujihisa/neco-look'
 let g:deoplete#enable_at_startup = 1
 
 " Use smartcase.
@@ -767,7 +770,7 @@ vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
 "inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " jedi-vim """""""""""""""""""""""""""""""""""""
-"Plug 'davidhalter/jedi-vim' " comment out with deoplete
+Plug 'davidhalter/jedi-vim'
 "Plug 'ncm2/ncm2-jedi'
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_select_first = 0
@@ -775,7 +778,7 @@ let g:jedi#popup_on_dot = 0
 let g:jedi#completions_enabled = 0
 let g:jedi#auto_vim_configuration = 0
 "let g:jedi#show_call_signatures = "0"
-let g:jedi#show_call_signatures = 2
+"let g:jedi#show_call_signatures = 2
 let g:jedi#goto_assignments_command = "<leader>a"
 
 " perl.vim """""""""""""""""""""""""""""""""""""
@@ -832,9 +835,17 @@ let g:ack_use_dispatch = 1
 "  execute "nmap <A-0" . buffer_no . "> :b" . buffer_no . "\<CR>"
 "endfor
 
+" Auto Parens """""""""""""""""""""""""""""""""""""
 "Plug 'Raimondi/delimitMate'
 "let delimitMate_expand_cr = 1
 Plug 'cohama/lexima.vim'
+
+" CompleteParameter """""""""""""""""""""""""""""""""""""
+" clashes with lexima
+"Plug 'tenfyzhong/CompleteParameter.vim'
+"inoremap <silent><expr> ( complete_parameter#pre_complete("()")
+"smap <c-i> <Plug>(complete_parameter#goto_next_parameter)
+"imap <c-i> <Plug>(complete_parameter#goto_next_parameter)
 
 " Airline + Tabline """""""""""""""""""""""""""""
 Plug 'bling/vim-airline'
