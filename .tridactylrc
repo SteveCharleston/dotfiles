@@ -6,3 +6,4 @@ set hintfiltermode vimperator-reflow
 set hintchars 1234567890
 set hintnames numeric
 set newtab about:blank
+set csp clobber
