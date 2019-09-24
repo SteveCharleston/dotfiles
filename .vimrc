@@ -65,30 +65,39 @@ Plug 'johngrib/vim-game-code-break'
 Plug 'vim-scripts/tcd.vim'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'dyng/ctrlsf.vim'
+Plug 'inkarkat/vim-ingo-library'
+Plug 'inkarkat/vim-SpellCheck'
+Plug 'thinca/vim-visualstar'
+Plug 'simnalamburt/vim-mundo'
+
 "Plug 'vim-vdebug/vdebug'
 "Plug 'editorconfig/editorconfig-vim'
 
 " Color Schemes
-"Plug 'vim-scripts/moria'
-"Plug 'vim-scripts/Solarized'
-"Plug 'vim-scripts/sonoma.vim'
+Plug 'vim-scripts/moria'
+Plug 'vim-scripts/Solarized'
+Plug 'vim-scripts/sonoma.vim'
 Plug 'vim-scripts/peaksea'
-"Plug 'gosukiwi/vim-atom-dark'
-"Plug 'vim-scripts/desertEx'
-"Plug 'toupeira/vim-desertink'
-"Plug 'hewo/vim-colorscheme-deepsea'
-"Plug 'hachy/eva01.vim'
-"Plug 'whatyouhide/vim-gotham'
-Plug 'morhetz/gruvbox'
-"Plug 'gregsexton/Muon'
-"Plug 'jnurmine/Zenburn'
-"Plug 'Wutzara/vim-materialtheme'
-"Plug 'junegunn/seoul256.vim'
-"Plug 'romainl/Apprentice'
+Plug 'gosukiwi/vim-atom-dark'
+Plug 'vim-scripts/desertEx'
+Plug 'toupeira/vim-desertink'
+Plug 'hewo/vim-colorscheme-deepsea'
+Plug 'hachy/eva01.vim'
+Plug 'whatyouhide/vim-gotham'
+"Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
+Plug 'gregsexton/Muon'
+Plug 'jnurmine/Zenburn'
+Plug 'Wutzara/vim-materialtheme'
+Plug 'junegunn/seoul256.vim'
+Plug 'romainl/Apprentice'
 Plug 'benburrill/potato-colors'
 Plug 'liuchengxu/space-vim-theme'
 Plug 'rakr/vim-one'
 Plug 'kabbamine/yowish.vim'
+Plug 'nanotech/jellybeans.vim'
+Plug 'freeo/vim-kalisi'
+Plug 'NLKNguyen/papercolor-theme'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 "
@@ -358,6 +367,7 @@ let g:no_vc_maps = 1
 " Git  """""""""""""""""""""""""""""""""""
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
+Plug 'idanarye/vim-merginal'
 Plug 'gregsexton/gitv', {'on': ['Gitv']}
 
 " Unite  """""""""""""""""""""""""""""""""""
@@ -478,7 +488,7 @@ Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'Shougo/deoplete-clangx'
 Plug 'Shougo/neco-syntax'
 Plug 'wellle/tmux-complete.vim'
-Plug 'ujihisa/neco-look'
+"Plug 'ujihisa/neco-look'
 let g:deoplete#enable_at_startup = 1
 
 " Use smartcase.
@@ -535,6 +545,7 @@ Plug 'SteveCharleston/vim-snippets'
 let g:UltiSnipsExpandTrigger="<c-k>"
 let g:UltiSnipsJumpForwardTrigger="<c-k>"
 let g:UltiSnipsJumpBackwardTrigger="<c-j>"
+let g:ultisnips_python_style = 'google'
 let g:EclimCompletionMethod = 'omnifunc'
 
 " Unite  """""""""""""""""""""""""""""""""""
