@@ -716,6 +716,14 @@ Plug 'Lokaltog/vim-easymotion'
 nmap <Leader>w <Plug>(easymotion-bd-f)
 let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz'
 
+" easyalign """"""""""""""""""""""""""""""""""
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+Plug 'junegunn/vim-easy-align'
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
 " Orgmode """"""""""""""""""""""""""""""""""
 Plug 'jceb/vim-orgmode'
 Plug 'vim-scripts/utl.vim'
