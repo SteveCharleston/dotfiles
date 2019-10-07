@@ -395,6 +395,7 @@ Plug 'w0rp/ale'
 let g:ale_set_loclist = 1
 let g:ale_set_quickfix = 0
 let g:ale_set_highlights = 0
+let g:ale_set_balloons = 1
 let g:ale_sign_error = '•'
 let g:ale_sign_warning = '•'
 let g:ale_java_javac_classpath = '/home/steven/bin/android/sdk/platforms/android-28/android.jar'
@@ -481,6 +482,7 @@ let g:echodoc_enable_at_startup = 1
 " Deoplete """""""""""""""""""
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'ncm2/float-preview.nvim'
 else
   Plug 'Shougo/deoplete.nvim'
   Plug 'roxma/nvim-yarp'
@@ -495,6 +497,11 @@ Plug 'Shougo/neco-syntax'
 Plug 'wellle/tmux-complete.vim'
 "Plug 'ujihisa/neco-look'
 let g:deoplete#enable_at_startup = 1
+"
+" floating window
+let g:float_preview#docked = 0
+let g:float_preview#max_width = 100
+let g:deoplete#sources#jedi#show_docstring = 1
 
 " Use smartcase.
 "call deoplete#custom#option('smart_case', v:true)
