@@ -1,0 +1,12 @@
+{
+    "suggest.autoTrigger": "always",
+    "suggest.echodocSupport": true,
+    "diagnostic.virtualText": true,
+    "codeLens.enable": true,
+    "suggest.snippetIndicator": "►",
+    "suggest.maxPreviewWidth" : 200,
+    "suggest.detailMaxLength" : 200,
+    "coc.preferences.colorSupport": true,
+    "coc.source.omni.enable" : true,
+    "coc.source.omni.filetypes" : ["java"]
+}

@@ -467,7 +467,12 @@ let g:echodoc_enable_at_startup = 1
 
 " CoC """""""""""""""""""
 "Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+"Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 "autocmd CursorHold * silent call CocActionAsync('highlight')
+"nmap <leader>d <Plug>(coc-definition)
+"nmap <leader>a <Plug>(coc-codeaction)
+"nmap <leader>e <Plug>(coc-codelens-action)
+"nmap <leader>r <Plug>(coc-refactor)
 
 " completor """""""""""""""""""
 "Plug 'maralla/completor.vim'
@@ -780,7 +785,7 @@ vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
 "inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " jedi-vim """""""""""""""""""""""""""""""""""""
-Plug 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim' " aus wegen coc
 "Plug 'ncm2/ncm2-jedi'
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_select_first = 0
