@@ -21,32 +21,23 @@ endif
 
 call plug#begin('~/.vim/bundle')
 
-Plug 'vim-scripts/ref.vim'
+"Plug 'vim-scripts/ref.vim'
 Plug 'sjl/gundo.vim', { 'on': 'GundoToggle' }
-Plug 'mbbill/undotree'
+Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 "Plug 'Finder-for-vim'
 "Plug 'vim-scripts/rainbow_parentheses.vim'
-Plug 'luochen1990/rainbow'
+Plug 'luochen1990/rainbow', { 'on': 'RainbowToggle' }
 "Plug 'visual-increment'
-Plug 'vim-scripts/Python-2.x-Standard-Library-Reference'
-Plug 'vim-scripts/htmlspecialchars'
-"Plug 'Shougo/neocomplcache'
-"Plug 'Shougo/neocomplete'
-"Plug 'Shougo/neosnippet'
-"Plug 'Shougo/neosnippet-snippets'
-Plug 'Shougo/vimshell.vim'
-Plug 'Shougo/vimproc', { 'do': 'make' }
-"Plug 'javacomplete'
+"Plug 'vim-scripts/Python-2.x-Standard-Library-Reference'
+"Plug 'vim-scripts/htmlspecialchars'
+"Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'vim-scripts/surround.vim'
 Plug 'wellle/targets.vim'
 Plug 'vim-scripts/repeat.vim'
-Plug 'vim-scripts/vcscommand.vim'
-"Plug 'ShowMarks'
-Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
+"Plug 'vim-scripts/vcscommand.vim'
+Plug 'inkarkat/vcscommand.vim'
 Plug 'paranoida/vim-airlineish'
-"Plug 'dansomething/vim-eclim'
-"Plug 'https://github.com/jaxbot/browserlink.vim'
 Plug 'hsanson/vim-android'
 Plug 'tmatilai/vim-monit'
 Plug 'tpope/vim-dispatch'
@@ -61,14 +52,14 @@ Plug '4Evergreen4/vim-hardy'
 Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-speeddating'
 Plug 'cosminadrianpopescu/filesync'
-Plug 'johngrib/vim-game-code-break'
+"Plug 'johngrib/vim-game-code-break'
 Plug 'vim-scripts/tcd.vim'
-Plug 'JamshedVesuna/vim-markdown-preview'
+"Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'dyng/ctrlsf.vim'
 Plug 'inkarkat/vim-ingo-library'
 Plug 'inkarkat/vim-SpellCheck'
 Plug 'thinca/vim-visualstar'
-Plug 'simnalamburt/vim-mundo'
+Plug 'simnalamburt/vim-mundo', { 'on': 'MundoToggle' }
 
 "Plug 'vim-vdebug/vdebug'
 "Plug 'editorconfig/editorconfig-vim'
@@ -316,14 +307,6 @@ highlight NERDTreeCWD guifg=#444444 ctermfg=238 gui=BOLD cterm=BOLD
 highlight NERDTreeOpenable guifg=#005F87 ctermfg=24 gui=BOLD cterm=BOLD
 highlight NERDTreeClosable guifg=#00AFFF ctermfg=39 gui=BOLD cterm=BOLD
 
-" Buffersaurus """"""""""""""""""""""""""""""""""""""""
-" Searches in open Buffers
-" :Bsgrep - Searches for given Regex
-" :Bstoc - lists table of content for buffers
-" :Bsreplace - global search and replace
-"Plug 'Buffersaurus'
-
-
 " Tag list """"""""""""""""""""""""""""""""""""""""
 Plug 'vim-scripts/taglist.vim', { 'on': 'TlistToggle' }
 let Tlist_Auto_Open=0	" Automatically Open the Tag List
@@ -336,15 +319,6 @@ let Tlist_Use_Right_Window = 1
 Plug 'majutsushi/tagbar'
 let g:tagbar_left=0
 let g:tagbar_singleclick=1
-
-
-" Conque Term """""""""""""""""""""""""""""""""""""
-Plug 'oplatek/Conque-Shell'
-let g:ConqueTerm_Color = 1
-let g:ConqueTerm_SessionSupport = 0
-let g:ConqueTerm_ReadUnfocused = 1
-let g:ConqueTerm_PromptRegex = '^\w\+@[0-9A-Za-z_.-]\+:[0-9A-Za-z_./\~,:-]\+\$'
-let g:ConqueTerm_Syntax = 'conque'
 
 " fswitch  """""""""""""""""""""""""""""""""""
 Plug 'derekwyatt/vim-fswitch'
@@ -488,10 +462,8 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-"Plug 'zchee/deoplete-jedi'
 Plug 'deoplete-plugins/deoplete-jedi'
 
-"Plug 'zchee/deoplete-clang'
 Plug 'Shougo/deoplete-clangx'
 Plug 'Shougo/neco-syntax'
 Plug 'wellle/tmux-complete.vim'
@@ -557,35 +529,40 @@ Plug 'SteveCharleston/vim-snippets'
 let g:UltiSnipsExpandTrigger="<c-k>"
 let g:UltiSnipsJumpForwardTrigger="<c-k>"
 let g:UltiSnipsJumpBackwardTrigger="<c-j>"
+""let g:UltiSnipsJumpBackwardTrigger="<c-K>"
 let g:ultisnips_python_style = 'google'
 let g:EclimCompletionMethod = 'omnifunc'
 
-" Unite  """""""""""""""""""""""""""""""""""
-"Plug 'unite.vim', { 'on': 'Unite' }
-let g:unite_enable_start_insert = 1
-let g:unite_source_history_yank_enable = 1
-let g:unite_source_file_rec_max_cache_files = 99999
 
-if executable('ag')
-    let g:unite_source_rec_async_command = 'ag -l .'
-    let g:unite_source_grep_command = 'ag'
-    let g:unite_source_grep_default_opts = '--smart-case --nogroup --nocolor --line-numbers'
-    let g:unite_source_grep_recursive_opt = ''
-    let g:unite_source_rec_async_command =
-                    \ 'ag --follow --nocolor --nogroup --hidden -g ""'
-elseif executable('ack')
-    let g:unite_source_rec_async_command = 'ack -f --nofilter'
-    let g:unite_source_grep_command = 'ack'
-    let g:unite_source_grep_default_opts = '--no-color --no-heading'
-    let g:unite_source_grep_recursive_opt = ''
-    let g:unite_source_rec_async_command = 'ack -f --nofilter'
+"function! g:UltiSnips_Complete()
+"    call UltiSnips#ExpandSnippet()
+"    if g:ulti_expand_res == 0
+"        if pumvisible()
+"            return "\<C-n>"
+"        else
+"            call UltiSnips#JumpForwards()
+"            if g:ulti_jump_forwards_res == 0
+"               return "\<TAB>"
+"            endif
+"        endif
+"    endif
+"    return ""
+"endfunction
+"
+"au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+"let g:UltiSnipsJumpForwardTrigger="<tab>"
+"let g:UltiSnipsListSnippets="<c-e>"
+"" this mapping Enter key to <C-y> to chose the current highlight item 
+"" and close the selection list, same as other IDEs.
+"" CONFLICT with some plugins like tpope/Endwise
+"inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=0 concealcursor=i
 endif
 
-"nnoremap <C-P> :<C-u>Unite -start-insert buffer -resume file_rec/async<cr><End><C-U>
-"nnoremap <Leader>b :<C-u>Unite buffer<cr>
-"nnoremap <Leader>m :<C-u>Unite file_mru<cr>
-"nnoremap <C-O> :<C-u>Unite -buffer-name=files -start-insert buffer<cr>
-nnoremap yr :Unite history/yank<cr>
 
 " vimtex """""""""""""""""""""""""""""""""""
 Plug 'lervag/vimtex'
@@ -631,103 +608,6 @@ let g:clang_auto = 0
 let g:clang_c_completeopt = 'menuone,preview'
 let g:clang_cpp_completeopt = 'menuone,preview'
 
-" Neocomplcache """""""""""""""""""""""""""""""""""
-"if has("lua")
-"    let g:neocomplete#enable_at_startup = 1
-"    let g:neocomplete#enable_smart_case = 1
-"    let g:neocomplete#enable_auto_delimiter = 1
-"    let g:EclimCompletionMethod = 'omnifunc'
-"    let g:neocomplete#force_overwrite_completefunc=1
-"    let g:neocomplete_min_syntax_length = 1
-"
-"    " Plugin key-mappings.
-"    " <CR>: close popup
-"    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-"    function! s:my_cr_function()
-"    return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-"    endfunction
-"
-"    "imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"    "smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"    "xmap <C-k>     <Plug>(neosnippet_expand_target)
-"
-"    "imap <expr><TAB> neocomplete#sources#snippets_complete#expandable() ? "\<Plug>(neocomplete_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-"    "
-"
-"    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-"    inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
-"    " SuperTab like snippets behavior.
-"    "imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-"    "\ "\<Plug>(neosnippet_expand_or_jump)"
-"    "\: pumvisible() ? "\<C-n>" : "\<TAB>"
-"    "smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-"    "\ "\<Plug>(neosnippet_expand_or_jump)"
-"    "\: "\<TAB>"
-"
-"    "imap  <silent><expr><tab>  neocomplete#sources#snippets_complete#expandable() ? "\<plug>(neocomplete_snippets_expand)" : (pumvisible() ? "\<c-e>" : "\<tab>")
-"    smap  <tab>  <right><plug>(neocomplete_snippets_jump) 
-"    inoremap <expr><c-e>     neocomplete#complete_common_string()
-"
-"    " Enable heavy omni completion.
-"    "if !exists('g:neocomplete#sources#omni#input_patterns')
-"    "    let g:neocomplete#sources#omni#input_patterns = {}
-"    "endif
-"    if !exists('g:neocomplete#force_omni_input_patterns')
-"        let g:neocomplete#force_omni_input_patterns = {}
-"    endif
-"
-"    " Java
-"    let g:neocomplete#force_omni_input_patterns.java =
-"        \ '\%(\h\w*\|)\)\.\w*' " make eclim happy
-"
-"    " Python
-"    let g:neocomplete#force_omni_input_patterns.python =
-"        \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-"
-"    " for c and c++
-"    let g:neocomplete#force_omni_input_patterns.c =
-"                \ '[^.[:digit:] *\t]\%(\.\|->\)\w*'
-"    let g:neocomplete#force_omni_input_patterns.cpp =
-"                \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
-"else
-"    let g:neocomplcache_enable_at_startup = 1
-"    "let g:neocomplcache_min_syntax_length = 0
-"
-"    " Plugin key-mappings.
-"    " <CR>: close popup
-"    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-"    function! s:my_cr_function()
-"    return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-"    endfunction
-"
-"    "imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"    "smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"    "xmap <C-k>     <Plug>(neosnippet_expand_target)
-"
-"    "imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-"    "
-"
-"    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-"    inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
-"    " SuperTab like snippets behavior.
-"    "imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-"    "\ "\<Plug>(neosnippet_expand_or_jump)"
-"    "\: pumvisible() ? "\<C-n>" : "\<TAB>"
-"    "smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-"    "\ "\<Plug>(neosnippet_expand_or_jump)"
-"    "\: "\<TAB>"
-"
-"    "imap  <silent><expr><tab>  neocomplcache#sources#snippets_complete#expandable() ? "\<plug>(neocomplcache_snippets_expand)" : (pumvisible() ? "\<c-e>" : "\<tab>")
-"    smap  <tab>  <right><plug>(neocomplcache_snippets_jump) 
-"    inoremap <expr><c-e>     neocomplcache#complete_common_string()
-"endif
-
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=0 concealcursor=i
-endif
-
-"let g:neocomplete#force_overwrite_completefunc=1
 
 " EasyMotion """"""""""""""""""""""""""""""""""
 "Plugin 'EasyMotion'
@@ -756,52 +636,13 @@ Plug 'inkarkat/vim-SyntaxRange'
 let g:calendar_weeknm = 4
 
 
-" TabBar """"""""""""""""""""""""""""""""""
-""Plugin 'TabBar'
-""let g:Tb_MaxSize = 1
-""let g:Tb_UseSingleClick = 1
-
-
 " Slimux """""""""""""""""""""""""""""""""""""
 Plug 'epeli/slimux', { 'on': [ 'SlimuxREPLSendLine', 'SlimuxREPLSendSelection' ]}
 map <C-c><C-c> :SlimuxREPLSendLine<CR>
 vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
 
-" YankRing """""""""""""""""""""""""""""""""""""
-"Plugin 'YankRing.vim'
-"map yr :YRShow<CR>
-
-" Snippets """""""""""""""""""""""""""""""""""""
-"Plugin 'SirVer/ultisnips'
-"Plugin 'honza/vim-snippets'
-""let g:UltiSnipsJumpForwardTrigger="<c-k>"
-""let g:UltiSnipsJumpBackwardTrigger="<c-K>"
-"
-"function! g:UltiSnips_Complete()
-"    call UltiSnips#ExpandSnippet()
-"    if g:ulti_expand_res == 0
-"        if pumvisible()
-"            return "\<C-n>"
-"        else
-"            call UltiSnips#JumpForwards()
-"            if g:ulti_jump_forwards_res == 0
-"               return "\<TAB>"
-"            endif
-"        endif
-"    endif
-"    return ""
-"endfunction
-"
-"au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-"let g:UltiSnipsJumpForwardTrigger="<tab>"
-"let g:UltiSnipsListSnippets="<c-e>"
-"" this mapping Enter key to <C-y> to chose the current highlight item 
-"" and close the selection list, same as other IDEs.
-"" CONFLICT with some plugins like tpope/Endwise
-"inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
 " jedi-vim """""""""""""""""""""""""""""""""""""
-Plug 'davidhalter/jedi-vim' " aus wegen coc
+Plug 'davidhalter/jedi-vim' " aus wenn coc
 "Plug 'ncm2/ncm2-jedi'
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_select_first = 0
@@ -813,8 +654,8 @@ let g:jedi#auto_vim_configuration = 0
 let g:jedi#goto_assignments_command = "<leader>a"
 
 " perl.vim """""""""""""""""""""""""""""""""""""
-Plug 'vim-scripts/perl.vim'
-"Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
+"Plug 'vim-scripts/perl.vim'
+Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 let perl_include_pod = 1
 let perl_extended_vars = 1
 "Plugin 'perl-support.vim'
@@ -853,18 +694,6 @@ if executable('ag')
     let g:ackprg = 'ag --nogroup --nocolor --column'
 endif
 let g:ack_use_dispatch = 1
-
-" minibufexpl """""""""""""""""""""""""""""""""""""
-"Plug 'techlivezheng/vim-plugin-minibufexpl'
-" switching to buffer 1 - 9 is mapped to ,[nOfBuffer]
-"for buffer_no in range(1, 9)
-"  execute "nmap <A-" . buffer_no . "> :b" . buffer_no . "\<CR>"
-"endfor
-
-" switching to buffer 10 - 100 is mapped to ,0[nOfBuffer]
-"for buffer_no in range(10, 100)
-"  execute "nmap <A-0" . buffer_no . "> :b" . buffer_no . "\<CR>"
-"endfor
 
 " Auto Parens """""""""""""""""""""""""""""""""""""
 "Plug 'Raimondi/delimitMate'
@@ -915,29 +744,12 @@ set laststatus=2 " always have a statusline
 "let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 "let g:airline#extensions#tabline#buffer_nr_show = 1
 "
-let g:airline#extensions#syntastic#enabled = 1
+"let g:airline#extensions#syntastic#enabled = 1
 "let g:airline#extensions#tagbar#enabled = 1
-"map <M-1> :b1<CR>
-"map <M-2> :b2<CR>
-"map <M-3> :b3<CR>
-"map <M-4> :b4<CR>
-"map <M-5> :b5<CR>
-"map <M-6> :b6<CR>
-"map <M-7> :b7<CR>
-"map <M-8> :b8<CR>
-"map <M-9> :b9<CR>
-"map <M-0> :b0<CR>
-"map <C-Tab> :bnext<CR>
-"map <C-S-Tab> :bprevious<CR>
-map <C-Tab> :MBEbn<CR>
-map <C-S-Tab> :MBEbp<CR>
 
-" Auto-Pairs  """""""""""""""""""""""""""""""""""""
-"Plug 'jiangmiao/auto-pairs'
-"let g:AutoPairsFlyMode = 1
 "Plug 'ajmwagar/vim-emoticons'
+
 call plug#end()
-"call vundle#end()            " required
 
 "set t_Co=256
 set background=dark
@@ -951,17 +763,17 @@ hi SignColumn ctermbg=none
 set fillchars=vert:\│,fold:-
 
 " completition extra options """"
-au User Ncm2Plugin call ncm2#register_source({
-            \ 'name' : 'vimtex',
-            \ 'priority': 9, 
-            \ 'subscope_enable': 1,
-            \ 'complete_length': 1,
-            \ 'scope': ['tex'],
-            \ 'mark': 'tex',
-            \ 'word_pattern': '\w+',
-            \ 'complete_pattern': g:vimtex#re#ncm,
-            \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
-            \ })
+"au User Ncm2Plugin call ncm2#register_source({
+"            \ 'name' : 'vimtex',
+"            \ 'priority': 9, 
+"            \ 'subscope_enable': 1,
+"            \ 'complete_length': 1,
+"            \ 'scope': ['tex'],
+"            \ 'mark': 'tex',
+"            \ 'word_pattern': '\w+',
+"            \ 'complete_pattern': g:vimtex#re#ncm,
+"            \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
+"            \ })
 
 if !exists('g:deoplete#omni#input_patterns')
     let g:deoplete#omni#input_patterns = {}
