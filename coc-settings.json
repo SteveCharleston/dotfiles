@@ -1,0 +1,11 @@
+{
+    "suggest.autoTrigger": "always",
+    "suggest.echodocSupport": true,
+    "diagnostic.virtualText": true,
+    "codeLens.enable": true,
+    "suggest.snippetIndicator": "►",
+    "suggest.maxPreviewWidth" : 200,
+    "suggest.detailMaxLength" : 200,
+    "git.enableGutters" : false,
+    "coc.preferences.colorSupport": true
+}
