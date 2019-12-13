@@ -366,7 +366,7 @@ nnoremap <Leader>f :CtrlPFunky<cr>
 nnoremap <Leader>l :CtrlPLine<cr>
 
 " Ale """""""""""""""""""""""""""""""""""""
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 let g:ale_set_loclist = 1
 let g:ale_set_quickfix = 0
 let g:ale_set_highlights = 0
@@ -443,51 +443,144 @@ let g:echodoc_enable_at_startup = 1
 
 " CoC """""""""""""""""""
 "Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-"Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
-"autocmd CursorHold * silent call CocActionAsync('highlight')
+Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 "nmap <leader>d <Plug>(coc-definition)
 "nmap <leader>a <Plug>(coc-codeaction)
 "nmap <leader>e <Plug>(coc-codelens-action)
 "nmap <leader>r <Plug>(coc-refactor)
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>=  <Plug>(coc-format-selected)
+nmap <leader>=  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+
+
+"" Use <C-l> for trigger snippet expand.
+"imap <C-k> <Plug>(coc-snippets-expand)
+"
+"" Use <C-j> for select text for visual placeholder of snippet.
+"vmap <C-k> <Plug>(coc-snippets-select)
+"
+"" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+"let g:coc_snippet_next = '<c-k>'
+"
+"" Use <C-j> for both expand and jump (make expand higher priority.)
+"imap <C-k> <Plug>(coc-snippets-expand-jump)
+
+
+
 
 " completor """""""""""""""""""
 "Plug 'maralla/completor.vim'
 "let g:completor_complete_options = 'menuone,noselect'
 
 " Deoplete """""""""""""""""""
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'ncm2/float-preview.nvim'
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'deoplete-plugins/deoplete-jedi'
-
-Plug 'Shougo/deoplete-clangx'
-Plug 'Shougo/neco-syntax'
-Plug 'wellle/tmux-complete.vim'
-"Plug 'ujihisa/neco-look'
-let g:deoplete#enable_at_startup = 1
+"if has('nvim')
+"  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"  Plug 'ncm2/float-preview.nvim'
+"else
+"  Plug 'Shougo/deoplete.nvim'
+"  Plug 'roxma/nvim-yarp'
+"  Plug 'roxma/vim-hug-neovim-rpc'
+"endif
+"Plug 'deoplete-plugins/deoplete-jedi'
 "
-" floating window
-let g:float_preview#docked = 0
-let g:float_preview#max_width = 100
-let g:deoplete#sources#jedi#show_docstring = 1
-
-" Use smartcase.
-"call deoplete#custom#option('smart_case', v:true)
-set completeopt-=preview
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
-
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function() abort
-    return deoplete#close_popup() . "\<CR>"
-endfunction
+"Plug 'Shougo/deoplete-clangx'
+"Plug 'Shougo/neco-syntax'
+"Plug 'wellle/tmux-complete.vim'
+""Plug 'ujihisa/neco-look'
+"let g:deoplete#enable_at_startup = 1
+""
+"" floating window
+"let g:float_preview#docked = 0
+"let g:float_preview#max_width = 100
+"let g:deoplete#sources#jedi#show_docstring = 1
+"
+"" Use smartcase.
+""call deoplete#custom#option('smart_case', v:true)
+"set completeopt-=preview
+"" <C-h>, <BS>: close popup and delete backword char.
+"inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+"inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
+"
+"" <CR>: close popup and save indent.
+"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+"function! s:my_cr_function() abort
+"    return deoplete#close_popup() . "\<CR>"
+"endfunction
 
 " nvim-completition-manager """""""""""""""
 "Plug 'roxma/nvim-completion-manager'
@@ -643,7 +736,7 @@ map <C-c><C-c> :SlimuxREPLSendLine<CR>
 vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
 
 " jedi-vim """""""""""""""""""""""""""""""""""""
-Plug 'davidhalter/jedi-vim' " aus wenn coc
+"Plug 'davidhalter/jedi-vim' " aus wenn coc
 "Plug 'ncm2/ncm2-jedi'
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_select_first = 0
