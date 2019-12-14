@@ -155,7 +155,7 @@ set history=1000
 set keymodel=startsel,stopsel
 set ruler
 set selection=inclusive
-set updatetime=5000
+set updatetime=300
 set whichwrap=b,s,<,>,[,]
 
 "let mapleader = "\<tab>"
@@ -448,12 +448,16 @@ let g:echodoc_enable_at_startup = 1
 
 " CoC """""""""""""""""""
 "Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
-"nmap <leader>d <Plug>(coc-definition)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+let g:coc_global_extensions = ['coc-highlight', 'coc-json', 'coc-omni', 'coc-ultisnips', 'coc-python', 'coc-css', 'coc-snippets', 'coc-vimtex', 'coc-yaml', 'coc-yank', 'coc-html', 'coc-java', 'coc-emmet', 'coc-lists', 'coc-git', 'coc-pyright']
+
+
+
+nmap <leader>d <Plug>(coc-definition)
 "nmap <leader>a <Plug>(coc-codeaction)
 "nmap <leader>e <Plug>(coc-codelens-action)
 "nmap <leader>r <Plug>(coc-refactor)
-
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -462,7 +466,7 @@ inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
+"nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
@@ -531,6 +535,8 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
+nmap <silent> <Leader>[ <Plug>(coc-diagnostic-prev)
+nmap <silent> <Leader>] <Plug>(coc-diagnostic-next)
 
 
 "" Use <C-l> for trigger snippet expand.
@@ -835,6 +841,7 @@ let g:airline_symbols.linenr = '#'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline#extensions#eclim#enabled = 1
+let g:airline#extensions#coc#enabled = 1
 
 set laststatus=2 " always have a statusline
 
