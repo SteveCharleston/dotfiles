@@ -4,8 +4,12 @@
     "diagnostic.virtualText": true,
     "codeLens.enable": true,
     "suggest.snippetIndicator": "►",
-    "suggest.maxPreviewWidth" : 200,
-    "suggest.detailMaxLength" : 200,
+    "suggest.maxPreviewWidth" : 250,
+    "suggest.detailMaxLength" : 250,
     "git.enableGutters" : false,
+    "diagnostic-languageserver.filetypes": {
+        "sh" : "shellcheck"
+    },
+    "diagnostic.displayByAle": true,
     "coc.preferences.colorSupport": true
 }
