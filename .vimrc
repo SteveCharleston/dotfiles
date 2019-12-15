@@ -320,6 +320,9 @@ Plug 'majutsushi/tagbar'
 let g:tagbar_left=0
 let g:tagbar_singleclick=1
 
+" vista """""""""""""""""""""""""""""""""""
+Plug 'liuchengxu/vista.vim'
+
 " fswitch  """""""""""""""""""""""""""""""""""
 Plug 'derekwyatt/vim-fswitch'
 nnoremap <C-7> :FSHere<cr>
@@ -374,6 +377,7 @@ let g:ale_sign_error = '•'
 let g:ale_sign_warning = '•'
 let g:ale_java_javac_classpath = '/home/steven/bin/android/sdk/platforms/android-28/android.jar'
 let b:ale_fixers = ['autopep8', 'yapf']
+let g:ale_virtualtext_cursor = 1
 
 " neomake """""""""""""""""""""""""""""""""""""
 "Plug 'neomake/neomake'
@@ -444,7 +448,26 @@ let g:echodoc_enable_at_startup = 1
 "Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-let g:coc_global_extensions = ['coc-highlight', 'coc-json', 'coc-omni', 'coc-ultisnips', 'coc-python', 'coc-css', 'coc-snippets', 'coc-vimtex', 'coc-yaml', 'coc-yank', 'coc-html', 'coc-java', 'coc-emmet', 'coc-lists', 'coc-git', 'coc-pyright']
+let g:coc_global_extensions = [
+            \'coc-css',
+            \'coc-diagnostic',
+            \'coc-emmet',
+            \'coc-git',
+            \'coc-highlight',
+            \'coc-html',
+            \'coc-java',
+            \'coc-json',
+            \'coc-lists',
+            \'coc-omni',
+            \'coc-pyright',
+            \'coc-python',
+            \'coc-sh',
+            \'coc-snippets',
+            \'coc-ultisnips',
+            \'coc-vimtex',
+            \'coc-yaml',
+            \'coc-yank',
+            \]
 
 
 
