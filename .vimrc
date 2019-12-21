@@ -368,7 +368,7 @@ nnoremap <Leader>f :CtrlPFunky<cr>
 nnoremap <Leader>l :CtrlPLine<cr>
 
 " Ale """""""""""""""""""""""""""""""""""""
-"Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 let g:ale_set_loclist = 1
 let g:ale_set_quickfix = 0
 let g:ale_set_highlights = 0

@@ -10,6 +10,6 @@
     "diagnostic-languageserver.filetypes": {
         "sh" : "shellcheck"
     },
-    "diagnostic.displayByAle": true,
+    "diagnostic.displayByAle": false,
     "coc.preferences.colorSupport": true
 }
