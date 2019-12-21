@@ -345,7 +345,12 @@ let g:no_vc_maps = 1
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'idanarye/vim-merginal'
+Plug 'sodapopcan/vim-twiggy'
+Plug 'rhysd/git-messenger.vim'
 Plug 'gregsexton/gitv', {'on': ['Gitv']}
+
+let g:git_messenger_no_default_mappings = v:true
+nmap <C-w>m <Plug>(git-messenger)
 
 " Unite  """""""""""""""""""""""""""""""""""
 Plug 'ctrlpvim/ctrlp.vim'
