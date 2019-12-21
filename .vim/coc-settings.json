@@ -8,5 +8,11 @@
     "suggest.detailMaxLength" : 250,
     "suggest.enablePreview": false,
     "git.enableGutters" : false,
+    "diagnostic-languageserver.filetypes": {
+        "sh" : "shellcheck"
+    },
+    "python.autoComplete.addBrackets" : true,
+    "python.linting.mypyEnabled": true,
+    "python.jediEnabled": true,
     "coc.preferences.colorSupport": true
 }
