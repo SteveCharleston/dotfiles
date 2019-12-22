@@ -375,6 +375,11 @@ let g:ale_sign_error = '•'
 let g:ale_sign_warning = '•'
 let g:ale_java_javac_classpath = '/home/steven/bin/android/sdk/platforms/android-28/android.jar'
 let b:ale_fixers = ['autopep8', 'yapf']
+"let g:ale_python_pylint_options = "--init-hook='import sys; sys.path.append(\".\")'"
+"let g:ale_python_mypy_options = "--implicit-reexport"
+let g:ale_virtualtext_cursor = 1
+nmap <leader>] :ALENext<cr>
+nmap <leader>[ :ALEPrevious<cr>
 
 " neomake """""""""""""""""""""""""""""""""""""
 "Plug 'neomake/neomake'
@@ -757,6 +762,8 @@ set background=dark
 color gruvbox
 hi link ALEErrorSign    Error
 hi link ALEWarningSign  Keyword
+highlight ALEError ctermbg=none cterm=underline
+highlight ALEWarning ctermbg=none cterm=underline
 highlight ColorColumn guibg=gray20
 highlight ColorColumn ctermbg=236
 hi VertSplit ctermbg=bg cterm=none
