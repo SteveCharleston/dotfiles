@@ -384,6 +384,9 @@ let g:ale_java_javac_classpath = '/home/steven/bin/android/sdk/platforms/android
 let b:ale_fixers = ['autopep8', 'yapf']
 let g:ale_virtualtext_cursor = 1
 
+nmap <silent> <Leader>[ :ALEPrevious<cr>
+nmap <silent> <Leader>] :ALENext<cr>
+
 " neomake """""""""""""""""""""""""""""""""""""
 "Plug 'neomake/neomake'
 
@@ -557,8 +560,8 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-nmap <silent> <Leader>[ <Plug>(coc-diagnostic-prev)
-nmap <silent> <Leader>] <Plug>(coc-diagnostic-next)
+"nmap <silent> <Leader>[ <Plug>(coc-diagnostic-prev)
+"nmap <silent> <Leader>] <Plug>(coc-diagnostic-next)
 
 
 "" Use <C-l> for trigger snippet expand.
