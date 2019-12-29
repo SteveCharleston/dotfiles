@@ -1,18 +1,1 @@
-{
-    "suggest.autoTrigger": "always",
-    "suggest.echodocSupport": true,
-    "diagnostic.virtualText": true,
-    "codeLens.enable": true,
-    "suggest.snippetIndicator": "►",
-    "suggest.maxPreviewWidth" : 250,
-    "suggest.detailMaxLength" : 250,
-    "suggest.enablePreview": false,
-    "git.enableGutters" : false,
-    "diagnostic-languageserver.filetypes": {
-        "sh" : "shellcheck"
-    },
-    "python.autoComplete.addBrackets" : true,
-    "python.linting.mypyEnabled": true,
-    "python.jediEnabled": true,
-    "coc.preferences.colorSupport": true
-}
+/home/steven/dotfiles/.coc-settings.json
