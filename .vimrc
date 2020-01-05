@@ -376,7 +376,8 @@ nnoremap <Leader>l :CtrlPLine<cr>
 Plug 'w0rp/ale'
 let g:ale_set_loclist = 1
 let g:ale_set_quickfix = 0
-let g:ale_set_highlights = 0
+let g:ale_set_highlights = 1
+let g:ale_set_signs = 1
 let g:ale_set_balloons = 1
 let g:ale_sign_error = '•'
 let g:ale_sign_warning = '•'
@@ -885,8 +886,10 @@ call plug#end()
 "set t_Co=256
 set background=dark
 color gruvbox
-hi link ALEErrorSign    Error
-hi link ALEWarningSign  Keyword
+"hi link ALEErrorSign    Error
+"hi link ALEWarningSign  Keyword
+"highlight ALEError ctermbg=none cterm=underline gui=underline guifg=red
+"highlight ALEWarning ctermbg=none cterm=underline gui=underline guifg=red
 highlight ColorColumn guibg=gray20
 highlight ColorColumn ctermbg=236
 hi VertSplit ctermbg=bg cterm=none
