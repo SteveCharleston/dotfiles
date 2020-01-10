@@ -1092,11 +1092,11 @@ call quickui#menu#install("&Code", [
             \ ["Show &Errors", 'lopen'],
             \ ["&Next Error", 'ALENext'],
             \ ["&Previous Error", 'ALEPrevious'],
-            \ ["GoTo &Definition", 'execute "normal \<Plug>(coc-definition)'],
-            \ ["GoTo &Type Definition", 'execute "normal \<Plug>(coc-type-definition)'],
-            \ ["GoTo &Implementation", 'execute "normal \<Plug>(coc-implementation)'],
-            \ ["Show &References", 'execute "normal \<Plug>(coc-references)'],
-            \ ["Rename &Symbol", 'execute "normal \<Plug>(coc-rename)'],
+            \ ["GoTo &Definition", 'execute "normal \<Plug>(coc-definition)"'],
+            \ ["GoTo &Type Definition", 'execute "normal \<Plug>(coc-type-definition)"'],
+            \ ["GoTo &Implementation", 'execute "normal \<Plug>(coc-implementation)"'],
+            \ ["Show &References", 'execute "normal \<Plug>(coc-references)"'],
+            \ ["Rename &Symbol", 'execute "normal \<Plug>(coc-rename)"'],
             \ ["S&ort Imports", "call CocAction('runCommand', 'editor.action.organizeImport')"],
             \ ])
 
@@ -1113,6 +1113,7 @@ call quickui#menu#install("&Tools", [
             \ ["&Tagbar", 'TagbarToggle'],
             \ ["Tag&list", 'TlistToggle'],
             \ ["&Vista Taglist", 'TlistToggle'],
+            \ ["&Dateien", 'TlistToggle'],
             \ ["&Calendar", 'CalendarH'],
             \ ])
 
