@@ -146,7 +146,8 @@ endif
 set backup
 set backupdir=/tmp,.
 set directory=/tmp,.
-set diffexpr=
+"set diffexpr=
+set diffopt+=algorithm:patience
 ""set guifont=Courier_New:h10:cANSI
 set guifont=Liberation\ Mono\ 10
 set helplang=de
@@ -665,7 +666,7 @@ let g:UltiSnipsExpandTrigger="<c-k>"
 let g:UltiSnipsJumpForwardTrigger="<c-k>"
 let g:UltiSnipsJumpBackwardTrigger="<c-j>"
 ""let g:UltiSnipsJumpBackwardTrigger="<c-K>"
-let g:ultisnips_python_style = 'google'
+"let g:ultisnips_python_style = 'google'
 let g:EclimCompletionMethod = 'omnifunc'
 
 
