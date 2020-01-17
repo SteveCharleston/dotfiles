@@ -1154,4 +1154,5 @@ let g:quickui_border_style = 3
 "let g:quickui_color_scheme = 'papercol light'
 
 " hit space twice to open menu
-noremap <C-m> :call quickui#menu#open()<cr>
+noremap <silent> <M-m> :call quickui#menu#open()<cr>
+noremap <silent> µ :call quickui#menu#open()<cr>
