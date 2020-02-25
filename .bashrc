@@ -78,3 +78,7 @@ fi
 if command -v ct &> /dev/null; then
     ssh() { /usr/bin/ssh $* | ct; }
 fi
+
+if [[ -e ~/.bashrc_custom ]]; then
+    source ~/.bashrc_custom
+fi
