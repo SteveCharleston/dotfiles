@@ -389,6 +389,7 @@ let g:ale_sign_warning = '•'
 let g:ale_java_javac_classpath = '/home/steven/bin/android/sdk/platforms/android-28/android.jar'
 let b:ale_fixers = ['autopep8', 'yapf']
 let g:ale_virtualtext_cursor = 1
+let g:ale_python_mypy_options = '--ignore-missing-imports'
 
 nmap <silent> <Leader>[ :ALEPrevious<cr>
 nmap <silent> <Leader>] :ALENext<cr>
