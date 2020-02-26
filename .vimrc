@@ -874,7 +874,19 @@ let g:airline_symbols.whitespace = 'Ξ'
 let g:airline#extensions#eclim#enabled = 1
 let g:airline#extensions#coc#enabled = 1
 
+let g:airline_section_z  = '%3p%% %#__accent_bold#%{g:airline_symbols.linenr}%1l%#__restore__#%#__accent_bold#/%L%#__restore__#:%2v'
 set laststatus=2 " always have a statusline
+"
+" make everything smaller
+" Disable error and warning line numbers
+let g:airline#extensions#ale#enabled = 0
+let airline#extensions#ale#show_line_numbers = 0
+" ale error_symbol >
+let airline#extensions#ale#error_symbol = 'E'
+" ale warning >
+let airline#extensions#ale#warning_symbol = 'W'
+let g:airline#extensions#whitespace#enabled = 0
+
 
 "let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#excludes = []
