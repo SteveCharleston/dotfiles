@@ -377,6 +377,13 @@ nnoremap <Leader>t :CtrlPTag<cr>
 nnoremap <Leader>f :CtrlPFunky<cr>
 nnoremap <Leader>l :CtrlPLine<cr>
 
+" LeaderF  """""""""""""""""""""""""""""""""""
+Plug 'Yggdroot/LeaderF'
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+"let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
+
+
 " Ale """""""""""""""""""""""""""""""""""""
 Plug 'w0rp/ale'
 let g:ale_set_loclist = 1
