@@ -371,17 +371,26 @@ let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:25,results:25'
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_open_multiple_files = '2i'
 let g:ctrlp_custom_ignore = '\v.+\.(aux|fls|fdb_latexmk|gls|glo|glg|out|log|ind|gz|toc|pdf|ilg|idx|dvi|xdy|ist|alg|acr|acn)'
-nnoremap <Leader>b :CtrlPBuffer<cr>
-nnoremap <Leader>g :CtrlPBuffer<cr>
-nnoremap <Leader>m :CtrlPMRUFiles<cr>
-nnoremap <Leader>t :CtrlPTag<cr>
-nnoremap <Leader>f :CtrlPFunky<cr>
-nnoremap <Leader>l :CtrlPLine<cr>
+"nnoremap <Leader>b :CtrlPBuffer<cr>
+"nnoremap <Leader>g :CtrlPBuffer<cr>
+"nnoremap <Leader>m :CtrlPMRUFiles<cr>
+"nnoremap <Leader>t :CtrlPTag<cr>
+"nnoremap <Leader>f :CtrlPFunky<cr>
+"nnoremap <Leader>l :CtrlPLine<cr>
 
 " LeaderF  """""""""""""""""""""""""""""""""""
 Plug 'Yggdroot/LeaderF'
+"nnoremap <c-p> :LeaderfFile<cr>
+let g:Lf_ShortcutF = '<C-P>'
+let g:Lf_ShortcutB = '<leader>g'
+nnoremap <Leader>f :LeaderfFunction<cr>
+nnoremap <Leader>l :LeaderfLine<cr>
+nnoremap <Leader>t :LeaderfTag<cr>
+nnoremap <Leader>m :LeaderfMru<cr>
+let g:ctrlp_map = ''
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
+let g:Lf_StlColorscheme = 'gruvbox_material'
 "let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
 
 
