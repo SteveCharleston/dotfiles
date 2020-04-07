@@ -1192,3 +1192,8 @@ let g:quickui_border_style = 3
 " hit space twice to open menu
 noremap <silent> <M-m> :call quickui#menu#open()<cr>
 noremap <silent> µ :call quickui#menu#open()<cr>
+
+" Additional helper mappings
+nmap <leader>jf :NERDTreeFind<cr>
+nmap <leader>js :Gstatus<cr>
+nmap <leader>jt :Twiggy<cr>
