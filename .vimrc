@@ -826,6 +826,11 @@ else
     let g:tsuquyomi_disable_default_mappings = 1
 endif
 
+" Salt """""""""""""""""""""""""""""""
+Plug 'saltstack/salt-vim'
+Plug 'Glench/Vim-Jinja2-Syntax'
+let g:sls_use_jinja_syntax = 1
+
 " Word highlight """""""""""""""""""""""""""""""
 Plug 't9md/vim-quickhl'
 nmap <leader>v <Plug>(quickhl-manual-this)
