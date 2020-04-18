@@ -1,0 +1,12 @@
+#!/bin/bash
+
+sudo apt-get install build-essential git nodejs npm yarn universal-ctags xclip python3-pip python-pip ruby-dev cpanminus
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo add-apt-repository ppa:jonathonf/vim
+
+sudo apt-get install vim-gtk3 neovim
+
+sudo pip3 install ipython pylint mypy pynvim
+sudo pip install pynvim
+sudo npm install -g neovim
+sudo cpanm Neovim::Ext
