@@ -553,7 +553,7 @@ augroup end
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
 xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+"nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap for do codeAction of current line
 nmap <leader>ac  <Plug>(coc-codeaction)
@@ -773,6 +773,10 @@ Plug 'Lokaltog/vim-easymotion'
 "nmap <Leader>w <Plug>(easymotion-jumptoanywhere)
 nmap <Leader>w <Plug>(easymotion-bd-f)
 let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz'
+
+" aerojump """"""""""""""""""""""""""""""""""
+Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
+nmap <Leader>a <Plug>(AerojumpDefault)
 
 " easyalign """"""""""""""""""""""""""""""""""
 " Start interactive EasyAlign in visual mode (e.g. vipga)
