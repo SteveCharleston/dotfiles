@@ -371,6 +371,7 @@ let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:25,results:25'
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_open_multiple_files = '2i'
 let g:ctrlp_custom_ignore = '\v.+\.(aux|fls|fdb_latexmk|gls|glo|glg|out|log|ind|gz|toc|pdf|ilg|idx|dvi|xdy|ist|alg|acr|acn)'
+let g:Lf_SpinSymbols = ['🌘', '🌗', '🌖', '🌕', '🌔', '🌓', '🌒', '🌑']
 "nnoremap <Leader>b :CtrlPBuffer<cr>
 "nnoremap <Leader>g :CtrlPBuffer<cr>
 "nnoremap <Leader>m :CtrlPMRUFiles<cr>
@@ -1197,4 +1198,6 @@ noremap <silent> µ :call quickui#menu#open()<cr>
 " Additional helper mappings
 nmap <leader>jf :NERDTreeFind<cr>
 nmap <leader>js :Gstatus<cr>
+nmap <leader>jgp :Gpush<cr>
+nmap <leader>jgc :Gcommit -avs<cr>
 nmap <leader>jt :Twiggy<cr>
