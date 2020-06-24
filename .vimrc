@@ -1206,3 +1206,4 @@ nmap <leader>js :Gstatus<cr>
 nmap <leader>jgp :Gpush<cr>
 nmap <leader>jgc :Gcommit -avs<cr>
 nmap <leader>jt :Twiggy<cr>
+nmap <leader>jl :GV<cr>
