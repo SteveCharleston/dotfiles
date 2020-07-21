@@ -26,3 +26,7 @@ link_if_missing $PWD/.coc-settings.json $HOME/.vim/coc-settings.json
 
 link_if_missing $PWD/bin/mytree.py $HOME/bin/tree
 chmod 0755 $HOME/bin/tree
+
+# tmux plugins
+mkdir -p ~/.tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
