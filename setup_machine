@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt-get install build-essential git nodejs npm yarn universal-ctags xclip python3-pip python-pip ruby-dev cpanminus
+sudo apt-get install build-essential git nodejs npm yarn universal-ctags xclip python3-pip python-pip ruby-dev cpanminus xsel
 sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo add-apt-repository ppa:jonathonf/vim
 
