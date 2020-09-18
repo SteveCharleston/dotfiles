@@ -411,6 +411,7 @@ let g:ale_python_mypy_options = '--ignore-missing-imports'
 
 nmap <silent> <Leader>[ :ALEPrevious<cr>
 nmap <silent> <Leader>] :ALENext<cr>
+nmap <leader>= :ALEFix black isort<cr>
 
 " neomake """""""""""""""""""""""""""""""""""""
 "Plug 'neomake/neomake'
@@ -540,7 +541,7 @@ nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for format selected region
 xmap <leader>=  <Plug>(coc-format-selected)
-nmap <leader>=  <Plug>(coc-format-selected)
+"nmap <leader>=  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
