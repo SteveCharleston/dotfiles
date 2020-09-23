@@ -59,6 +59,7 @@ Plug 'inkarkat/vim-ingo-library'
 Plug 'inkarkat/vim-SpellCheck'
 Plug 'thinca/vim-visualstar'
 Plug 'simnalamburt/vim-mundo', { 'on': 'MundoToggle' }
+Plug 'junegunn/vim-journal'
 
 "Plug 'vim-vdebug/vdebug'
 "Plug 'editorconfig/editorconfig-vim'
