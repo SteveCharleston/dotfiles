@@ -873,6 +873,7 @@ Plug 'cohama/lexima.vim'
 
 " Airline + Tabline """""""""""""""""""""""""""""
 Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 "let g:airline#extensions#tabline#enabled = 1
 "Plug 'mkitt/tabline.vim'
 "Plug 'bling/vim-bufferline'
@@ -884,9 +885,10 @@ let g:airline_theme = 'dark'
 
 " unicode symbols
 "let g:airline_left_sep = '▶'
+let g:airline_left_sep = ''
 "let g:airline#extensions#tabline#left_sep = '▶'
 "let g:airline#extensions#tabline#left_alt_sep = '|'
-"let g:airline_right_sep = '◀'
+let g:airline_right_sep = ''
 "let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.branch = ''
 "let g:airline_symbols.paste = 'ρ'
