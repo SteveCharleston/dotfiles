@@ -61,6 +61,10 @@ Plug 'thinca/vim-visualstar'
 Plug 'simnalamburt/vim-mundo', { 'on': 'MundoToggle' }
 Plug 'junegunn/vim-journal'
 
+if has('nvim')
+Plug 'nvim-treesitter/nvim-treesitter'
+endif
+
 "Plug 'vim-vdebug/vdebug'
 "Plug 'editorconfig/editorconfig-vim'
 
@@ -1211,3 +1215,29 @@ nmap <leader>jgp :Gpush<cr>
 nmap <leader>jgc :Gcommit -avs<cr>
 nmap <leader>jt :Twiggy<cr>
 nmap <leader>jl :GV<cr>
+
+if has('nvim')
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {
+    "python",
+    "markdown",
+    "bash",
+    "c",
+    "cpp",
+    "css",
+    "html",
+    "java",
+    "json",
+    "toml",
+    "yaml"
+    },     -- one of "all", "language", or a list of languages
+  highlight = {
+    enable = true,  -- false will disable the whole extension
+  },
+    refactor = {
+    highlight_definitions = { enable = true },
+  },
+}
+EOF
+endif
