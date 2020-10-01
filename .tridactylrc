@@ -6,4 +6,17 @@ set hintfiltermode vimperator-reflow
 set hintchars 1234567890
 set hintnames numeric
 set newtab about:blank
-set csp clobber
+" set csp clobber
+
+" Run on secure pages, like csp clobber before
+jsb browser.webRequest.onHeadersReceived.addListener(tri.request.clobberCSP,{urls:["<all_urls>"],types:["main_frame"]},["blocking","responseHeaders"])
+
+" Ctrl-F should use the browser's native 'find' functionality.
+unbind <C-f>
+
+
+" Only hint search results on Google
+bindurl www.google.de f hint -Jc .rc > .r > a
+bindurl www.google.de F hint -Jbc .rc>.r>a
+bindurl www.google.com f hint -Jc .rc > .r > a
+bindurl www.google.com F hint -Jbc .rc>.r>a
