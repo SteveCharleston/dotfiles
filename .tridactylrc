@@ -13,10 +13,3 @@ jsb browser.webRequest.onHeadersReceived.addListener(tri.request.clobberCSP,{url
 
 " Ctrl-F should use the browser's native 'find' functionality.
 unbind <C-f>
-
-
-" Only hint search results on Google
-bindurl www.google.de f hint -Jc .rc > .r > a
-bindurl www.google.de F hint -Jbc .rc>.r>a
-bindurl www.google.com f hint -Jc .rc > .r > a
-bindurl www.google.com F hint -Jbc .rc>.r>a
