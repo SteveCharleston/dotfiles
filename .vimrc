@@ -93,6 +93,10 @@ Plug 'kabbamine/yowish.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'freeo/vim-kalisi'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'mhartington/oceanic-next'
+Plug 'croaker/mustang-vim'
+Plug 'NieTiger/halcyon-neovim'
+Plug 'jsit/toast.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 "
