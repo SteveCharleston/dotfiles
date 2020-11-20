@@ -784,12 +784,14 @@ Plug 'Lokaltog/vim-easymotion'
 nmap <Leader>w <Plug>(easymotion-bd-f)
 nmap <BS> <Plug>(easymotion-sn)
 nmap <Leader>a <Plug>(easymotion-sn)
+nmap <C-j> <Plug>(easymotion-sn)
 let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz'
 let g:EasyMotion_use_upper = 1
+let g:EasyMotion_add_search_history = 0
 
 " aerojump """"""""""""""""""""""""""""""""""
 Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
-nmap <Leader>a <Plug>(AerojumpDefault)
+"nmap <Leader>a <Plug>(AerojumpDefault)
 
 " easyalign """"""""""""""""""""""""""""""""""
 " Start interactive EasyAlign in visual mode (e.g. vipga)
