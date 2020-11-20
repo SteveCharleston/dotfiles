@@ -10,9 +10,9 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 " neovim stuff
+set termguicolors
 if has('nvim')
     let g:python2_host_prog = '/usr/bin/python'
-    set termguicolors
     set guicursor=
     autocmd OptionSet guicursor noautocmd set guicursor=
     let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
