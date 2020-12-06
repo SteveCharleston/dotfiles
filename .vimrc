@@ -392,7 +392,7 @@ let g:Lf_SpinSymbols = ['🌘', '🌗', '🌖', '🌕', '🌔', '🌓', '🌒', 
 Plug 'Yggdroot/LeaderF'
 "nnoremap <c-p> :LeaderfFile<cr>
 let g:Lf_ShortcutF = '<C-P>'
-let g:Lf_ShortcutB = '<leader>g'
+"let g:Lf_ShortcutB = '<leader>g'
 nnoremap <Leader>f :LeaderfFunction<cr>
 nnoremap <Leader>l :LeaderfLine<cr>
 nnoremap <Leader>t :LeaderfTag<cr>
@@ -403,6 +403,10 @@ let g:Lf_PreviewInPopup = 1
 let g:Lf_StlColorscheme = 'gruvbox_material'
 "let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
 
+" Fzf  """""""""""""""""""""""""""""""""""
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+nnoremap <Leader>g :Buffers<cr>
 
 " Ale """""""""""""""""""""""""""""""""""""
 Plug 'w0rp/ale'
