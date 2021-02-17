@@ -364,6 +364,12 @@ Plug 'sodapopcan/vim-twiggy'
 Plug 'rhysd/git-messenger.vim'
 Plug 'gregsexton/gitv', {'on': ['Gitv']}
 
+Plug 'shumphrey/fugitive-gitlab.vim'
+Plug 'tpope/vim-rhubarb'
+if filereadable(expand("~/.gitlab_credentials"))
+    source ~/.gitlab_credentials
+endif
+
 let g:git_messenger_no_default_mappings = v:true
 nmap <C-w>m <Plug>(git-messenger)
 
