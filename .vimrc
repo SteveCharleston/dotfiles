@@ -1232,9 +1232,9 @@ noremap <silent> µ :call quickui#menu#open()<cr>
 
 " Additional helper mappings
 nmap <leader>jf :NERDTreeFind<cr>
-nmap <leader>js :Gstatus<cr>
-nmap <leader>jgp :Gpush<cr>
-nmap <leader>jgc :Gcommit -avs<cr>
+nmap <leader>js :Git<cr>
+nmap <leader>jgp :Git push<cr>
+nmap <leader>jgc :Git commit -avs<cr>
 nmap <leader>jt :Twiggy<cr>
 nmap <leader>jl :GV<cr>
 
