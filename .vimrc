@@ -705,7 +705,7 @@ let g:UltiSnipsExpandTrigger="<c-k>"
 let g:UltiSnipsJumpForwardTrigger="<c-k>"
 let g:UltiSnipsJumpBackwardTrigger="<c-j>"
 ""let g:UltiSnipsJumpBackwardTrigger="<c-K>"
-"let g:ultisnips_python_style = 'google'
+let g:ultisnips_python_style = 'sphinx'
 let g:EclimCompletionMethod = 'omnifunc'
 
 
