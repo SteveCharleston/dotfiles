@@ -54,7 +54,6 @@ Plug 'cosminadrianpopescu/filesync'
 "Plug 'johngrib/vim-game-code-break'
 Plug 'vim-scripts/tcd.vim'
 "Plug 'JamshedVesuna/vim-markdown-preview'
-Plug 'dyng/ctrlsf.vim'
 Plug 'inkarkat/vim-ingo-library'
 Plug 'inkarkat/vim-SpellCheck'
 Plug 'thinca/vim-visualstar'
@@ -883,6 +882,10 @@ if executable('ag')
     let g:ackprg = 'ag --nogroup --nocolor --column'
 endif
 let g:ack_use_dispatch = 1
+
+" CtrlSF  """""""""""""""""""""""""""""""""""""
+Plug 'dyng/ctrlsf.vim'
+cnoreabbrev S CtrlSF
 
 " Auto Parens """""""""""""""""""""""""""""""""""""
 "Plug 'Raimondi/delimitMate'
