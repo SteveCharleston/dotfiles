@@ -369,6 +369,8 @@ if filereadable(expand("~/.gitlab_credentials"))
     source ~/.gitlab_credentials
 endif
 
+autocmd FileType git set foldmethod=syntax
+
 let g:git_messenger_no_default_mappings = v:true
 nmap <C-w>m <Plug>(git-messenger)
 
