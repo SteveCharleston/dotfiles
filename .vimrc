@@ -1235,6 +1235,7 @@ nmap <leader>jf :NERDTreeFind<cr>
 nmap <leader>js :Git<cr>
 nmap <leader>jgp :Git push<cr>
 nmap <leader>jgc :Git commit -avs<cr>
+nmap <leader>jgr :Git pull --rebase<cr>
 nmap <leader>jt :Twiggy<cr>
 nmap <leader>jl :GV<cr>
 
