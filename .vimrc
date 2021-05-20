@@ -370,6 +370,7 @@ if filereadable(expand("~/.gitlab_credentials"))
 endif
 
 autocmd FileType git set foldmethod=syntax
+autocmd FileType fugitive nnoremap <buffer> q :<C-U>if bufnr('$') == 1<Bar>quit<Bar>else<Bar>bdelete<Bar>endif<CR>
 
 let g:git_messenger_no_default_mappings = v:true
 nmap <C-w>m <Plug>(git-messenger)
