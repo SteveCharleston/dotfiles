@@ -418,6 +418,7 @@ nnoremap <Leader>g :Buffers<cr>
 
 " Ale """""""""""""""""""""""""""""""""""""
 Plug 'w0rp/ale'
+let g:ale_lint_on_text_changed = 'always'
 let g:ale_set_loclist = 1
 let g:ale_set_quickfix = 0
 let g:ale_set_highlights = 1
