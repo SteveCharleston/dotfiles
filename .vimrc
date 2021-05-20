@@ -96,6 +96,13 @@ Plug 'mhartington/oceanic-next'
 Plug 'croaker/mustang-vim'
 Plug 'NieTiger/halcyon-neovim'
 Plug 'jsit/toast.vim'
+Plug 'ulwlu/elly.vim'
+Plug 'glepnir/oceanic-material'
+Plug 'matsuuu/pinkmare', { 'branch': 'main'}
+Plug 'franbach/miramare'
+Plug 'sainnhe/forest-night'
+Plug 'tiagovla/tokyodark.nvim'
+Plug 'sainnhe/sonokai'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 "
