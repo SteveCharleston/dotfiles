@@ -520,7 +520,6 @@ let g:coc_global_extensions = [
             \'coc-diagnostic',
             \'coc-emmet',
             \'coc-git',
-            \'coc-highlight',
             \'coc-html',
             \'coc-java',
             \'coc-json',
@@ -534,6 +533,7 @@ let g:coc_global_extensions = [
             \'coc-yaml',
             \'coc-yank',
             \]
+            "\'coc-highlight',
             "\'coc-pyright',
 
 
@@ -567,7 +567,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
@@ -825,6 +825,13 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+" Highlight """"""""""""""""""""""""""""""""""
+Plug 'dominikduda/vim_current_word'
+" Twins of word under cursor:
+let g:vim_current_word#highlight_twins = 1
+" The word under cursor:
+let g:vim_current_word#highlight_current_word = 1
+
 " Orgmode """"""""""""""""""""""""""""""""""
 Plug 'jceb/vim-orgmode'
 Plug 'vim-scripts/utl.vim'
@@ -987,6 +994,10 @@ highlight ColorColumn ctermbg=236
 hi VertSplit ctermbg=bg cterm=none
 hi SignColumn ctermbg=none
 set fillchars=vert:\│,fold:-
+
+" highlight current word
+hi CurrentWord ctermbg=238 guibg=gray23 gui=none cterm=none
+hi CurrentWordTwins ctermbg=238 guibg=gray23 gui=none cterm=none
 
 " completition extra options """"
 "au User Ncm2Plugin call ncm2#register_source({
