@@ -442,6 +442,10 @@ nmap <silent> <Leader>[ :ALEPrevious<cr>
 nmap <silent> <Leader>] :ALENext<cr>
 nmap <leader>= :ALEFix black isort<cr>
 
+let g:ale_linter_aliases = {
+      \ 'sls': 'salt'
+      \}
+
 " neomake """""""""""""""""""""""""""""""""""""
 "Plug 'neomake/neomake'
 
