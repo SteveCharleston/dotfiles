@@ -59,6 +59,7 @@ Plug 'inkarkat/vim-SpellCheck'
 Plug 'thinca/vim-visualstar'
 Plug 'simnalamburt/vim-mundo', { 'on': 'MundoToggle' }
 Plug 'junegunn/vim-journal'
+Plug 'cespare/vim-toml'
 
 "if has('nvim')
 "Plug 'nvim-treesitter/nvim-treesitter'
