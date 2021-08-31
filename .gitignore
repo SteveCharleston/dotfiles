@@ -4,8 +4,7 @@
 [._]*.sw[a-p]
 [._]s[a-v][a-z]
 [._]sw[a-p]
-.vim/bundle/
-.vim/autoload/
+.vim/*
 # session
 Session.vim
 # temporary
