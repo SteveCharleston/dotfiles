@@ -299,7 +299,7 @@ Plug 'skywind3000/vim-quickui'
 
 " NERDtree
 "Plug 'vim-scripts/The-NERD-tree', { 'on': 'NERDTreeToggle' }
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
 let NERDTreeChDirMode=2
 let NERDTreeShowBookmarks=2
 let NERDTreeMinimalUI=1
