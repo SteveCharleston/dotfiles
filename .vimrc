@@ -60,6 +60,7 @@ Plug 'thinca/vim-visualstar'
 Plug 'simnalamburt/vim-mundo', { 'on': 'MundoToggle' }
 Plug 'junegunn/vim-journal'
 Plug 'cespare/vim-toml'
+Plug 'kyazdani42/nvim-tree.lua'
 
 "if has('nvim')
 "Plug 'nvim-treesitter/nvim-treesitter'
@@ -1305,7 +1306,55 @@ nmap <leader>jgr :Git pull --rebase<cr>
 nmap <leader>jt :Twiggy<cr>
 nmap <leader>jl :GV<cr>
 
-"if has('nvim')
+if has('nvim')
+let g:nvim_tree_indent_markers = 0
+let g:nvim_tree_gitignore = 0
+let g:nvim_tree_git_hl = 0
+let g:nvim_tree_highlight_opened_files = 3
+let g:nvim_tree_group_empty = 0
+let g:nvim_tree_show_icons = {
+\ 'git': 1,
+\ 'folders': 1,
+\ 'files': 1,
+\ 'folder_arrows': 1,
+\ }
+let g:nvim_tree_icons = {
+    \ 'default':        '',
+    \ 'symlink':        '',
+    \ 'git': {
+    \   'unstaged':     "",
+    \   'staged':       "✓",
+    \   'unmerged':     "",
+    \   'renamed':      "➜",
+    \   'untracked':    "★",
+    \   'deleted':      "",
+    \  },
+    \ 'folder': {
+    \   'arrow_open':   "",
+    \   'arrow_closed': "",
+    \   'default':      "",
+    \   'open':         "",
+    \   'empty':        "",
+    \   'empty_open':   "",
+    \   'symlink':      "",
+    \   'symlink_open': "",
+    \  },
+    \  'lsp': {
+    \    'hint': "",
+    \    'info': "",
+    \    'warning': "",
+    \    'error': "",
+    \  }
+    \ }
+lua <<EOF
+require'nvim-tree'.setup{
+    filters = {
+        dotfiles = true,
+        custom = {"~"}
+        }
+    }
+EOF
+
 "lua <<EOF
 "require'nvim-treesitter.configs'.setup {
 "  ensure_installed = {
@@ -1329,4 +1378,4 @@ nmap <leader>jl :GV<cr>
 "  },
 "}
 "EOF
-"endif
+endif
