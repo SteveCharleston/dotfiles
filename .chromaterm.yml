@@ -42,3 +42,7 @@ rules:
 - description: Generics - Good
   regex: (?i)\b(up|ok(ay)?|permit(ed|s)?|accept(s|ed)?|enable(d)?|online|succe((ss(ful|fully)?)|ed(ed)?)?|connect(ed)?|reachable|valid|forwarding|synchronized)\b
   color: f#00ff00
+
+- description: debuild dh stages
+  regex: ^dh\b|dh_.+?\b
+  color: f#af5f00
