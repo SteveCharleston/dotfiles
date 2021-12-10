@@ -820,7 +820,7 @@ Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
 "nmap <Leader>a <Plug>(AerojumpDefault)
 
 " wilder """"""""""""""""""""""""""""""""""
-Plug 'gelguy/wilder.nvim'
+"Plug 'gelguy/wilder.nvim'
 
 " easyalign """"""""""""""""""""""""""""""""""
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -1006,39 +1006,39 @@ hi CurrentWord ctermbg=238 guibg=gray23 gui=none cterm=none
 hi CurrentWordTwins ctermbg=238 guibg=gray23 gui=none cterm=none
 
 " wilder optins
-call wilder#enable_cmdline_enter()
-set wildcharm=<Tab>
-cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
-cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
-
-" only / and ? are enabled by default
-call wilder#set_option('modes', ['/', '?', ':'])
-call wilder#set_option('renderer', wilder#wildmenu_renderer(
-      \ wilder#wildmenu_airline_theme({
-      \   'highlights': {},
-      \   'highlighter': wilder#basic_highlighter(),
-      \   'separator': '  ',
-      \   'use_powerline_symbols': 1,
-      \   'powerline_symbols': ['', ''],
-      \ })))
-
-if has('nvim')
-    call wilder#set_option('pipeline', [
-        \   wilder#branch(
-        \     wilder#substitute_pipeline(),
-        \     wilder#cmdline_pipeline({
-        \       'language': 'python',
-        \       'fuzzy': 1,
-        \     }),
-        \     wilder#search_pipeline(),
-        \     wilder#python_search_pipeline({
-        \       'pattern': wilder#python_fuzzy_pattern(),
-        \       'sorter': wilder#python_difflib_sorter(),
-        \       'engine': 're',
-        \     }),
-        \   ),
-        \ ])
-endif
+"call wilder#enable_cmdline_enter()
+"set wildcharm=<Tab>
+"cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
+"cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
+"
+"" only / and ? are enabled by default
+"call wilder#set_option('modes', ['/', '?', ':'])
+"call wilder#set_option('renderer', wilder#wildmenu_renderer(
+"      \ wilder#wildmenu_airline_theme({
+"      \   'highlights': {},
+"      \   'highlighter': wilder#basic_highlighter(),
+"      \   'separator': '  ',
+"      \   'use_powerline_symbols': 1,
+"      \   'powerline_symbols': ['', ''],
+"      \ })))
+"
+"if has('nvim')
+"    call wilder#set_option('pipeline', [
+"        \   wilder#branch(
+"        \     wilder#substitute_pipeline(),
+"        \     wilder#cmdline_pipeline({
+"        \       'language': 'python',
+"        \       'fuzzy': 1,
+"        \     }),
+"        \     wilder#search_pipeline(),
+"        \     wilder#python_search_pipeline({
+"        \       'pattern': wilder#python_fuzzy_pattern(),
+"        \       'sorter': wilder#python_difflib_sorter(),
+"        \       'engine': 're',
+"        \     }),
+"        \   ),
+"        \ ])
+"endif
 
 " completition extra options """"
 "au User Ncm2Plugin call ncm2#register_source({
