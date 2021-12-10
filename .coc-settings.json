@@ -11,5 +11,33 @@
         "sh" : "shellcheck"
     },
     "diagnostic.displayByAle": true,
-    "coc.preferences.colorSupport": true
+    "coc.preferences.colorSupport": true,
+    "suggest.completionItemKindLabels": {
+        "class": "",
+        "color": "",
+        "constant": "",
+        "constructor": "",
+        "default": "",
+        "enum": "",
+        "enumMember": "",
+        "event": "鬒",
+        "field": "綠",
+        "file": "",
+        "folder": "",
+        "function": "",
+        "interface": "ﰮ",
+        "keyword": "",
+        "method": "",
+        "module": "",
+        "operator": "",
+        "property": "",
+        "reference": "",
+        "snippet": "",
+        "struct": "פּ",
+        "text": "",
+        "typeParameter": "",
+        "unit": "",
+        "value": "",
+        "variable": "ﰩ"
+    }
 }
