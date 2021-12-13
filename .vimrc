@@ -60,7 +60,7 @@ Plug 'thinca/vim-visualstar'
 Plug 'simnalamburt/vim-mundo', { 'on': 'MundoToggle' }
 Plug 'junegunn/vim-journal'
 Plug 'cespare/vim-toml'
-Plug 'kyazdani42/nvim-tree.lua'
+"Plug 'kyazdani42/nvim-tree.lua'
 
 "if has('nvim')
 "Plug 'nvim-treesitter/nvim-treesitter'
@@ -1346,14 +1346,14 @@ let g:nvim_tree_icons = {
     \    'error': "",
     \  }
     \ }
-lua <<EOF
-require'nvim-tree'.setup{
-    filters = {
-        dotfiles = true,
-        custom = {"~"}
-        }
-    }
-EOF
+"lua <<EOF
+"require'nvim-tree'.setup{
+"    filters = {
+"        dotfiles = true,
+"        custom = {"~"}
+"        }
+"    }
+"EOF
 
 "lua <<EOF
 "require'nvim-treesitter.configs'.setup {
