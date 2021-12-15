@@ -60,6 +60,8 @@ Plug 'thinca/vim-visualstar'
 Plug 'simnalamburt/vim-mundo', { 'on': 'MundoToggle' }
 Plug 'junegunn/vim-journal'
 Plug 'cespare/vim-toml'
+Plug 'vim-test/vim-test'
+Plug 'rcarriga/vim-ultest'
 "Plug 'kyazdani42/nvim-tree.lua'
 
 "if has('nvim')
