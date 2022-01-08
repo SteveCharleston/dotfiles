@@ -450,6 +450,17 @@ let g:ale_linter_aliases = {
       \ 'sls': 'salt'
       \}
 
+let g:ale_linters = {
+        \ 'python': [
+            \ 'mypy',
+            \ 'pylint',
+            \ 'flake8',
+            \ 'pydocstyle',
+            \ 'bandit',
+        \ ] }
+
+let g:ale_python_bandit_options = "--skip B101"
+
 " neomake """""""""""""""""""""""""""""""""""""
 "Plug 'neomake/neomake'
 
