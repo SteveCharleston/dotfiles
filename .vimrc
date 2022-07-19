@@ -60,8 +60,6 @@ Plug 'thinca/vim-visualstar'
 Plug 'simnalamburt/vim-mundo', { 'on': 'MundoToggle' }
 Plug 'junegunn/vim-journal'
 Plug 'cespare/vim-toml'
-Plug 'vim-test/vim-test'
-Plug 'rcarriga/vim-ultest'
 "Plug 'kyazdani42/nvim-tree.lua'
 
 "if has('nvim')
@@ -651,6 +649,11 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 "imap <C-k> <Plug>(coc-snippets-expand-jump)
 
 
+" Testing """""""""""""""""""
+Plug 'vim-test/vim-test'
+Plug 'rcarriga/vim-ultest'
+let g:ultest_deprecation_notice = 0
+let g:ultest_running_sign = ""
 
 
 " completor """""""""""""""""""
