@@ -6,6 +6,7 @@
     "suggest.snippetIndicator": "►",
     "suggest.maxPreviewWidth" : 250,
     "suggest.detailMaxLength" : 250,
+    "python.pythonPath": "/usr/bin/python3",
     "git.enableGutters" : false,
     "diagnostic-languageserver.filetypes": {
         "sh" : "shellcheck"
