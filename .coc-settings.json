@@ -1,6 +1,17 @@
 {
     "suggest.autoTrigger": "always",
+    "suggest.selection": "none",
+    "suggest.acceptSuggestionOnCommitCharacter": true,
+    "suggest.virtualText": true,
     "suggest.echodocSupport": true,
+    "suggest.floatConfig": {
+        "border": false,
+        "rounded": true,
+        "highlight": "CocFloating",
+        "shadow": false,
+        "winblend": 0
+    },
+    "suggest.noselect": true,
     "diagnostic.virtualText": true,
     "codeLens.enable": true,
     "suggest.snippetIndicator": "►",
