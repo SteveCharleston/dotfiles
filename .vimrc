@@ -991,6 +991,8 @@ let airline#extensions#ale#error_symbol = 'E'
 let airline#extensions#ale#warning_symbol = 'W'
 let g:airline#extensions#whitespace#enabled = 0
 
+" don't display fileformat if it is an unix file
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 
 "let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#excludes = []
