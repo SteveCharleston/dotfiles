@@ -564,6 +564,8 @@ inoremap <silent><expr> <c-space> coc#refresh()
 "inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm()
 				\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <C-j> coc#pum#visible() ? coc#_select_confirm()
+				\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Remap keys for gotos
 "nmap <silent> gd <Plug>(coc-definition)
@@ -738,7 +740,7 @@ Plug 'SteveCharleston/vim-snippets'
 "let g:UltiSnipsRemoveSelectModeMappings = 0
 let g:UltiSnipsExpandTrigger="<c-k>"
 let g:UltiSnipsJumpForwardTrigger="<c-k>"
-let g:UltiSnipsJumpBackwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 ""let g:UltiSnipsJumpBackwardTrigger="<c-K>"
 let g:ultisnips_python_style = 'sphinx'
 let g:EclimCompletionMethod = 'omnifunc'
@@ -914,7 +916,7 @@ nmap <leader>V <Plug>(quickhl-manual-reset)
 xmap <leader>V <Plug>(quickhl-manual-reset)
 
 " Emmet """""""""""""""""""""""""""""""
-Plug 'mattn/emmet-vim'
+"Plug 'mattn/emmet-vim'
 "let g:user_emmet_leader_key='<C-m>'
 
 " Quickfixsigns """""""""""""""""""""""""""""""""""""
