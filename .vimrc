@@ -442,7 +442,8 @@ let g:ale_python_mypy_options = '--ignore-missing-imports'
 
 nmap <silent> <Leader>[ :ALEPrevious<cr>
 nmap <silent> <Leader>] :ALENext<cr>
-nmap <leader>= :ALEFix black isort<cr>
+autocmd FileType python nnoremap <leader>= :ALEFix black isort<cr>
+autocmd FileType rust nnoremap <leader>= :ALEFix rustfmt<cr>
 
 let g:ale_linter_aliases = {
       \ 'sls': 'salt'
