@@ -1,6 +1,6 @@
 {
     "suggest.autoTrigger": "always",
-    "suggest.selection": "none",
+    "suggest.selection": "first",
     "suggest.acceptSuggestionOnCommitCharacter": true,
     "suggest.virtualText": true,
     "suggest.echodocSupport": true,
