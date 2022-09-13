@@ -655,6 +655,8 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 
 " Testing """""""""""""""""""
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'roxma/nvim-yarp'
 Plug 'vim-test/vim-test'
 Plug 'rcarriga/vim-ultest'
 let g:ultest_deprecation_notice = 0
