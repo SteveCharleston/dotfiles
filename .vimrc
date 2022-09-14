@@ -410,7 +410,7 @@ Plug 'Yggdroot/LeaderF'
 "nnoremap <c-p> :LeaderfFile<cr>
 let g:Lf_ShortcutF = '<C-P>'
 "let g:Lf_ShortcutB = '<leader>g'
-nnoremap <Leader>f :LeaderfFunction<cr>
+nnoremap <Leader>f :LeaderfBufTag<cr>
 nnoremap <Leader>l :LeaderfLine<cr>
 nnoremap <Leader>t :LeaderfTag<cr>
 nnoremap <Leader>m :LeaderfMru<cr>
