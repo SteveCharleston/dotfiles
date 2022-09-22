@@ -418,6 +418,23 @@ let g:ctrlp_map = ''
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 let g:Lf_StlColorscheme = 'gruvbox_material'
+
+let g:Lf_PopupPreviewPosition="right"
+let g:Lf_PopupBorders = ["─","│","─","│","╭","╮","╯","╰"]
+
+let g:Lf_PreviewResult = {
+        \ 'File': 1,
+        \ 'Buffer': 1,
+        \ 'Mru': 1,
+        \ 'Tag': 0,
+        \ 'BufTag': 1,
+        \ 'Function': 1,
+        \ 'Line': 0,
+        \ 'Colorscheme': 0,
+        \ 'Rg': 0,
+        \ 'Gtags': 0
+        \}
+
 "let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
 
 " Fzf  """""""""""""""""""""""""""""""""""
