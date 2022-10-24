@@ -754,7 +754,7 @@ let g:ultest_running_sign = ""
 
 " Ultisnips """""""""""""""""""""""""""""""
 Plug 'SirVer/ultisnips'
-Plug 'SteveCharleston/vim-snippets'
+Plug 'honza/vim-snippets'
 "inoremap <silent> <buffer> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 "let g:UltiSnipsRemoveSelectModeMappings = 0
 let g:UltiSnipsExpandTrigger="<c-k>"
