@@ -24,6 +24,7 @@ link_if_missing $PWD/.ideavimrc $HOME/.ideavimrc
 link_if_missing $PWD/.coc-settings.json $HOME/.config/nvim/coc-settings.json
 link_if_missing $PWD/.coc-settings.json $HOME/.vim/coc-settings.json
 link_if_missing $PWD/.chromaterm.yml $HOME/.chromaterm.yml
+link_if_missing $PWD/.comfortable-swipe.conf $HOME/.config/comfortable-swipe.conf
 
 link_if_missing $PWD/bin/mytree.py $HOME/bin/tree
 chmod 0755 $HOME/bin/tree
