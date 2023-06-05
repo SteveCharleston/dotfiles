@@ -1005,7 +1005,12 @@ let g:airline#extensions#coc#enabled = 1
 
 let g:airline_section_z  = '%3p%% %#__accent_bold#%{g:airline_symbols.linenr}%1l%#__restore__#%#__accent_bold#/%L%#__restore__#:%2v'
 
-set laststatus=2 " always have a statusline
+" always have a statusline
+if has('nvim')
+set laststatus=3
+else
+set laststatus=2
+endif
 "
 " make everything smaller
 " Disable error and warning line numbers
