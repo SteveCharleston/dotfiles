@@ -33,6 +33,8 @@
     "rust-analyzer.lens.enable": false,
     "rust-analyzer.lens.run.enable": false,
     "rust-analyzer.lens.debug.enable": false,
+    "jedi.markupKindPreferred": "markdown",
+    "jedi.workspace.extraPaths": ["app"],
     "suggest.completionItemKindLabels": {
         "class": "",
         "color": "",

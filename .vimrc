@@ -556,7 +556,7 @@ let g:coc_global_extensions = [
             \'coc-json',
             \'coc-lists',
             \'coc-omni',
-            \'coc-python',
+            \'coc-jedi',
             \'coc-sh',
             \'coc-snippets',
             \'coc-ultisnips',
@@ -566,6 +566,7 @@ let g:coc_global_extensions = [
             \]
             "\'coc-highlight',
             "\'coc-pyright',
+            "\'coc-python',
 
 
 
