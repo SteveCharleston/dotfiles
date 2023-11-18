@@ -476,6 +476,7 @@ let g:ale_linters = {
         \ ] }
 
 let g:ale_python_bandit_options = "--skip B101"
+let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 
 " neomake """""""""""""""""""""""""""""""""""""
 "Plug 'neomake/neomake'
