@@ -852,8 +852,6 @@ Plug 'Lokaltog/vim-easymotion'
 "nmap <Space><Space> <Plug>(easymotion-jumptoanywhere)
 "nmap <Leader>w <Plug>(easymotion-jumptoanywhere)
 nmap <Leader>w <Plug>(easymotion-bd-f)
-nmap <BS> <Plug>(easymotion-sn)
-nmap <Leader>a <Plug>(easymotion-sn)
 nmap <C-j> <Plug>(easymotion-sn)
 let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz'
 let g:EasyMotion_use_upper = 1
