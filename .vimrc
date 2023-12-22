@@ -343,6 +343,8 @@ Plug 'idanarye/vim-merginal'
 Plug 'sodapopcan/vim-twiggy'
 Plug 'rhysd/git-messenger.vim'
 Plug 'gregsexton/gitv', {'on': ['Gitv']}
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'sindrets/diffview.nvim', {'branch': 'main'}
 
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'tpope/vim-rhubarb'
