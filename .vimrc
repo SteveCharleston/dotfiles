@@ -426,8 +426,47 @@ let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
 "let g:ale_java_javac_classpath = '/home/steven/bin/android/sdk/platforms/android-28/android.jar'
 let b:ale_fixers = ['autopep8', 'yapf']
-let g:ale_virtualtext_cursor = 1
+let g:ale_virtualtext_cursor = 0
 let g:ale_python_mypy_options = '--ignore-missing-imports'
+
+if has('nvim')
+let g:ale_use_neovim_diagnostics_api = 1
+sign define DiagnosticSignError text= texthl=DiagnosticSignError
+sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn
+sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo
+sign define DiagnosticSignHint text= texthl=DiagnosticSignHint
+
+lua <<EOF
+vim.diagnostic.config {
+    underline = true,
+    virtual_text = {
+            --prefix = "",
+            severity = nil,
+            source = "if_many",
+            --spacing = 1,
+            format = nil,
+    },
+        float = {
+        show_header = true,
+        source = 'if_many',
+        border = 'rounded',
+        focusable = false,
+    },
+    signs = true,
+    severity_sort = true,
+    update_in_insert = true,
+
+}
+--vim.api.nvim_create_autocmd({ "CursorHold" }, {
+--	callback = function()
+--            vim.diagnostic.open_float({scope="cursor"})
+--	end,
+--})
+
+EOF
+
+nnoremap <silent> <leader>e  :<C-u>lua vim.diagnostic.open_float({scope="line"})<cr>
+endif
 
 nmap <silent> <Leader>[ :ALEPrevious<cr>
 nmap <silent> <Leader>] :ALENext<cr>
@@ -621,7 +660,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+"nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 " Show commands
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
