@@ -1056,6 +1056,7 @@ let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 call plug#end()
 
 "set t_Co=256
+let g:gruvbox_legacy_language_groups = 1
 set background=dark
 color gruvbox
 "hi link ALEErrorSign    Error
@@ -1067,6 +1068,8 @@ highlight ColorColumn ctermbg=236
 hi VertSplit ctermbg=bg cterm=none
 hi SignColumn ctermbg=none
 set fillchars=vert:\│,fold:-
+"hi CocFloating guibg=#504945
+hi NormalFloat guibg=#504945
 
 " highlight current word
 hi CurrentWord ctermbg=238 guibg=gray23 gui=none cterm=none
