@@ -784,8 +784,9 @@ Plug 'SirVer/ultisnips'
 Plug 'SteveCharleston/vim-snippets'
 "inoremap <silent> <buffer> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 "let g:UltiSnipsRemoveSelectModeMappings = 0
-let g:UltiSnipsExpandTrigger="<c-k>"
-let g:UltiSnipsJumpForwardTrigger="<c-k>"
+"let g:UltiSnipsExpandTrigger="<c-k>"
+"let g:UltiSnipsJumpForwardTrigger="<c-k>"
+let g:UltiSnipsExpandOrJumpTrigger = "<c-k>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 ""let g:UltiSnipsJumpBackwardTrigger="<c-K>"
 let g:ultisnips_python_style = 'sphinx'
