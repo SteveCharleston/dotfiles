@@ -1,4 +1,6 @@
 {
+    "copilot.autoUpdateCompletion": true,
+    "copilot.enable": true,
     "suggest.autoTrigger": "always",
     "suggest.selection": "first",
     "suggest.acceptSuggestionOnCommitCharacter": true,

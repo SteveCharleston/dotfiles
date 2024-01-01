@@ -566,6 +566,7 @@ let termdebugger="rust-gdb"
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 let g:coc_global_extensions = [
+            \'@hexuhua/coc-copilot',
             \'coc-css',
             \'coc-diagnostic',
             \'coc-emmet',
@@ -692,6 +693,10 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 "" Use <C-j> for both expand and jump (make expand higher priority.)
 "imap <C-k> <Plug>(coc-snippets-expand-jump)
 
+" Copilot """""""""""""""""""
+Plug 'github/copilot.vim', { 'branch': 'release' }
+Plug 'gptlang/CopilotChat.nvim', { 'branch': 'main' }
+imap <M-C-N> <Plug>(copilot-accept-word)
 
 " Testing """""""""""""""""""
 Plug 'roxma/vim-hug-neovim-rpc'
