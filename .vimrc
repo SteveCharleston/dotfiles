@@ -428,11 +428,14 @@ let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
 "let g:ale_java_javac_classpath = '/home/steven/bin/android/sdk/platforms/android-28/android.jar'
 let b:ale_fixers = ['autopep8', 'yapf']
-let g:ale_virtualtext_cursor = 0
+let g:ale_virtualtext_cursor = 1
 let g:ale_python_mypy_options = '--ignore-missing-imports'
 
 if has('nvim')
+Plug 'luozhiya/lsp-virtual-improved.nvim'
+
 let g:ale_use_neovim_diagnostics_api = 1
+let g:ale_virtualtext_cursor = 0
 sign define DiagnosticSignError text= texthl=DiagnosticSignError
 sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn
 sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo
@@ -441,13 +444,19 @@ sign define DiagnosticSignHint text= texthl=DiagnosticSignHint
 lua <<EOF
 vim.diagnostic.config {
     underline = true,
-    virtual_text = {
-            --prefix = "",
-            severity = nil,
-            source = "if_many",
-            --spacing = 1,
-            format = nil,
-    },
+    --virtual_text = {
+    --        --prefix = "",
+    --        severity = nil,
+    --        source = "if_many",
+    --        --spacing = 1,
+    --        format = nil,
+    --},
+    virtual_text = false,
+    virtual_improved = {
+        current_line = 'only',
+        spacing = 1,
+      prefix = '■', -- Same usage as virtual_text.prefix
+        },
         float = {
         show_header = true,
         source = 'if_many',
@@ -1430,6 +1439,8 @@ let g:nvim_tree_icons = {
 "        }
 "    }
 "EOF
+
+lua require('lsp-virtual-improved').setup()
 
 "lua <<EOF
 "require'nvim-treesitter.configs'.setup {
