@@ -62,15 +62,18 @@ Plug 'junegunn/vim-journal'
 Plug 'cespare/vim-toml'
 "Plug 'kyazdani42/nvim-tree.lua'
 
-"if has('nvim')
+if has('nvim')
 "Plug 'nvim-treesitter/nvim-treesitter'
-"endif
+Plug 'sontungexpt/url-open', { 'branch': 'main' }
+endif
 
 "Plug 'vim-vdebug/vdebug'
 "Plug 'editorconfig/editorconfig-vim'
 
 " Color Schemes
 Plug 'gruvbox-community/gruvbox'
+Plug 'sainnhe/everforest'
+Plug 'loctvl842/monokai-pro.nvim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 "
@@ -236,6 +239,8 @@ hi Terminal ctermbg=black ctermfg=lightgray guibg=black guifg=lightgrey
 tnoremap jk <C-\><C-n>
 if !has('nvim')
     set termwinkey=<C-j>
+else
+    nmap gx <esc>:URLOpenUnderCursor<CR>
 endif
 
 " Commands
@@ -569,6 +574,10 @@ let g:echodoc_enable_at_startup = 1
 packadd termdebug
 let g:termdebug_wide = 25
 let termdebugger="rust-gdb"
+
+Plug 'nvim-neotest/nvim-nio'
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
 
 " CoC """""""""""""""""""
 "Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
@@ -1085,6 +1094,8 @@ hi SignColumn ctermbg=none
 set fillchars=vert:\│,fold:-
 "hi CocFloating guibg=#504945
 hi NormalFloat guibg=#504945
+"hi CocInlayHint guifg=grey50 guibg=234 cterm=italic gui=italic
+hi CocInlayHint guifg=grey50 guibg=#282828 cterm=italic gui=italic
 
 " highlight current word
 hi CurrentWord ctermbg=238 guibg=gray23 gui=none cterm=none
@@ -1441,6 +1452,7 @@ let g:nvim_tree_icons = {
 "EOF
 
 lua require('lsp-virtual-improved').setup()
+lua require('url-open').setup()
 
 "lua <<EOF
 "require'nvim-treesitter.configs'.setup {
@@ -1465,4 +1477,59 @@ lua require('lsp-virtual-improved').setup()
 "  },
 "}
 "EOF
+lua <<EOF
+require("dap").adapters.lldb = {
+	type = "executable",
+	command = "/usr/bin/lldb-vscode-10", -- adjust as needed
+	name = "lldb",
+}
+
+local lldb = {
+	name = "Launch lldb",
+	type = "lldb", -- matches the adapter
+	request = "launch", -- could also attach to a currently running process
+	program = function()
+		return vim.fn.input(
+			"Path to executable: ",
+			vim.fn.getcwd() .. "/",
+			"file"
+		)
+	end,
+	cwd = "${workspaceFolder}",
+	stopOnEntry = false,
+	args = function()
+		return vim.fn.input(
+			"Args: ",
+			vim.fn.getcwd() .. "/",
+			"file"
+		)
+	end,
+	runInTerminal = true,
+	  initCommands = function()
+      -- Find out where to look for the pretty printer Python module
+      local rustc_sysroot = vim.fn.trim(vim.fn.system('rustc --print sysroot'))
+
+      local script_import = 'command script import "' .. rustc_sysroot .. '/lib/rustlib/etc/lldb_lookup.py"'
+      local commands_file = rustc_sysroot .. '/lib/rustlib/etc/lldb_commands'
+
+      local commands = {}
+      local file = io.open(commands_file, 'r')
+      if file then
+        for line in file:lines() do
+          table.insert(commands, line)
+        end
+        file:close()
+      end
+      table.insert(commands, 1, script_import)
+
+      return commands
+    end,
+}
+
+require('dap').configurations.rust = {
+	lldb -- different debuggers or more configurations can be used here
+}
+require("dapui").setup()
+
+EOF
 endif
