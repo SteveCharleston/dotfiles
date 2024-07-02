@@ -71,7 +71,11 @@ endif
 "Plug 'editorconfig/editorconfig-vim'
 
 " Color Schemes
+if has('nvim')
+Plug 'ellisonleao/gruvbox.nvim'
+else
 Plug 'gruvbox-community/gruvbox'
+endif
 Plug 'sainnhe/everforest'
 Plug 'loctvl842/monokai-pro.nvim'
 
@@ -1082,6 +1086,39 @@ call plug#end()
 "set t_Co=256
 let g:gruvbox_legacy_language_groups = 1
 set background=dark
+
+if has('nvim')
+lua <<EOF
+require("gruvbox").setup({
+  terminal_colors = true, -- add neovim terminal colors
+  undercurl = true,
+  underline = true,
+  bold = true,
+  italic = {
+    strings = false,
+    emphasis = true,
+    comments = true,
+    operators = false,
+    folds = true,
+  },
+  strikethrough = true,
+  invert_selection = true,
+  invert_signs = false,
+  invert_tabline = false,
+  invert_intend_guides = false,
+  inverse = true, -- invert background for search, diffs, statuslines and errors
+  contrast = "", -- can be "hard", "soft" or empty string
+  palette_overrides = {},
+  overrides = {},
+  dim_inactive = false,
+  transparent_mode = false,
+      overrides = {
+          DiffAdd = { bg = "#3a431a", fg = "#ebdbb2" },
+    }
+})
+EOF
+endif
+
 color gruvbox
 "hi link ALEErrorSign    Error
 "hi link ALEWarningSign  Keyword
@@ -1089,7 +1126,7 @@ color gruvbox
 "highlight ALEWarning ctermbg=none cterm=underline gui=underline guifg=red
 highlight ColorColumn guibg=gray20
 highlight ColorColumn ctermbg=236
-hi VertSplit ctermbg=bg cterm=none
+"hi VertSplit ctermbg=bg cterm=none
 hi SignColumn ctermbg=none
 set fillchars=vert:\│,fold:-
 "hi CocFloating guibg=#504945
