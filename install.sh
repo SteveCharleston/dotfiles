@@ -13,6 +13,7 @@ link_if_missing() {
 
 mkdir -p $HOME/bin
 mkdir -p $HOME/.config/nvim
+mkdir -p $HOME/.config/fusuma
 chmod 0755 $HOME/bin
 
 link_if_missing $PWD/.vimrc $HOME/.vimrc
@@ -25,6 +26,7 @@ link_if_missing $PWD/.coc-settings.json $HOME/.config/nvim/coc-settings.json
 link_if_missing $PWD/.coc-settings.json $HOME/.vim/coc-settings.json
 link_if_missing $PWD/.chromaterm.yml $HOME/.chromaterm.yml
 link_if_missing $PWD/.comfortable-swipe.conf $HOME/.config/comfortable-swipe.conf
+link_if_missing $PWD/.fusuma_config $HOME/.config/fusuma/config.yml
 
 link_if_missing $PWD/bin/mytree.py $HOME/bin/tree
 chmod 0755 $HOME/bin/tree
