@@ -1,0 +1,47 @@
+swipe:
+  3:
+    left:
+      #command: 'ydotool key alt+Left'
+      command: 'ydotool key 56:1 105:1 56:0 105:0'
+    right:
+      #command: 'ydotool key alt+Right'
+      command: 'ydotool key 56:1 106:1 56:0 106:0 '
+    up:
+      #command: 'ydotool key ctrl+Tab'
+      command: 'ydotool key 29:1 15:1 29:0 15:0'
+    down:
+      #command: 'ydotool key ctrl+shift+Tab'
+      command: 'ydotool key 29:1 42:1 15:1 29:0 42:0 15:0'
+  4:
+    left:
+      #command: 'ydotool key ctrl+alt+Right'
+      command: 'ydotool key 29:1 56:1 106:1 29:0 56:0 106:0'
+    right:
+      #command: 'ydotool key ctrl+alt+Left'
+      command: 'ydotool key 29:1 56:1 105:1 29:0 56:0 105:0'
+    up:
+      #command: 'ydotool key Meta'
+      command: 'ydotool key 125:1 125:0'
+    down:
+      #command: 'ydotool key ctrl+w'
+      command: 'ydotool key 29:1 17:1 29:0 17:0'
+
+#pinch:
+#  2:
+#    in:
+#      command: 'ydotool key ctrl+equal'
+#    out:
+#      command: 'ydotool key ctrl+minus'
+#  4:
+#    in:
+#      command: 'ydotool key super+a'
+#    out:
+#      command: 'ydotool key super+s'
+
+threshold:
+  swipe: 0.3
+  pinch: 0.1
+
+interval:
+  swipe: 1
+  pinch: 1
