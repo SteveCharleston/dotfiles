@@ -622,7 +622,6 @@ Plug 'rcarriga/nvim-dap-ui'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 let g:coc_global_extensions = [
-            \'@hexuhua/coc-copilot',
             \'coc-css',
             \'coc-diagnostic',
             \'coc-emmet',
@@ -751,8 +750,10 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " Copilot """""""""""""""""""
 Plug 'github/copilot.vim', { 'branch': 'release' }
-Plug 'gptlang/CopilotChat.nvim', { 'branch': 'main' }
+"Plug 'gptlang/CopilotChat.nvim', { 'branch': 'main' }
+Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'main' }
 imap <M-C-N> <Plug>(copilot-accept-word)
+let g:copilot_chat_disable_separators = 0
 
 " Testing """""""""""""""""""
 Plug 'roxma/vim-hug-neovim-rpc'
@@ -1524,6 +1525,7 @@ let g:nvim_tree_icons = {
 
 lua require('lsp-virtual-improved').setup()
 lua require('url-open').setup()
+lua require('CopilotChat').setup({ mode = "split", debug = false })
 
 "lua <<EOF
 "require'nvim-treesitter.configs'.setup {
