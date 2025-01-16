@@ -198,10 +198,12 @@ autocmd BufReadPost *.doc %!antiword "%"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 "
-" Key Remappings                                  
+" Key Remappings
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""
-set pastetoggle=<F10>
+if !has('nvim')
+    set pastetoggle=<F10>
+endif
 imap jj <Esc>
 imap jk <Esc>
 imap ubpy #!/usr/bin/python
