@@ -72,7 +72,7 @@ endif
 
 " Color Schemes
 if has('nvim')
-Plug 'ellisonleao/gruvbox.nvim'
+Plug 'ellisonleao/gruvbox.nvim', { 'branch': 'main' }
 else
 Plug 'gruvbox-community/gruvbox'
 endif
