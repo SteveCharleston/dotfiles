@@ -120,13 +120,13 @@ set backspace=indent,eol,start " make backspace a more flexible
 set completeopt=menu,preview " display the completition menu and a preview window
 set softtabstop=4 shiftwidth=4 expandtab 
 set omnifunc=syntaxcomplete#Complete
-set guioptions=ci
 set tags=./tags;
 set undofile            " Maintain  history between sessions
 set iskeyword=@,48-57,_,192-255
 set timeoutlen=1000 ttimeoutlen=10
 
 if !has('nvim')
+    set guioptions=ci       " bare bones GVIM
     set ttymouse=sgr        " Resize splits inside tmux
 endif
 
