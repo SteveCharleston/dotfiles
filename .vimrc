@@ -611,7 +611,7 @@ let g:echodoc_enable_at_startup = 1
 "let g:ncm2#complete_length = [[1,2],[7,2]]
 
 " Termdebug """""""""""""""""""
-packadd termdebug
+packadd! termdebug
 let g:termdebug_wide = 25
 let termdebugger="rust-gdb"
 
