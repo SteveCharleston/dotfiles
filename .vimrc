@@ -1175,6 +1175,9 @@ hi CocInlayHint guifg=grey50 guibg=#282828 cterm=italic gui=italic
 hi CurrentWord ctermbg=238 guibg=gray23 gui=none cterm=none
 hi CurrentWordTwins ctermbg=238 guibg=gray23 gui=none cterm=none
 
+" Fix airline highlighting under neovim, which has reversed colors
+hi StatusLine cterm=NONE ctermfg=239 ctermbg=223 gui=NONE guifg=#504945 guibg=#ebdbb2
+
 " wilder optins
 "call wilder#enable_cmdline_enter()
 "set wildcharm=<Tab>
