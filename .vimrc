@@ -137,7 +137,7 @@ set backup
 set backupdir=/tmp,.
 set directory=/tmp,.
 "set diffexpr=
-set diffopt+=algorithm:patience
+set diffopt+=algorithm:histogram
 ""set guifont=Courier_New:h10:cANSI
 set guifont=Liberation\ Mono\ 10
 set helplang=de
@@ -753,6 +753,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " Copilot """""""""""""""""""
 Plug 'github/copilot.vim', { 'branch': 'release' }
 "Plug 'gptlang/CopilotChat.nvim', { 'branch': 'main' }
+Plug 'nvim-lua/plenary.nvim'
 Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'main' }
 imap <M-C-N> <Plug>(copilot-accept-word)
 let g:copilot_chat_disable_separators = 0
