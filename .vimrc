@@ -881,7 +881,7 @@ let g:EclimCompletionMethod = 'omnifunc'
 
 " For snippet_complete marker.
 if has('conceal')
-  set conceallevel=0 concealcursor=i
+  set conceallevel=1 concealcursor=n
 endif
 
 
@@ -921,6 +921,12 @@ let g:tq_language='de'
 " this plugin can also be invoked with ctrl-x ctrl-u in insert mode
 vnoremap <Leader>ts y:ThesaurusQueryReplace <C-r>"<CR>
 nnoremap <Leader>ts :ThesaurusQueryReplaceCurrentWord<CR>
+
+" Obsidian  """""""""""""""""""""""""""""""""""
+Plug 'obsidian-nvim/obsidian.nvim'
+Plug 'ibhagwan/fzf-lua'
+"Plug 'nvim-telescope/telescope.nvim'
+
 
 " Clang """""""""""""""""""""""""""""""""""
 "Plug 'justmao945/vim-clang'
@@ -1567,6 +1573,18 @@ require('copilot').setup({
 EOF
 
 lua require('CopilotChat').setup({ mode = "split", debug = false })
+
+lua <<EOF
+require('obsidian').setup({
+    workspaces = {
+            {
+                    name = "personal",
+                    path = "~/Dokumente/Obsidian Vault/",
+            },
+        },
+    legacy_commands = false,
+    })
+EOF
 
 "lua <<EOF
 "require'nvim-treesitter.configs'.setup {
