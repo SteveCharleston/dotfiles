@@ -61,9 +61,10 @@ Plug 'simnalamburt/vim-mundo', { 'on': 'MundoToggle' }
 Plug 'junegunn/vim-journal'
 Plug 'cespare/vim-toml'
 "Plug 'kyazdani42/nvim-tree.lua'
+Plug 'tpope/vim-markdown', { 'commit': 'baf2592d33d6d73bf2bcb7cf3251586eed5148f9' }
 
 if has('nvim')
-"Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'sontungexpt/url-open', { 'branch': 'main' }
 endif
 
@@ -724,7 +725,7 @@ nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 " Show commands
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+"nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
 nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
@@ -882,6 +883,9 @@ if has('conceal')
   set conceallevel=0 concealcursor=i
 endif
 
+
+" orgmode """""""""""""""""""""""""""""""""""
+Plug 'nvim-orgmode/orgmode'
 
 " vimtex """""""""""""""""""""""""""""""""""
 Plug 'lervag/vimtex'
@@ -1532,6 +1536,27 @@ let g:nvim_tree_icons = {
 lua require('lsp-virtual-improved').setup()
 lua require('url-open').setup()
 lua require('CopilotChat').setup({ mode = "split", debug = false })
+
+lua <<EOF
+require('orgmode').setup {
+    org_agenda_files = '~/orgfiles/**/*',
+    org_default_notes_file = '~/orgfiles/refile.org',
+    mappings = {
+        global = {
+        ["<leader>oa"] = "<Plug>(org-agenda)",
+        ["<leader>ot"] = "<Plug>(org-todo)",
+        ["<leader>oc"] = "<Plug>(org-capture)",
+        ["<leader>ol"] = "<Plug>(org-store-link)",
+        },
+    },
+    org_todo_keywords = {'TODO(t)', 'DOING(d)', '|', 'DONE(x)'},
+    org_todo_keyword_faces = {
+        TODO = ':bold',
+        DOING = ':italic',
+        DONE = ':underline',
+    },
+}
+EOF
 
 "lua <<EOF
 "require'nvim-treesitter.configs'.setup {
