@@ -1583,6 +1583,16 @@ require('obsidian').setup({
             },
         },
     legacy_commands = false,
+    daily_notes = {
+        folder = "daily",
+        date_format = "%Y-%m-%d",
+    },
+    ui = {
+        bullets = { char = "", hl_group = "ObsidianBullet"},
+    },
+      checkbox = {
+    order = { " ", "x" },
+  },
     })
 EOF
 
