@@ -61,6 +61,7 @@ Plug 'simnalamburt/vim-mundo', { 'on': 'MundoToggle' }
 Plug 'junegunn/vim-journal'
 Plug 'cespare/vim-toml'
 "Plug 'kyazdani42/nvim-tree.lua'
+Plug 'tpope/vim-markdown', { 'commit': 'baf2592d33d6d73bf2bcb7cf3251586eed5148f9' }
 
 if has('nvim')
 "Plug 'nvim-treesitter/nvim-treesitter'
