@@ -752,11 +752,12 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 "imap <C-k> <Plug>(coc-snippets-expand-jump)
 
 " Copilot """""""""""""""""""
-Plug 'github/copilot.vim', { 'branch': 'release' }
-"Plug 'gptlang/CopilotChat.nvim', { 'branch': 'main' }
+Plug 'zbirenbaum/copilot.lua'
+"Plug 'github/copilot.vim', { 'branch': 'release' }
+
 Plug 'nvim-lua/plenary.nvim'
 Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'main' }
-imap <M-C-N> <Plug>(copilot-accept-word)
+"imap <M-C-N> <Plug>(copilot-accept-word)
 let g:copilot_chat_disable_separators = 0
 
 " Testing """""""""""""""""""
@@ -1532,6 +1533,38 @@ let g:nvim_tree_icons = {
 
 lua require('lsp-virtual-improved').setup()
 lua require('url-open').setup()
+
+lua <<EOF
+require('copilot').setup({
+    suggestion = {
+        enabled = true,
+        auto_trigger = true,
+        keymap = {
+            accept = "<tab>",
+            accept_word = "<M-C-N>",
+            accept_line = false,
+            next = "<M-]>",
+            prev = "<M-[>",
+            dismiss = "<C-]>",
+        },
+    },
+    panel = {
+        enabled = true,
+        auto_refresh = true,
+        keymap = {
+            jump_prev = "[[",
+            jump_next = "]]",
+            open = "<M-CR>",
+            refresh = "gr",
+            focus = "gf",
+        },
+    },
+    filetypes = {
+        ["*"] = true,
+    },
+})
+EOF
+
 lua require('CopilotChat').setup({ mode = "split", debug = false })
 
 "lua <<EOF
