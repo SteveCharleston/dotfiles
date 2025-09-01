@@ -12,7 +12,7 @@ endif
 " neovim stuff
 set termguicolors
 if has('nvim')
-    let g:python2_host_prog = '/usr/bin/python'
+    let g:python3_host_prog = '/usr/bin/python3'
     set guicursor=
     autocmd OptionSet guicursor noautocmd set guicursor=
     let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
