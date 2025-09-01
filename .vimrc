@@ -628,7 +628,6 @@ let g:coc_global_extensions = [
             \'coc-css',
             \'coc-diagnostic',
             \'coc-emmet',
-            \'coc-git',
             \'coc-html',
             \'coc-java',
             \'coc-json',
@@ -645,6 +644,7 @@ let g:coc_global_extensions = [
             "\'coc-highlight',
             "\'coc-pyright',
             "\'coc-python',
+            "\'coc-git',
 
 
 
