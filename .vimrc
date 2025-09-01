@@ -1012,7 +1012,7 @@ endif
 
 " Salt """""""""""""""""""""""""""""""
 Plug 'saltstack/salt-vim'
-Plug 'Glench/Vim-Jinja2-Syntax'
+"Plug 'Glench/Vim-Jinja2-Syntax'
 let g:sls_use_jinja_syntax = 1
 
 " Word highlight """""""""""""""""""""""""""""""
