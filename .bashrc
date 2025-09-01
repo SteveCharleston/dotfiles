@@ -58,6 +58,11 @@ alias apt-get='sudo apt-get'
 
 export PATH=$HOME/bin/vim/bin:$HOME/bin:/opt/android/sdk/tools:/opt/android/sdk/tools/bin:$PATH
 
+# Use nvim as manpager if available
+if command -v nvim &> /dev/null; then
+    export MANPAGER="nvim +Man!"
+fi
+
 command -v fortune > /dev/null 2>&1 && /usr/bin/env fortune
 echo ""
 
