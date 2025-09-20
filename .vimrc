@@ -881,7 +881,7 @@ let g:EclimCompletionMethod = 'omnifunc'
 
 " For snippet_complete marker.
 if has('conceal')
-  set conceallevel=1 concealcursor=n
+  set conceallevel=0 concealcursor=i
 endif
 
 
@@ -924,8 +924,15 @@ nnoremap <Leader>ts :ThesaurusQueryReplaceCurrentWord<CR>
 
 " Obsidian  """""""""""""""""""""""""""""""""""
 Plug 'obsidian-nvim/obsidian.nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
+"Plug 'MeanderingProgrammer/render-markdown.nvim'
 Plug 'ibhagwan/fzf-lua'
 "Plug 'nvim-telescope/telescope.nvim'
+augroup markdown_conceal
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType markdown setlocal conceallevel=1 concealcursor=n
+augroup end
 
 
 " Clang """""""""""""""""""""""""""""""""""
@@ -1592,7 +1599,9 @@ require('obsidian').setup({
         img_folder = "tmpl",
     },
     ui = {
+        enable = true,
         bullets = { char = "", hl_group = "ObsidianBullet" },
+        max_file_length = 100000,
     },
     checkbox = {
           order = { " ", "x" },
@@ -1629,6 +1638,10 @@ require('obsidian').setup({
   end,
 
     })
+--require('render_markdown').setup({
+--    enabled = true,
+--    render_modes = { 'n', 'c', 't', 'v', 'V', 's', 'i' }
+--})
 EOF
 
 "lua <<EOF
