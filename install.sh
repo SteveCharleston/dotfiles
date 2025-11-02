@@ -12,12 +12,12 @@ link_if_missing() {
 }
 
 mkdir -p $HOME/bin
-mkdir -p $HOME/.config/nvim
 mkdir -p $HOME/.config/fusuma
 chmod 0755 $HOME/bin
 
 link_if_missing $PWD/.vimrc $HOME/.vimrc
 link_if_missing $PWD/.vim $HOME/.vim
+link_if_missing $PWD/nvim $HOME/.config/nvim
 link_if_missing $PWD/.bashrc $HOME/.bashrc
 link_if_missing $PWD/.tmux.conf $HOME/.tmux.conf
 link_if_missing $PWD/.minttyrc $HOME/.minttyrc
