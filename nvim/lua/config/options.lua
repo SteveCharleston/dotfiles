@@ -42,7 +42,7 @@ local options = {
         "full"            -- second tab completes fully
     },
     wildoptions = {
-        "pum",
+        -- "pum",
         --"fuzzy",
         "tagfile"
     },
