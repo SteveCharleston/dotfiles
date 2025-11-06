@@ -33,12 +33,22 @@ return {
     },
 
     {
-        "junegunn/fzf.vim",
-        dependencies = "junegunn/fzf",
+        "ibhagwan/fzf-lua",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        opts = {},
         keys = {
-            { "<Leader>g", "<cmd>Buffers<cr>", desc = "FZF Buffers" },
+            { "<Leader>g", "<cmd>FzfLua buffers<cr>", desc = "FZF Lua Buffers" },
         },
-        dir = "~/.fzf",
-        build = "./isntall --all"
     }
+    -- {
+    --     "junegunn/fzf.vim",
+    --     lazy = false,
+    --     name = "fzf",
+    --     dependencies = {"junegunn/fzf", lazy = false},
+    --     keys = {
+    --         { "<Leader>g", "<cmd>Buffers<cr>", desc = "FZF Buffers" },
+    --     },
+    --     dir = "~/.fzf",
+    --     build = "./install --all"
+    -- }
 }

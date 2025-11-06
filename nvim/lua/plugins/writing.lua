@@ -50,6 +50,10 @@ return {
             checkbox = {
                 order = { " ", "x" },
             },
+            completion = {
+                nvim_cmp = true,
+                min_chars = 1,
+            },
             picker = {
                 name = "fzf-lua",
                 note_mappings = {

@@ -26,7 +26,8 @@ local options = {
     gdefault = true,      -- the /g flag on :s substitutions by default
     shiftround = true,    -- indent to multiples of shiftwidth
     colorcolumn = { 80 }, -- Higlights Characters after 80 characters
-    showmode = false,    -- don't show mode since we use a statusline
+    showmode = false,     -- don't show mode since we use a statusline
+    signcolumn = "yes",   -- always show signcolumn to avoid text shifting
 
     list = true,          -- show some invisible characters
     listchars = {         -- configure the invisible characters
