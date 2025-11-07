@@ -90,14 +90,16 @@ return {
                 },
                 window = {
                     completion = {
-                        border = "rounded",
+                        border = {"🭽","▔","🭾","▕","🭿","▁","🭼","▏"},
                         winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:PmenuSel",
                         scrollbar = false,
                         col_offset = -3,
                         side_padding = 0,
                     },
                     documentation = {
-                        border = "rounded",
+                        --border = {"▞","▔","▚","▕","▞","▁","▚","▏"},
+                        border = {"🭽","▔","🭾","▕","🭿","▁","🭼","▏"},
+                        --border = {"╱","▔","╲","▕","╱","▁","╲","▏"},
                         winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:PmenuSel",
                         max_width = 0,
                         max_height = 0,
