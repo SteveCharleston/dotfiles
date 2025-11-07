@@ -86,16 +86,19 @@ return {
     -- },
     {
         "rachartier/tiny-inline-diagnostic.nvim",
+        init = function()
+            vim.diagnostic.open_float = require("tiny-inline-diagnostic.override").open_float
+        end,
         opts = {
             -- Choose a preset style for diagnostic appearance
             -- Available: "modern", "classic", "minimal", "powerline", "ghost", "simple", "nonerdfont", "amongus"
-            preset = "modern",
+            preset = "powerline",
 
             -- Make diagnostic background transparent
             transparent_bg = false,
 
             -- Make cursorline background transparent for diagnostics
-            transparent_cursorline = true,
+            transparent_cursorline = false,
 
             -- Customize highlight groups for colors
             -- Use Neovim highlight group names or hex colors like "#RRGGBB"
@@ -105,7 +108,7 @@ return {
                 info = "DiagnosticInfo",       -- Highlight for info diagnostics
                 hint = "DiagnosticHint",       -- Highlight for hint diagnostics
                 arrow = "DiagnosticSignWarn",  -- Highlight for the arrow pointing to diagnostic
-                background = "CursorLine",     -- Background highlight for diagnostics
+                background = "Normal",     -- Background highlight for diagnostics
                 mixing_color = "Normal",       -- Color to blend background with (or "None")
             },
 
@@ -164,7 +167,7 @@ return {
 
                 -- Enable diagnostics display in insert mode
                 -- May cause visual artifacts; consider setting throttle to 0 if enabled
-                enable_on_insert = true,
+                enable_on_insert = false,
 
                 -- Enable diagnostics display in select mode (e.g., during auto-completion)
                 enable_on_select = false,
@@ -206,7 +209,7 @@ return {
                 overwrite_events = nil,
 
                 -- Automatically disable diagnostics when opening diagnostic float windows
-                override_open_float = false,
+                override_open_float = true,
             },
         }
     }
