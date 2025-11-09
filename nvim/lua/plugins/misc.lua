@@ -35,9 +35,18 @@ return {
             { "gx", "<cmd>URLOpenUnderCursor<cr>", desc = "Open URL under cursor" },
         },
     },
+    -- {
+    --     "vim-scripts/surround.vim",
+    --     dependencies = "tpope/vim-repeat",
+    -- },
     {
-        "vim-scripts/surround.vim",
-        dependencies = "tpope/vim-repeat",
+        "kylechui/nvim-surround",
+        event = "VeryLazy",
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
+        end
     },
     {
         "inkarkat/vim-SpellCheck",
