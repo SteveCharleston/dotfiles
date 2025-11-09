@@ -75,7 +75,9 @@ local options = {
     selection = "inclusive",
     updatetime = 300,
     whichwrap = "b,s,<,>,[,],h,l",
-    fillchars = "vert:│,fold:-"  -- nicer buffer borders
+    fillchars = "vert:│,fold:-",  -- nicer buffer borders
+    --winborder = {"🭽","▔","🭾","▕","🭿","▁","🭼","▏"},
+    winborder = "rounded",
 }
 
 for k, v in pairs(options) do
