@@ -215,6 +215,12 @@ return {
     },
     {
         "folke/trouble.nvim",
+        init = function()
+            vim.cmd([[
+                highlight! link TroubleNormal Normal
+                highlight! link TroubleNormalNC Normal
+            ]])
+        end,
         opts = {}, -- for default options, refer to the configuration section for custom setup.
         cmd = "Trouble",
     }
