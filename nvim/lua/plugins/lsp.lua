@@ -136,7 +136,7 @@ return {
                     ['<C-n>'] = cmp.mapping.select_next_item({behavior = 'insert'}),
 
                     -- `Enter` key to confirm completion
-                    ['<CR>'] = cmp.mapping.confirm({select = true}),
+                    -- ['<CR>'] = cmp.mapping.confirm({select = true}),
                     ['<C-j>'] = cmp.mapping.confirm({select = true}),
 
                     -- Scroll up and down in the completion documentation
