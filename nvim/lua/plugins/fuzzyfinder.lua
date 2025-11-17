@@ -23,10 +23,10 @@ return {
                 }
         end,
         keys = {
-            { "<C-p>", "<cmd>LeaderfFile<cr>", desc = "LeaderF Buffer Tags" },
+            -- { "<C-p>", "<cmd>LeaderfFile<cr>", desc = "LeaderF Buffer Tags" },
             { "<Leader>f", "<cmd>LeaderfBufTag<cr>", desc = "LeaderF Buffer Tags" },
-            { "<Leader>l", "<cmd>LeaderfLine<cr>", desc = "LeaderF Lines" },
-            { "<Leader>t", "<cmd>LeaderfTag<cr>", desc = "LeaderF Tags" },
+            -- { "<Leader>l", "<cmd>LeaderfLine<cr>", desc = "LeaderF Lines" },
+            -- { "<Leader>t", "<cmd>LeaderfTag<cr>", desc = "LeaderF Tags" },
             { "<Leader>m", "<cmd>LeaderfMru<cr>", desc = "LeaderF MRU" },
         },
         build = ":LeaderfInstallCExtension",
@@ -35,11 +35,46 @@ return {
     {
         "ibhagwan/fzf-lua",
         dependencies = { "nvim-tree/nvim-web-devicons" },
-        opts = {},
+        init = function()
+            require("fzf-lua").setup(
+            {
+            winopts = {
+                backdrop = 100,
+                width = 0.9,
+            },
+            keymap = {
+                builtin = {
+                    ["<c-u>"] = "preview-page-up",
+                    ["<c-d>"] = "preview-page-down",
+                },
+            },
+            defaults = {
+                formatter    = "path.dirname_first",
+            },
+            files = {
+                git_icons = true,
+                file_icons = true,
+                color_icons = true,
+                cwd_header = true,
+                cwd_prompt = false,
+                actions = {
+                    ["default"] = require("fzf-lua.actions").file_edit, -- directly populate buffer list instead of quickfix
+                },
+            },
+            lsp = {
+                symbols = {
+                    child_prefix = "➜ ",
+                    locate = false,
+                },
+            }
+        })
+        end,
         keys = {
             { "<Leader>g", "<cmd>FzfLua buffers<cr>", desc = "FZF Lua Buffers" },
+            { "<C-p>", "<cmd>FzfLua files<cr>", desc = "FZF Lua file search" },
+            { "<Leader>l", "<cmd>FzfLua blines<cr>", desc = "FZF Lua Lines" },
         },
-    }
+    },
     -- {
     --     "junegunn/fzf.vim",
     --     lazy = false,
