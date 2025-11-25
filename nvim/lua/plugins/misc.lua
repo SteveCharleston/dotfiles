@@ -200,5 +200,12 @@ return {
             --   setting this to `false` will give you
             --   descriptions of available keymaps.
         }
-    }
+    },
+    {
+        "kevinhwang91/nvim-bqf",
+        ft = "qf",
+        opts = {
+
+        },
+    },
 }
