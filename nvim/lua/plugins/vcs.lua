@@ -74,5 +74,10 @@ return {
     {
         "tpope/vim-rhubarb",
         dependencies = "tpope/vim-fugitive",
+    },
+    {
+        "hotwatermorning/auto-git-diff",
+        enabled = false,
+        ft = { "gitrebase" },
     }
 }
