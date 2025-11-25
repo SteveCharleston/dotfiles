@@ -35,3 +35,4 @@ map("n", "<leader>jgc", "<cmd>Git commit -avs<cr>", { desc = "Git commit with al
 map("n", "<leader>jgr", "<cmd>Git pull --rebase<cr>", { desc = "Git pull with rebase" })
 map("n", "<leader>jt", "<cmd>Twiggy<cr>",        { desc = "Open Twiggy for Git history" })
 map("n", "<leader>jl", "<cmd>GV<cr>",           { desc = "Open Git commit graph" })
+map("n", "<space>d", vim.lsp.buf.definition, { desc = "LSP Go to Definition" })

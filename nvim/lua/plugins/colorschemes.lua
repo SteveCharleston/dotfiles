@@ -6,7 +6,7 @@ return {
         branch = "main",
         build = {
             ":TSUpdate",
-            ":TSInstall awk bash c cpp css csv diff dockerfile editorconfig git_config git_rebase gitattributes gitcommit gitignore go gomod html java javascript jinja jinja_inline jq json latex lua make markdown markdown_inline matlab nix pascal perl php python ruby rust sql ssh_config strace tcl terraform tmux toml vim vimdoc xml yaml"
+            ":TSInstall awk bash c cpp css csv dap_repl diff dockerfile editorconfig git_config git_rebase gitattributes gitcommit gitignore go gomod html java javascript jinja jinja_inline jq json latex lua make markdown markdown_inline matlab nix pascal perl php python ruby rust sql ssh_config strace tcl terraform tmux toml vim vimdoc xml yaml"
         },
     },
     {
