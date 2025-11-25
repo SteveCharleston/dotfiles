@@ -73,6 +73,8 @@ return {
             { "<Leader>g", "<cmd>FzfLua buffers<cr>", desc = "FZF Lua Buffers" },
             { "<C-p>", "<cmd>FzfLua files<cr>", desc = "FZF Lua file search" },
             { "<Leader>l", "<cmd>FzfLua blines<cr>", desc = "FZF Lua Lines" },
+            { "<Leader>jgb", "<cmd>FzfLua git_branches<cr>", desc = "FZF Lua Lines" },
+            { "<Leader>y", "<cmd>FzfLua live_grep<cr>", desc = "FZF Lua Lines" },
         },
     },
     -- {
