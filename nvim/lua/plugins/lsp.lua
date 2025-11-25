@@ -153,26 +153,26 @@ return {
                     { name = "git" },
                     { name = "yank" },
                 }, {
-                    { name = "buffer" },
-                }),
+                        { name = "buffer" },
+                    }),
                 sorting = defaults.sorting,
-                })
-                cmp.setup.cmdline({ '/', '?' }, {
-                    mapping = cmp.mapping.preset.cmdline(),
-                    sources = {
-                        { name = 'buffer' }
-                    }
-                })
-                cmp.setup.cmdline(':', {
-                    mapping = cmp.mapping.preset.cmdline(),
-                    sources = cmp.config.sources({
-                        { name = 'path' }
-                    }, {
+            })
+            cmp.setup.cmdline({ '/', '?' }, {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = {
+                    { name = 'buffer' }
+                }
+            })
+            cmp.setup.cmdline(':', {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = cmp.config.sources({
+                    { name = 'path' }
+                }, {
                         { name = 'cmdline' },
                         { name = 'cmdline_history', max_item_count = 5 },
                     }),
-                    matching = { disallow_symbol_nonprefix_matching = false }
-                })
+                matching = { disallow_symbol_nonprefix_matching = false }
+            })
             require("cmp").setup({
                 enabled = function()
                     return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
