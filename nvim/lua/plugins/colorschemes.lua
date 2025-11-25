@@ -10,6 +10,18 @@ return {
         },
     },
     {
+        'MeanderingProgrammer/treesitter-modules.nvim',
+        dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        opts = {
+            highlight = {
+                enable = true,
+                additional_vim_regex_highlighting = false,
+            },
+            indent = { enable = true },
+            incremental_selection = { enable = true },
+        },
+    },
+    {
         "ellisonleao/gruvbox.nvim",
         priority = 1000 ,
         --config = true,
