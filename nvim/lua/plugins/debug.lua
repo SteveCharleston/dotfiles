@@ -35,6 +35,20 @@ return {
                         return vim.fn.exepath("python3")
                     end,
                 },
+                {
+                    name= "Pytest: Current File",
+                    type= "python",
+                    request= "launch",
+                    module= "pytest",
+                    justMyCode= false,
+                    args= {
+                        "${file}",
+                        "-sv",
+                        "--log-cli-level=INFO",
+                        "--log-file=test_out.log"
+                    },
+                    console= "integratedTerminal",
+                }
             }
         end,
         keys = {
