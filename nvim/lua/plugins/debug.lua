@@ -101,7 +101,13 @@ return {
     },
     {
         "igorlfs/nvim-dap-view",
-        opts = {},
+        opts = {
+            winbar = {
+                controls = {
+                    enabled = true,
+                },
+            }
+        },
     },
     {
         "theHamsta/nvim-dap-virtual-text",
