@@ -6,7 +6,6 @@ return {
     "paranoida/vim-airlineish",
     "hsanson/vim-android",
     "tmatilai/vim-monit",
-    "tpope/vim-dispatch",
     "justinmk/vim-gtfo",
     "justinmk/vim-syntax-extra",
     "4Evergreen4/vim-hardy",
@@ -19,6 +18,12 @@ return {
     "cespare/vim-toml",
     "aklt/plantuml-syntax",
     "cohama/lexima.vim",
+    {
+        "tpope/vim-dispatch",
+        init = function()
+            vim.g.dispatch_handlers = { "job", "tmux" }
+        end,
+    },
     {
         "sontungexpt/url-open",
         branch = "mini",
