@@ -50,6 +50,67 @@ return {
                     console= "integratedTerminal",
                 }
             }
+            dap.adapters.codelldb = {
+                type = 'server',
+                port = "${port}",
+                executable = {
+                    command = 'codelldb',
+                    args = { "--port", "${port}" },
+                },
+            }
+
+            dap.configurations.rust = {
+                {
+                    name = "Launch Rust Binary",
+                    type = "codelldb",
+                    request = "launch",
+                    -- This will prompt you to select the binary you want to debug
+                    program = function()
+                        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
+                    end,
+                    cwd = '${workspaceFolder}',
+                    stopOnEntry = false,
+                    args = {},
+                    -- If you want to use the integrated terminal:
+                    -- console = 'integratedTerminal',
+                },
+                {
+                    name = "Debug Unit Test",
+                    type = "codelldb",
+                    request = "launch",
+                    -- This function builds the tests and finds the resulting binary
+                    program = function()
+                        print("Building tests...")
+                        -- 1. Build the tests without running them
+                        -- Use --message-format=json to parse the output and find the binary path
+                        -- It is usually the first binary with test enabled, several may be built
+                        local output = vim.fn.systemlist("cargo test --no-run --message-format=json")
+                        local executable = nil
+
+                        for _, line in ipairs(output) do
+                            local ok, decoded = pcall(vim.json.decode, line)
+                            if ok and decoded.reason == "compiler-artifact" and decoded.executable ~= nil then
+                                -- We look for artifacts that are test-enabled
+                                if decoded.target.kind[1] == "bin" or decoded.profile.test == true then
+                                    executable = decoded.executable
+                                    break
+                                end
+                            end
+                        end
+
+                        if executable then
+                            print("Found test binary: " .. executable)
+                            return executable
+                        else
+                            return vim.fn.input('Binary not found. Path to test executable: ', vim.fn.getcwd() .. '/target/debug/deps/', 'file')
+                        end
+                    end,
+                    cwd = '${workspaceFolder}',
+                    stopOnEntry = false,
+                    -- Pass '--nocapture' so you can see println! output in the DAP console
+                    args = {"--nocapture"},
+                },
+            }
         end,
         keys = {
             {
