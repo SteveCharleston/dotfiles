@@ -55,4 +55,32 @@ return {
         "liuchengxu/vista.vim",
         cmd = "Vista"
     },
+    {
+        'stevearc/aerial.nvim',
+        opts = {
+            backends = { "treesitter", "lsp", "markdown", "asciidoc", "man" },
+            placement = "window",
+            attach_mode = "global",
+            filter_kind = {
+                "Class",
+                "Constructor",
+                "Enum",
+                "EnumMember",
+                "Function",
+                "Interface",
+                "Module",
+                "Method",
+                "Struct",
+                "Property",
+                "Field",
+                "Constant",
+            },
+            show_guides = true,
+        },
+        -- Optional dependencies
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons"
+        },
+    },
 }
