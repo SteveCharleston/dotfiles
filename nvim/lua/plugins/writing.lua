@@ -40,7 +40,7 @@ return {
                 date_format = "%Y-%m-%d.%a",
             },
             attachments = {
-                img_folder = "tmpl",
+                folder = "tmpl",
             },
             ui = {
                 enable = true,
@@ -65,7 +65,19 @@ return {
                     insert_tag = "<C-l>",
                 }
             },
-            wiki_link_func = "use_alias_only", -- Create as [[link]]
+            link = {
+                style = function(opts)
+                    ---@type string
+                    local header_or_block = ""
+                    if opts.anchor then
+                        header_or_block = string.format("#%s", opts.anchor.header)
+                    elseif opts.block then
+                        header_or_block = string.format("#%s", opts.block.id)
+                    end
+                    return string.format("[[%s%s]]", opts.label, header_or_block)
+                end
+            }, -- Create as [[link]]
+
             note_id_func = function(title)
                 -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
                 -- In this case a note with the title 'My new note' will be given an ID that looks
