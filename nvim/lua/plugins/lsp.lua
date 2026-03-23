@@ -114,12 +114,12 @@ return {
                     -- completeopt = "menu,menuone,noselect",
                 },
                 formatting = {
-                    fields = { "kind", "abbr", "menu" },
+                    fields = { "icon", "abbr", "menu", "kind" },
                     format = function(entry, vim_item)
-                        local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50, symbol_map = { Copilot = "" } })(entry, vim_item)
-                        local strings = vim.split(kind.kind, "%s", { trimempty = true })
-                        kind.kind = " " .. (strings[1] or "") .. " "
-                        kind.menu = "    (" .. (strings[2] or "") .. ")"
+                        local lspkind = require("lspkind")
+                        local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 50, symbol_map = { Copilot = "" } })(entry, vim_item)
+                        kind.icon = " " .. (kind.icon or "") .. "  "
+                        kind.kind = "   (" .. (kind.kind or "") .. ")"
 
                         return kind
                     end,
