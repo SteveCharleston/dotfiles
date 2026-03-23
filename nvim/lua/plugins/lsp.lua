@@ -206,6 +206,11 @@ return {
         }
     },
     {
+        'mrcjkb/rustaceanvim',
+        --version = '^6', -- Recommended
+        lazy = false, -- This plugin is already lazy
+    },
+    {
         "ray-x/lsp_signature.nvim",
         event = "InsertEnter",
         opts = {
