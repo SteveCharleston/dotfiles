@@ -66,7 +66,8 @@ return {
                     child_prefix = "➜ ",
                     locate = false,
                 },
-            }
+            },
+            ui_select = true,
         })
         end,
         keys = {
