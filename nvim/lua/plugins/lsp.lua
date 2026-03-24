@@ -298,6 +298,20 @@ return {
                 },
                 symbols = {
                     icon_source = "lspkind",
+                    filter = {
+                        "Class",
+                        "Constructor",
+                        "Enum",
+                        "EnumMember",
+                        "Function",
+                        "Interface",
+                        --"Module",
+                        "Method",
+                        "Struct",
+                        "Property",
+                        "Field",
+                        "Constant",
+                    },
                 },
             }
         end,
