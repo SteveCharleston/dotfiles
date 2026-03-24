@@ -213,6 +213,7 @@ return {
     {
         "ray-x/lsp_signature.nvim",
         event = "InsertEnter",
+        enabled = false,
         opts = {
             hint_enable = false,
             doc_lines = 30,
