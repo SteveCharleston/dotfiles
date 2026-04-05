@@ -231,6 +231,24 @@ return {
     },
     {
         "j-hui/fidget.nvim",
+        lazy = false,
+        opts = {
+            progress = {
+                lsp = {
+                    progress_ringbuf_size = 10,
+                },
+            },
+
+            notification = {
+                filter = vim.log.levels.INFO,
+                override_vim_notify = true,
+                history_size = 512,
+                window = {
+                    winblend = 100,
+                    border = "none",
+                },
+            },
+        }
     },
     {
         "hedyhli/outline.nvim",
