@@ -47,8 +47,26 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
+            "MeanderingProgrammer/render-markdown.nvim",
         },
         opts = {
+            interactions = {
+                chat = {
+                    adapter = "anthropic",
+                    model = "claude-opus-4-6"
+                },
+                cli = {
+                    agent = "claude_code",
+                    agents = {
+                        claude_code = {
+                            cmd = "claude",
+                            args = {},
+                            description = "Claude Code CLI",
+                            provider = "terminal",
+                        },
+                    },
+                },
+            },
         },
     },
     {
@@ -65,7 +83,18 @@ return {
             -- this file can contain specific instructions for your project
             instructions_file = "avante.md",
             -- for example
-            provider = "copilot",
+            provider = "claude",
+            providers = {
+                claude = {
+                    endpoint = "https://api.anthropic.com",
+                    model = "claude-opus-4-6",
+                    timeout = 30000,
+                    request_body = {
+                        max_tokens = 20480,
+                        temperature = 0,
+                    },
+                },
+            }
         },
         dependencies = {
             "nvim-lua/plenary.nvim",
@@ -94,5 +123,4 @@ return {
             },
         },
     }
-
 }
