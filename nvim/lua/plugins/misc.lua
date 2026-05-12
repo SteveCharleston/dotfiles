@@ -170,28 +170,6 @@ return {
         end
     },
     {
-        'nvimdev/dashboard-nvim',
-        event = 'VimEnter',
-        opts = {
-            theme = 'hyper',
-            config = {
-                week_header = {
-                    enable = true,
-                },
-                shortcut = {
-                    { desc = '  New File', group = '@function', action = 'ene!', key = 'n' },
-                    { desc = '  Find File', group = '@property', action = 'FzfLua files', key = 'f' },
-                    { desc = '  Recent Files', group = '@method', action = 'FzfLua oldfiles', key = 'r' },
-                    { desc = '  Find Text', group = '@type', action = 'FzfLua live_grep', key = 't' },
-                    { desc = '  Bookmarks', group = '@constant', action = 'FzfLua marks', key = 'b' },
-                    { desc = '  Load Session', group = '@keyword', action = 'SessionLoad', key = 's' },
-                    { desc = '  Quit NVIM', group = '@function', action = 'qa', key = 'q' },
-                },
-            },
-        },
-        dependencies = { {'nvim-tree/nvim-web-devicons'}}
-    },
-    {
         "Owen-Dechow/videre.nvim",
         cmd = "Videre",
         dependencies = {
