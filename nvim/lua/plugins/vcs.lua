@@ -57,6 +57,17 @@ return {
         "esmuellert/codediff.nvim",
         dependencies = { "MunifTanjim/nui.nvim" },
         cmd = "CodeDiff",
+        opts = {
+            explorer = {
+                view_mode = "tree",
+            },
+            keymaps = {
+                view = {
+                    next_file = "<tab>",
+                    prev_file = "<s-tab>",
+                }
+            }
+        },
     },
     {
         'barrettruth/diffs.nvim',
