@@ -47,13 +47,12 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
-            "MeanderingProgrammer/render-markdown.nvim",
         },
         opts = {
             interactions = {
                 chat = {
                     adapter = "anthropic",
-                    model = "claude-opus-4-6"
+                    model = "claude-sonnet-4-5"
                 },
                 cli = {
                     agent = "claude_code",
@@ -87,7 +86,7 @@ return {
             providers = {
                 claude = {
                     endpoint = "https://api.anthropic.com",
-                    model = "claude-opus-4-6",
+                    model = "claude-sonnet-4-5",
                     timeout = 30000,
                     request_body = {
                         max_tokens = 20480,
