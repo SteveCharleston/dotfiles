@@ -78,6 +78,7 @@ local options = {
     fillchars = "vert:│,fold:-",  -- nicer buffer borders
     --winborder = {"🭽","▔","🭾","▕","🭿","▁","🭼","▏"},
     winborder = "rounded",
+    guifont = "Hack Nerd Font Mono:h10",  -- font for gui clients
 }
 
 for k, v in pairs(options) do
