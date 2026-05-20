@@ -78,7 +78,12 @@ return {
                     neogit = true,
                     neojj = true,
                     gitsigns = true,
-                }
+                },
+                highlights = {
+                    overrides = {
+                        DiffsDiffText = { bg = '#58450c' },
+                    },
+                },
             }
         end,
     },
