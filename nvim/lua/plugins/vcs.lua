@@ -47,11 +47,14 @@ return {
 
     -- diff viewer
     {
-        "sindrets/diffview.nvim",
+        "dlyongemallo/diffview-plus.nvim",
         dependencies = {
             "nvim-tree/nvim-web-devicons",
             "nvim-lua/plenary.nvim"
-        }
+        },
+        opts = {
+            enhanced_diff_hl = true,
+        },
     },
     {
         "esmuellert/codediff.nvim",
