@@ -18,14 +18,14 @@ map("n", "<C-e>", "3<C-e>",            { noremap = true, desc = "Scroll down 3 l
 map("n", "<C-y>", "3<C-y>",            { noremap = true, desc = "Scroll up 3 lines" })
 
 -- Easy Window Handling
-map("n", "<M-h>", "<cmd>wincmd h<CR>", { silent = true, desc = "Move to left window" })
-map("n", "<M-j>", "<cmd>wincmd j<CR>", { silent = true, desc = "Move to lower window" })
-map("n", "<M-k>", "<cmd>wincmd k<CR>", { silent = true, desc = "Move to upper window" })
-map("n", "<M-l>", "<cmd>wincmd l<CR>", { silent = true, desc = "Move to right window" })
-map("n", "-",     "<cmd>wincmd -<CR>", { silent = true, desc = "Decrease window height" })
-map("n", "+",     "<cmd>wincmd +<CR>", { silent = true, desc = "Increase window height" })
-map("n", "<M-<>", "<cmd>wincmd <<CR>", { silent = true, desc = "Decrease window width" })
-map("n", "<M->>", "<cmd>wincmd ><CR>", { silent = true, desc = "Increase window width" })
+map("n", "<M-h>", function() vim.cmd(vim.v.count1 .. "wincmd h") end, { silent = true, desc = "Move to left window" })
+map("n", "<M-j>", function() vim.cmd(vim.v.count1 .. "wincmd j") end, { silent = true, desc = "Move to lower window" })
+map("n", "<M-k>", function() vim.cmd(vim.v.count1 .. "wincmd k") end, { silent = true, desc = "Move to upper window" })
+map("n", "<M-l>", function() vim.cmd(vim.v.count1 .. "wincmd l") end, { silent = true, desc = "Move to right window" })
+map("n", "-",     function() vim.cmd(vim.v.count1 .. "wincmd -") end, { silent = true, desc = "Decrease window height" })
+map("n", "+",     function() vim.cmd(vim.v.count1 .. "wincmd +") end, { silent = true, desc = "Increase window height" })
+map("n", "<M-<>", function() vim.cmd(vim.v.count1 .. "wincmd <") end, { silent = true, desc = "Decrease window width" })
+map("n", "<M->>", function() vim.cmd(vim.v.count1 .. "wincmd >") end, { silent = true, desc = "Increase window width" })
 
 -- " Additional helper mappings
 map("n", "<leader>jf", "<cmd>NERDTreeFind<cr>", { desc = "Find current file in NERDTree" })
