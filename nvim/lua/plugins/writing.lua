@@ -99,7 +99,7 @@ return {
                 augroup markdown_conceal
                 autocmd!
                 " Setup formatexpr specified filetype(s).
-                autocmd FileType markdown setlocal conceallevel=1 concealcursor=n
+                autocmd FileType markdown setlocal conceallevel=1 concealcursor=
                 augroup end
             ]])
         end,
