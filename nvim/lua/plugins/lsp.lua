@@ -334,4 +334,5 @@ return {
             }
         end,
     },
+    "parwest/peeper-picker.nvim",
 }
