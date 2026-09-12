@@ -144,7 +144,7 @@ return {
         init = function()
             if vim.fn.executable('ag') == 1 then
                 vim.g.ackprg = 'ag --nogroup --nocolor --column'
-                vim.g.ack_use_dispatch = 1
+                vim.g.ack_use_dispatch = 0
             end
         end,
     },
