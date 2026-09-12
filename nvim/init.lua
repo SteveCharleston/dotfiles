@@ -1,4 +1,4 @@
-vim.g.python3_host_prog = "/usr/bin/python3"
+vim.g.python3_host_prog = vim.fn.exepath("python3")
 require("config.lazy")
 require("config.packadds")
 require("config.autocmds")
