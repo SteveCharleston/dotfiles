@@ -20,6 +20,7 @@ return {
     },
     {
         "nvim-neo-tree/neo-tree.nvim",
+        enabled = false,
         dependencies = {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
@@ -28,6 +29,9 @@ return {
         },
         lazy = false, -- neo-tree will lazily load itself
         opts = {
+            window = {
+                position = "left",
+            },
             sources = {
                 "filesystem",
                 "buffers",
