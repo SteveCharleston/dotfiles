@@ -25,7 +25,7 @@ local options = {
     scrolloff = 3,        -- minimum lines to keep above and below cursor
     gdefault = true,      -- the /g flag on :s substitutions by default
     shiftround = true,    -- indent to multiples of shiftwidth
-    colorcolumn = { 80 }, -- Higlights Characters after 80 characters
+    colorcolumn =  "80" , -- Higlights Characters after 80 characters
     showmode = false,     -- don't show mode since we use a statusline
     signcolumn = "yes",   -- always show signcolumn to avoid text shifting
 
