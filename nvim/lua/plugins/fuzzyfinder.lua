@@ -67,7 +67,7 @@ return {
                     locate = false,
                 },
             },
-            ui_select = true,
+            ui_select = {},
         })
         end,
         keys = {
