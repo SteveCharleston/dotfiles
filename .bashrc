@@ -83,7 +83,7 @@ if [ -f /home/steven/.tnsrc ]; then
 fi
 ###-tns-completion-end-###
 if command -v ct &> /dev/null; then
-    ssh() { /usr/bin/ssh $* | ct; }
+    ssh() { /usr/bin/env ssh $* | ct; }
 fi
 
 if [[ -e ~/.bashrc_custom ]]; then
