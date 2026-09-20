@@ -47,12 +47,31 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
+            "ravitemer/mcphub.nvim",
         },
         opts = {
+            adapters = {
+                acp = {
+                    claude_code = function()
+                        return require("codecompanion.adapters").extend("claude_code", {})
+                    end,
+                },
+            },
             interactions = {
                 chat = {
+                    --adapter = {
+                    --    name = "anthropic",
+                    --    model = "claude-sonnet-5"
+                    --},
                     adapter = "anthropic",
-                    model = "claude-sonnet-4-5"
+                    model = "claude-sonnet-5",
+                    --adapter = "claude_code",
+                },
+                inline = {
+                    adapter = {
+                        name = "anthropic",
+                        model = "claude-sonnet-5"
+                    },
                 },
                 cli = {
                     agent = "claude_code",
@@ -65,7 +84,58 @@ return {
                         },
                     },
                 },
+                background = {
+                    chat = {
+                        callbacks = {
+                            ["on_ready"] = {
+                                actions = {
+                                    "interactions.background.builtin.chat_make_title",
+                                },
+                                -- Enable "on_ready" callback which contains the title generation action
+                                enabled = true,
+                            },
+                        },
+                        opts = {
+                            -- Enable background interactions generally
+                            enabled = true,
+                        },
+                    },
+                },
             },
+            display = {
+                chat = {
+                    show_reasoning = true,
+                    show_token_count = true,
+                    show_settings = true,
+                    window = {
+                        pertab = false,
+                        layout = "vertical",
+                        position = "right",
+                        width = 0.4,
+                    },
+                },
+                action_palette = {
+                    width = 95,
+                    height = 10,
+                    prompt = "Prompt ", -- Prompt used for interactive LLM calls
+                    provider = "default", -- Can be "default", "telescope", "fzf_lua", "mini_pick" or "snacks". If not specified, the plugin will autodetect installed providers.
+                    opts = {
+                        show_preset_actions = true, -- Show the preset actions in the action palette?
+                        show_preset_prompts = true, -- Show the preset prompts in the action palette?
+                        title = "CodeCompanion actions", -- The title of the action palette
+                    },
+                },
+            },
+            extensions = {
+                mcphub = {
+                    callback = "mcphub.extensions.codecompanion",
+                    opts = {
+                        make_vars = true,
+                        make_slash_commands = true,
+                        show_result_in_chat = true
+                    }
+                }
+            }
         },
     },
     {
