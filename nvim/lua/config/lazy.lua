@@ -44,6 +44,7 @@ require("lazy").setup({
       border = "rounded",
   },
   git = {
+      timeout = 600,
       log = { "-40" },
   },
 
