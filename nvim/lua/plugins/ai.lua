@@ -55,6 +55,32 @@ return {
         },
         opts = {
             adapters = {
+                http = {
+                    -- Route the built-in "anthropic" adapter through the litellm proxy.
+                    -- Requires ANTHROPIC_BASE_URL and ANTHROPIC_AUTH_TOKEN in the environment.
+                    anthropic = function()
+                        return require("codecompanion.adapters").extend("anthropic", {
+                            env = {
+                                api_key = "ANTHROPIC_AUTH_TOKEN",
+                                base_url = "ANTHROPIC_BASE_URL",
+                            },
+                            url = "${base_url}/v1/messages",
+                            schema = {
+                                model = {
+                                    default = "claude-sonnet-5",
+                                    -- The built-in adapter's `choices` fetches from the
+                                    -- hardcoded https://api.anthropic.com/v1/models, which
+                                    -- bypasses our proxy override and fails auth. Replace it
+                                    -- with a static list instead.
+                                    choices = {
+                                        "claude-sonnet-5",
+                                        "claude-opus-4-1",
+                                    },
+                                },
+                            },
+                        })
+                    end,
+                },
                 acp = {
                     claude_code = function()
                         return require("codecompanion.adapters").extend("claude_code", {})
