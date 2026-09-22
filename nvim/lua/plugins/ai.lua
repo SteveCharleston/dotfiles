@@ -96,6 +96,85 @@ return {
                     adapter = "anthropic",
                     model = "claude-sonnet-5",
                     --adapter = "claude_code",
+                    tools = {
+                        -- Read-only/low-risk tools: skip the approval prompt
+                        -- entirely, even outside yolo mode.
+                        read_file = {
+                            opts = {
+                                require_approval_before = false,
+                            },
+                        },
+                        grep_search = {
+                            opts = {
+                                require_approval_before = false,
+                            },
+                        },
+                        memory = {
+                            opts = {
+                                require_approval_before = false,
+                            },
+                        },
+                        -- These two tools opt out of yolo mode and the background
+                        -- judge by default (config.lua: judge_in_yolo_mode = false).
+                        -- Re-enable the judge so yolo mode doesn't always fall back
+                        -- to a manual prompt; allowed_in_yolo_mode stays false so
+                        -- only a safe verdict from the judge grants execution.
+                        run_command = {
+                            opts = {
+                                judge_in_yolo_mode = true,
+                                -- Skip the approval prompt entirely (in any mode) for a
+                                -- small allowlist of read-only commands. Anything with
+                                -- shell metacharacters (chaining, substitution,
+                                -- redirection) still requires approval, even if it
+                                -- starts with an allowed program, e.g. `ls; rm -rf ~`.
+                                require_approval_before = function(tool)
+                                    local cmd = tool.args and tool.args.cmd
+                                    if not cmd or cmd == "" then
+                                        return true
+                                    end
+                                    if cmd:match("[;&|`$<>\n]") then
+                                        return true
+                                    end
+
+                                    local parts = vim.split(vim.trim(cmd), "%s+", { trimempty = true })
+                                    if #parts == 0 then
+                                        return true
+                                    end
+
+                                    local program = vim.fn.fnamemodify(parts[1], ":t")
+                                    local allowed_programs = {
+                                        ls = true,
+                                        pwd = true,
+                                        cat = true,
+                                        find = true,
+                                        grep = true,
+                                        rg = true,
+                                    }
+                                    if allowed_programs[program] then
+                                        return false
+                                    end
+
+                                    if program == "git" and parts[2] then
+                                        local allowed_git_subcommands = {
+                                            status = true,
+                                            diff = true,
+                                            log = true,
+                                        }
+                                        if allowed_git_subcommands[parts[2]] then
+                                            return false
+                                        end
+                                    end
+
+                                    return true
+                                end,
+                            },
+                        },
+                        delete_file = {
+                            opts = {
+                                judge_in_yolo_mode = true,
+                            },
+                        },
+                    },
                 },
                 inline = {
                     adapter = {
@@ -115,6 +194,11 @@ return {
                     },
                 },
                 background = {
+                    -- Route the background judge (used for yolo-mode tool
+                    -- auto-approval) through the same litellm-proxied anthropic
+                    -- adapter instead of the default "copilot", so it shares
+                    -- auth/config with chat.
+                    adapter = "anthropic",
                     chat = {
                         callbacks = {
                             ["on_ready"] = {
