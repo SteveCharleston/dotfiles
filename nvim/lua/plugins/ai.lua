@@ -296,7 +296,7 @@ return {
             providers = {
                 claude = {
                     endpoint = "https://api.anthropic.com",
-                    model = "claude-sonnet-4-5",
+                    model = "claude-sonnet-5",
                     timeout = 30000,
                     request_body = {
                         max_tokens = 20480,
