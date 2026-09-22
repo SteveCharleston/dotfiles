@@ -48,6 +48,10 @@ return {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
             "ravitemer/mcphub.nvim",
+            "ravitemer/codecompanion-history.nvim",
+            "lalitmee/codecompanion-spinners.nvim",
+            'mrjones2014/codecompanion-ui.nvim',
+            --"franco-ruggeri/codecompanion-spinner.nvim",
         },
         opts = {
             adapters = {
@@ -134,6 +138,32 @@ return {
                         make_slash_commands = true,
                         show_result_in_chat = true
                     }
+                },
+                history = {
+                    enabled = true,
+                    opts = {
+                        -- Default keymap to open history from chat buffer
+                        keymap = "gh",
+                        -- Automatically generate titles for new conversations
+                        auto_generate_title = true,
+                        continue_last_chat = false,
+                        delete_on_clearing_chat = false,
+                        dir_to_save = vim.fn.stdpath("data") .. "/codecompanion-history",
+                        enable_logging = false,
+                        picker = "default", -- "telescope", "snacks", "fzf-lua" or "default"
+                        summary = {
+                            create_summary_keymap = "gS", -- Keymap to create summary for a conversation
+                        },
+                    }
+                },
+                spinner = {
+                    opts = {
+                        -- Default spinner style
+                        style = "native",
+                    },
+                },
+                ui = {
+                    enabled = false,
                 }
             }
         },
