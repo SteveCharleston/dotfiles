@@ -308,6 +308,7 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
+            { "ColinKennedy/mega.cmdparse", dependencies = { "ColinKennedy/mega.logging" } },
             --- The below dependencies are optional,
             "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
             "ibhagwan/fzf-lua", -- for file_selector provider fzf
