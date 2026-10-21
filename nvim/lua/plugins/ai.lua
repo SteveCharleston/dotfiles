@@ -121,7 +121,7 @@ return {
                         -- only a safe verdict from the judge grants execution.
                         run_command = {
                             opts = {
-                                judge_in_yolo_mode = true,
+                                judge = true,
                                 -- Skip the approval prompt entirely (in any mode) for a
                                 -- small allowlist of read-only commands. Anything with
                                 -- shell metacharacters (chaining, substitution,
@@ -171,7 +171,7 @@ return {
                         },
                         delete_file = {
                             opts = {
-                                judge_in_yolo_mode = true,
+                                judge = true,
                             },
                         },
                     },
